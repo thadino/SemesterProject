@@ -1,14 +1,15 @@
+<div ng-controller="View1Ctrl">
 <section id="content">
     <div class="for_banners">
         <article class="col1">
             <div class="tabs">
                 <ul class="nav">
                     <li class="selected"><a href="#Flight">Flight</a></li>
-                    <li><a href="#Hotel">Hotel</a></li>
-                    <li class="end"><a href="#Rental">Rental</a></li>
+                    <li><a href="#">Coming Soon!</a></li>
+                    <li class="end"><a href="#">Coming Soon!</a></li>
                 </ul>
-                <div class="content">
-                    <div class="tab-content" id="Flight">
+                <div class="content" >
+                    <div class="tab-content" id="Flight" style="margin-bottom:-60px;">
                         <form id="form_1" method="post" >
                             <div>
                                 <div class="radio">
@@ -60,7 +61,7 @@
                                     <span class="pad_left1">(0-11 years)</span>
                                 </div>
                                 <div class="wrapper">
-                                    <span class="right relative"><a href="#" class="button1" ng-click="ctrl.search1()"><strong>Search</strong></a></span>
+                                    <span class="right relative"><a href="" class="button1" ng-click="search()"><strong>Search</strong></a></span>
                                     <a href="#" class="link1">More Options</a>
                                 </div>
                             </div>
@@ -69,7 +70,7 @@
 
 
                 </div>
-            </div>	
+            </div> 
         </article>
         <div id="slider">
             <img src="images/banner1.jpg" alt="">
@@ -81,9 +82,12 @@
 </section>
 
 
-<p>Lorem Ipsum, Lorem Ipsum Lorem Ipsum, Lorem Ipsum Lorem Ipsum, Lorem Ipsum Lorem Ipsum, Lorem Ipsum Lorem Ipsum, Lorem Ipsum Lorem Ipsum, Lorem Ipsum Lorem Ipsum, Lorem Ipsum Lorem Ipsum, Lorem Ipsum Lorem Ipsum, Lorem Ipsum Lorem Ipsum, Lorem Ipsum Lorem Ipsum, Lorem Ipsum Lorem Ipsum, Lorem Ipsum Lorem Ipsum, Lorem Ipsum Lorem Ipsum, Lorem Ipsum Lorem Ipsum, Lorem Ipsum Lorem Ipsum, Lorem Ipsum Lorem Ipsum, Lorem Ipsum Lorem Ipsum, Lorem Ipsum Lorem Ipsum, Lorem Ipsum Lorem Ipsum, Lorem Ipsum Lorem Ipsum, Lorem Ipsum Lorem Ipsum, Lorem Ipsum Lorem Ipsum, Lorem Ipsum Lorem Ipsum, Lorem Ipsum </p>
+<div ng-repeat="p in productionunits">
+
+            <ul ng-repeat="(key, value) in p">
+                <li> {{key}}: {{value}} </li>
 
 
-
-
-
+            </ul>
+</div>
+</div>
