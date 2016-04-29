@@ -47,11 +47,18 @@ angular.module('myApp.security', [])
           $scope.login = function () {
             $http.post('api/login', $scope.user)
                     .success(function (data) {
+                         $('#mask').remove(); 
+                 $('#login-box').hide(); 
+                        document.getElementById('errormessage').innerHTML = "";
                       $window.sessionStorage.id_token = data.token;
                       initializeFromToken($scope, $window.sessionStorage.id_token, jwtHelper);
                       $location.path("#/view1");
                     })
                     .error(function (data) {
+                        
+                      document.getElementById('errormessage').innerHTML = "You have entered wrong password!";
+                      
+                
                       delete $window.sessionStorage.id_token;
                       clearUserDetails($scope);
                     });

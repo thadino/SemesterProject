@@ -20,12 +20,6 @@ app.controller('View1Ctrl', function ($scope, $http)
     $scope.getfromapi = function () {
 
 
-    $scope.records = [
-        "Alfreds Futterkiste",
-        "Berglunds snabbköp",
-        "Centro comercial Moctezuma",
-        "Ernst Handel",
-    ];
 
                     var getTo = document.getElementById("searchTo").value;
                     var getFrom = document.getElementById("searchFrom").value;
@@ -35,7 +29,7 @@ app.controller('View1Ctrl', function ($scope, $http)
                     var searchstring = "";
 
                    if  (getFrom.length > 0 && getDate.length > 0) {
-                      //  alert("firstIf");
+     
                          var items = [];
                         if (getTo.length < 1) {
                          searchstring = "http://cvrapi.dk/api?search=cph&country=dk";
