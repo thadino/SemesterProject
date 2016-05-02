@@ -25,6 +25,7 @@ app.controller('View1Ctrl', function ($scope, $http)
                     var getFrom = document.getElementById("searchFrom").value;
                     var getDate = document.getElementById("departureDate").value;
                     var tickets = document.getElementById("tickets").value;
+                    var time = "T00:00:00Z";
                     
                     var searchstring = "";
 
@@ -32,11 +33,13 @@ app.controller('View1Ctrl', function ($scope, $http)
      
                          var items = [];
                         if (getTo.length < 1) {
-                         searchstring = "http://cvrapi.dk/api?search=cph&country=dk";
+                         searchstring = "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flightinfo/" + 
+                                 getFrom + "/" + getDate + time + "/" + tickets;
                         }
                         else
                         {
-                            searchstring = "http://cvrapi.dk/api?search=leffe&country=dk";
+                            searchstring = "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flightinfo/" + 
+                                 getFrom + "/" + getTo + "/" + getDate + time + "/" + tickets;
                         }
                         
         $http({method: 'GET', url: searchstring,
@@ -53,7 +56,7 @@ app.controller('View1Ctrl', function ($scope, $http)
             }
             else
             {
-                alert("you need to give a from destination, and depature date at minimum");
+                alert("you need to give a start destination, depature date and number of tickets as a minimum");
             }
                 
       };
