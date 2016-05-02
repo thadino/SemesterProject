@@ -39,7 +39,9 @@ header {height:230px;width:100%;overflow:hidden;background:url(../images/bg_top.
 #menu li a {display:block;height:71px;font-size:26px;line-height:71px;color:#fff;text-decoration:none;letter-spacing:-1px}
 #menu li a span {display:block}
 #menu li a span span {padding:0 32px;margin:0 6px}
-#menu li a:hover, #menu #menu_active a {background:url(../images/menu_left.png) top left no-repeat;color:#000}
+
+#menu li a:hover, #menu #menu_active a {background:url(../images/menu_left.png) top left no-repeat;}
+
 #menu li a:hover span, #menu #menu_active a span {background:url(../images/menu_right.png) top right no-repeat}
 #menu li a:hover span span, #menu #menu_active a span span {background:url(../images/menu_bg.gif) top repeat-x}
 /* content */
