@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -106,3 +107,188 @@
 
 
 </html>
+=======
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My AngularJS App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    
+<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
+    <script src='bower_components/angular-animate/angular-animate.min.js'></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/view1/view1.js"></script>
+    <script src="app/view2/view2.js"></script>
+    <script src="app/view3/view3.js"></script>
+    <script src="app/view4/view4.js"></script>
+    <script src="app/view5/view5.js"></script>
+    <script src="app/components/auth.js"></script>
+    <script src="app/components/filters.js"></script>
+    <script src="app/components/directives.js"></script>
+    <script src="app/components/factories.js"></script>
+    <script src="app/components/services.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    
+<link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+<script type="text/javascript" src="js/jquery-1.5.2.js" ></script>
+<script type="text/javascript" src="js/cufon-yui.js"></script>
+<script type="text/javascript" src="js/cufon-replace.js"></script>  
+<script type="text/javascript" src="js/Cabin_400.font.js"></script>
+<script type="text/javascript" src="js/tabs.js"></script> 
+<script type="text/javascript" src="js/jquery.jqtransform.js" ></script>
+<script type="text/javascript" src="js/jquery.nivo.slider.pack.js"></script>
+<script type="text/javascript" src="js/atooltip.jquery.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+
+
+  
+
+  </head>
+  <body ng-app="myApp">
+
+<div class="main" ng-controller="AppLoginCtrl">
+<!--header -->
+	<header>
+		<div class="wrapper">
+			<h1><a href="index.html" id="logo">Air lines</a></h1>
+			<span id="slogan">Fast, Frequent &amp; Safe Flights</span>
+			<nav id="top_nav">
+				<ul>
+                                    
+					<li><a href="#/view1" class="nav1" >Home</a></li>
+					<li><a href="#/view5" class="nav3">Contact</a></li>
+                                        
+                                        <li ng-show="!isAuthenticated"><img src="icon_person.png"  width="25" height="20" style="margin-top:-3px;" alt=""/><a href="#login-box" style="margin-top:-21px;" class="login-window">Login</a></li>
+                                        <li ng-show="isAuthenticated"><img src="icon_person_green.png"  width="25" height="20" style="margin-top:-3px;" alt=""/><a href="#login-box" style="margin-top:-21px;" ng-click="logout()">Logout</a></li>
+				</ul>
+			</nav>
+		</div>
+		<nav>
+			<ul id="menu">
+				<li id="menu_active"><a href="#/view1"><span><span>About</span></span></a></li>
+				<li><a href="#/view2"><span><span>Offers</span></span></a></li>
+				<li><a href="#/view3"><span><span>Book</span></span></a></li>
+				<li><a href="#/view4"><span><span>Services</span></span></a></li>
+				<li class="end"><a href="#/view5"><span><span>Contacts</span></span></a></li>
+			</ul>
+		</nav>
+	</header>
+<!-- / header -->
+
+<!--content -->
+<div ng-view></div>
+
+
+<div id="login-box" class="login-popup" >
+<a href="#" class="close"><img src="close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
+  <form class="signin" role="form"  ng-submit="login()">
+        <fieldset class="textbox">
+        <label class="username">
+        <span>Username or email</span>
+        <input id="username" ng-model="user.username" name="username" value="" type="text" autocomplete="on" placeholder="Username">
+        </label>
+        <label class="password">
+        <span>Password</span>
+        <input id="password" ng-model="user.password" name="password" value="" type="password" placeholder="Password">
+        </label>
+            <button class="submit button" onclick=""  type="submit">Sign in</button>
+        <p>
+        <a class="forgot" href="#">Forgot your password?</a>        </p>        
+
+        <p id="errormessage" style="color:red;"></p>
+        </fieldset>
+  </form>
+</div>
+
+
+
+
+<!-- content end -->
+
+			<!--footer -->
+			<footer>
+				<div class="wrapper">
+					<ul id="icons">
+						<li><a href="#" class="normaltip" title="Facebook"><img src="images/icon1.jpg" alt=""></a></li>
+						<li><a href="#" class="normaltip" title="Delicious"><img src="images/icon2.jpg" alt=""></a></li>
+						<li><a href="#" class="normaltip" title="Stumble Upon"><img src="images/icon3.jpg" alt=""></a></li>
+						<li><a href="#" class="normaltip" title="Twitter"><img src="images/icon4.jpg" alt=""></a></li>
+						<li><a href="#" class="normaltip" title="Linkedin"><img src="images/icon5.jpg" alt=""></a></li>
+						<li><a href="#" class="normaltip" title="Reddit"><img src="images/icon6.jpg" alt=""></a></li>
+					</ul>
+					<div class="links">
+						Website template designed by <a href="http://www.templatemonster.com/" target="_blank" rel="nofollow">www.templatemonster.com</a><br>
+						3D Models provided by <a href="http://www.templates.com/product/3d-models/" target="_blank" rel="nofollow">www.templates.com</a></div>
+				</div>
+			</footer>
+			<!--footer end-->
+</div>
+            
+
+        <script>
+            $(document).ready(function() {
+$('a.login-window').click(function() {
+    
+            //Getting the variable's value from a link 
+    var loginBox = $(this).attr('href');
+
+    //Fade in the Popup
+    $(loginBox).fadeIn(300);
+    
+    //Set the center alignment padding + border see css style
+    var popMargTop = ($(loginBox).height() + 24) / 2; 
+    var popMargLeft = ($(loginBox).width() + 24) / 2; 
+    
+    $(loginBox).css({ 
+        'margin-top' : -popMargTop,
+        'margin-left' : -popMargLeft
+    });
+    
+    // Add the mask to body
+    $('body').append('<div id="mask"></div>');
+    $('#mask').fadeIn(300);
+    
+    return false;
+});
+
+// When clicking on the button close or the mask layer the popup closed
+$('a.close, #mask').live('click', function() { 
+  $('#mask , .login-popup').fadeOut(300 , function() {
+    $('#mask').remove();  
+}); 
+return false;
+});
+});
+
+
+
+
+
+
+        </script>
+        
+        
+
+</body>
+
+         
+
+    
+
+
+</html>
+>>>>>>> cfa056fc06ffad3caea65d7bf3ec9a17f57bed7a
