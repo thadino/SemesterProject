@@ -45,6 +45,8 @@
 <script type="text/javascript" src="js/atooltip.jquery.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 
+<script src="js/ourjs.js" type="text/javascript"></script>
+
 
   
 
@@ -61,7 +63,9 @@
 				<ul>
                                     
 					<li><a href="#/view1" class="nav1" >Home</a></li>
-					<li><a href="#/view5" class="nav3">Contact</a></li>
+
+					<li><a href="Semester-projekt-Outsouching-Experience.pdf" class="nav3" download>Docu</a></li>
+
                                         
                                         <li ng-show="!isAuthenticated"><img src="icon_person.png"  width="25" height="20" style="margin-top:-3px;" alt=""/><a href="#login-box" style="margin-top:-21px;" class="login-window">Login</a></li>
                                         <li ng-show="isAuthenticated"><img src="icon_person_green.png"  width="25" height="20" style="margin-top:-3px;" alt=""/><a href="#login-box" style="margin-top:-21px;" ng-click="logout()">Logout</a></li>
@@ -70,11 +74,12 @@
 		</div>
 		<nav>
 			<ul id="menu">
-				<li id="menu_active"><a href="#/view1"><span><span>About</span></span></a></li>
-				<li><a href="#/view2"><span><span>Offers</span></span></a></li>
-				<li><a href="#/view3"><span><span>Book</span></span></a></li>
-				<li><a href="#/view4"><span><span>Services</span></span></a></li>
-				<li class="end"><a href="#/view5"><span><span>Contacts</span></span></a></li>
+
+                            <li class="view" id="menu_active"  ><a href="#/view1" class="menulinks"  onclick="setactive(1)"><span><span>Search Flights</span></span></a></li>
+                                <li class="view"><a href="#/view2" class="menulinks"  onclick="setactive(2)"><span><span>My Reservations</span></span></a></li>
+				<li class="view" ><a ng-show="isAuthenticated"  href="#/view3" class="menulinks" onclick="setactive(3)"><span><span>My User</span></span></a></li>  
+			<!--	<li class="view" ><a href="#/view4" class="menulinks" onclick="setactive(4)"><span><span>Services</span></span></a></li> -->
+
 			</ul>
 		</nav>
 	</header>
