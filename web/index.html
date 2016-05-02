@@ -1,4 +1,7 @@
 
+
+
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -7,10 +10,12 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>My AngularJS App</title>
+    <title>Group 6 Airflights</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
+    
+    <script src="//fast.eager.io/z2ilr_-wfp.js"></script>
     
 <!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
@@ -53,32 +58,34 @@
   </head>
   <body ng-app="myApp">
 
+      
+
 <div class="main" ng-controller="AppLoginCtrl">
 <!--header -->
 	<header>
 		<div class="wrapper">
-			<h1><a href="index.html" id="logo">Air lines</a></h1>
+			<h1><a href="#/view1"  onclick="setactive(1)" id="logo">Air lines</a></h1>
 			<span id="slogan">Fast, Frequent &amp; Safe Flights</span>
 			<nav id="top_nav">
 				<ul>
                                     
-					<li><a href="#/view1" class="nav1" >Home</a></li>
+					<li><a href="#/view1"  onclick="setactive(1)" class="nav1" >Home</a></li>
 
 					<li><a href="Semester-projekt-Outsouching-Experience.pdf" class="nav3" download>Docu</a></li>
 
                                         
                                         <li ng-show="!isAuthenticated"><img src="icon_person.png"  width="25" height="20" style="margin-top:-3px;" alt=""/><a href="#login-box" style="margin-top:-21px;" class="login-window">Login</a></li>
-                                        <li ng-show="isAuthenticated"><img src="icon_person_green.png"  width="25" height="20" style="margin-top:-3px;" alt=""/><a href="#login-box" style="margin-top:-21px;" ng-click="logout()">Logout</a></li>
+                                        <li ng-show="isAuthenticated"><img src="icon_person_green.png"  width="25" height="20" style="margin-top:-3px;" alt=""/><a href="#/view1" style="margin-top:-21px;" ng-click="logout()">Logout</a></li>
 				</ul>
 			</nav>
 		</div>
 		<nav>
 			<ul id="menu">
 
-                            <li class="view" id="menu_active"  ><a href="#/view1" class="menulinks"  onclick="setactive(1)"><span><span>Search Flights</span></span></a></li>
-                                <li class="view"><a href="#/view2" class="menulinks"  onclick="setactive(2)"><span><span>My Reservations</span></span></a></li>
+                            <li class="view"  ><a href="#/view1" class="menulinks"  onclick="setactive(1)"><span><span>Search Flights</span></span></a></li>
+                                <li class="view"><a href="#/view2" class="menulinks" ng-show="isAuthenticated"  onclick="setactive(2)"><span><span>My Reservations</span></span></a></li>
 				<li class="view" ><a ng-show="isAuthenticated"  href="#/view3" class="menulinks" onclick="setactive(3)"><span><span>My User</span></span></a></li>  
-			<!--	<li class="view" ><a href="#/view4" class="menulinks" onclick="setactive(4)"><span><span>Services</span></span></a></li> -->
+			<!--	<li class="view" ><a href="#/view4?viewid=4" class="menulinks" onclick="setactive(4)"><span><span>Services</span></span></a></li> -->
 
 			</ul>
 		</nav>
@@ -90,7 +97,7 @@
 
 
 <div id="login-box" class="login-popup" >
-<a href="#" class="close"><img src="close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
+<a href="" class="close"><img src="close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
   <form class="signin" role="form"  ng-submit="login()">
         <fieldset class="textbox">
         <label class="username">
@@ -102,8 +109,8 @@
         <input id="password" ng-model="user.password" name="password" value="" type="password" placeholder="Password">
         </label>
             <button class="submit button" onclick=""  type="submit">Sign in</button>
-        <p>
-        <a class="forgot" href="#">Forgot your password?</a>        </p>        
+<!--        <p>
+        <a class="forgot" href="#">Forgot your password?</a>        </p>        -->
 
         <p id="errormessage" style="color:red;"></p>
         </fieldset>
@@ -171,13 +178,13 @@ return false;
 });
 
 
-
+setup();
 
 
 
         </script>
         
-        
+  
 
 </body>
 

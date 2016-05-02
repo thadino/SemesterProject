@@ -18,11 +18,20 @@ angular.module('myApp', [
   'myApp.services'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/view1'});
+        
+
+
+ 
+
+
+
+
 }])
-//.
+
         .config(function ($httpProvider) {
    $httpProvider.interceptors.push('AuthInterceptor');
 });
+
+
 
 
