@@ -45,10 +45,10 @@ app.controller('View1Ctrl', function ($scope, $http)
         $http({method: 'GET', url: searchstring,
             skipAuthorization: true})
                 .then(function (response) {
-                    $scope.firmName = response.data.name;
-                    $scope.firm = response.data;
-                    $scope.productionunits = response.data.productionunits;
-                    console.log($scope.firm);
+                    $scope.airLine = response;
+                    $scope.flights = response.data.flights;
+//                    $scope.heads = Object.keys($scope.flights[0]);
+
 
 
                     
@@ -65,4 +65,24 @@ app.controller('View1Ctrl', function ($scope, $http)
     {
         $scope.getfromapi();
     };   
+    
 });
+
+
+app.filter('myFilter', function () {
+
+    return function (obj) {
+        var a = {};
+        angular.forEach(obj, function (value, key) {
+            if (key !== "flightID" ) {
+                a[key] = value;
+            }
+        });
+        return a;
+
+
+    };
+});
+
+
+
