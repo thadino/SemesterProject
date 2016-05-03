@@ -69,10 +69,10 @@
 		</div>
 		<nav>
 			<ul id="menu">
-                            <li class="view" id="menu_active" ><a href="#/view1" class="menulinks"  onclick="setactive(1)"><span><span>About</span></span></a></li>
-                                <li class="view"><a href="#/view2" class="menulinks"  onclick="setactive(2)"><span><span>Offers</span></span></a></li>
-				<li class="view" ><a href="#/view3" class="menulinks" onclick="setactive(3)"><span><span>Book</span></span></a></li>
-				<li class="view" ><a href="#/view4" class="menulinks" onclick="setactive(4)"><span><span>Services</span></span></a></li>
+                            <li class="view" id="menu_active"  ><a href="#/view1" class="menulinks"  onclick="setactive(1)"><span><span>Search Flights</span></span></a></li>
+                                <li class="view"><a href="#/view2" class="menulinks"  onclick="setactive(2)"><span><span>My Reservations</span></span></a></li>
+				<li class="view" ><a ng-show="isAuthenticated"  href="#/view3" class="menulinks" onclick="setactive(3)"><span><span>My User</span></span></a></li>  
+			<!--	<li class="view" ><a href="#/view4" class="menulinks" onclick="setactive(4)"><span><span>Services</span></span></a></li> -->
 			</ul>
 		</nav>
 	</header>
