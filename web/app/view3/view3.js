@@ -10,12 +10,24 @@ angular.module('myApp.view3', ['ngRoute'])
 }])
 
 .controller('View3Ctrl', function($http,$scope) {
-  $http.get('api/demoadmin')
-            .success(function (data, status, headers, config) {
-              $scope.data = data;
-            })
-            .error(function (data, status, headers, config) {
-              
-             });
+    
+    
+    
+//  $http.get('api/demoadmin')
+//            .success(function (data, status, headers, config) {
+//              $scope.data = data;
+//            })
+//            .error(function (data, status, headers, config) {
+//              
+//             }); example of admin login..
+
+          $http({
+            method: 'GET',
+            url: 'api/demouser'
+          }).then(function successCallback(res) {
+            $scope.data = res.data.message;
+          }, function errorCallback(res) {
+            $scope.error = res.status + ": "+ res.data.statusText;
+          });
  
 });
