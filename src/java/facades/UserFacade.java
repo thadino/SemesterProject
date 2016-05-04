@@ -1,7 +1,7 @@
 package facades;
 
 import security.IUserFacade;
-import entity.User;
+import com.metasearch.service.dao.User;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;

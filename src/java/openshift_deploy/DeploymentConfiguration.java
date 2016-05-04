@@ -1,10 +1,9 @@
-
 package openshift_deploy;
 
 
 
-import entity.Role;
-import entity.User;
+import com.metasearch.service.dao.Role;
+import com.metasearch.service.dao.User;
 import facades.UserFacade;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -24,7 +23,7 @@ import security.PasswordStorage;
 @WebListener
 public class DeploymentConfiguration implements ServletContextListener {
 
-  public static String PU_NAME = "PU-Local";
+  public static String PU_NAME = "FlightService";
 
   @Override
   public void contextInitialized(ServletContextEvent sce) {

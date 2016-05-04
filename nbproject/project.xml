@@ -38,6 +38,12 @@
                     <file>${file.reference.nimbus-jose-jwt-4.9.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
+                <library dirs="200">
+                    <file>${file.reference.json-20140107.jar}</file>
+                </library>
+                <library dirs="200">
+                    <file>${file.reference.jersey-core-1.19.jar}</file>
+                </library>
             </web-module-libraries>
             <web-module-additional-libraries/>
             <source-roots>

@@ -1,4 +1,4 @@
-package entity;
+package com.metasearch.service.dao;
 
 import java.io.Serializable;
 import java.util.ArrayList;
