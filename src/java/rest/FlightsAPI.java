@@ -34,6 +34,7 @@ import com.metasearch.service.dao.FlightsDAO;
 @Path("/api/flights")
 public class FlightsAPI {
 
+    
 	@GET
 	@Produces("application/json")
 	public Response flights() throws JSONException {
