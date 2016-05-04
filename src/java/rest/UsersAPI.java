@@ -67,7 +67,7 @@ public class UsersAPI {
 			for (User user: users) {
 				JSONObject jsonUser= new JSONObject();
 				jsonUser.put("userName", user.getUserName()); 
-				jsonUser.put("role", user.getRole()); 
+//				jsonUser.put("role", user.getRole()); 
 				
 				jsonUsers.add(jsonUser);
 			}
@@ -143,13 +143,13 @@ public class UsersAPI {
 					"Illegal input, the role needs to be \"admin\" or \"user\". ");
 			return Response.status(400).entity(error.toString()).build(); 
 		} 
-		User user = new User(); 
-		user.setUserName(userName); 
-		user.setRole(role); 
-		user.setPasswordHash(passwordHashString);
-		user.setHashSalt(hashSaltString); 
-		
-		UsersDAO.addEntry(user); 
+//		User user = new User(); 
+////		user.setUserName(userName); 
+////		user.setRole(role); 
+////		user.setPasswordHash(passwordHashString);
+////		user.setHashSalt(hashSaltString); 
+//		
+//		UsersDAO.addEntry(user); 
 		
 		return Response.status(200).build(); 
 	}
