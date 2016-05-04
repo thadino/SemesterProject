@@ -1,61 +1,73 @@
 package com.metasearch.service.dao;
 
 import java.io.Serializable;
-import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import security.IUser;
 
-
-/**
- * The persistent class for the users database table.
- * 
- */
 @Entity
-@Table(name="users")
-@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
-public class User implements Serializable {
-	private static final long serialVersionUID = 1L;
+@Table(name="SystemUser")
+public class User implements Serializable, IUser {
+  private static final long serialVersionUID = 1L;
+  private String password;  //Pleeeeease dont store me in plain text
+  
+  @Id
+  private String userName;
+  
+  @ManyToMany(cascade = CascadeType.ALL)
+  @JoinTable(name = "SystemUser_USERROLE", joinColumns = {
+  @JoinColumn(name = "userName", referencedColumnName = "userName")}, inverseJoinColumns = {
+  @JoinColumn(name = "roleName")})
+  private List<Role> roles = new ArrayList();
 
-	@Id
-	private String userName;
+  public User() {
+  }
 
-	private String hashSalt;
+  public User(String userName, String password) {
+    this.userName = userName;
+    this.password = password;
+  }
 
-	private String passwordHash;
+  @Override
+  public List<String> getRolesAsStrings(){
+    List<String> rolesAsStrings = new ArrayList();
+    for(Role role : roles){
+      rolesAsStrings.add(role.getRoleName());
+    }
+    return rolesAsStrings;
+  }
+  
+  public void AddRole(Role role){
+    roles.add(role);
+    role.addUser(this);
+  }
+    
+  public List<Role> getRoles() {
+   return roles;
+  }
+ 
+  public String getPassword() {
+    return password;
+  }
 
-	private String role;
+  public void setPassword(String password) {
+    this.password = password;
+  }
 
-	public User() {
-	}
+  @Override
+  public String getUserName() {
+    return userName;
+  }
 
-	public String getUserName() {
-		return this.userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	public String getHashSalt() {
-		return this.hashSalt;
-	}
-
-	public void setHashSalt(String hashSalt) {
-		this.hashSalt = hashSalt;
-	}
-
-	public String getPasswordHash() {
-		return this.passwordHash;
-	}
-
-	public void setPasswordHash(String passwordHash) {
-		this.passwordHash = passwordHash;
-	}
-
-	public String getRole() {
-		return this.role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
-
+  public void setUserName(String userName) {
+    this.userName = userName;
+  }
+   
 }
