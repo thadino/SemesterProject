@@ -52,7 +52,6 @@ angular.module('myApp.security', [])
                         document.getElementById('errormessage').innerHTML = "";
                       $window.sessionStorage.id_token = data.token;
                       initializeFromToken($scope, $window.sessionStorage.id_token, jwtHelper);
-                      $location.path("#/view1");
                     })
                     .error(function (data) {
                         
@@ -69,7 +68,8 @@ angular.module('myApp.security', [])
             $scope.isAdmin = false;
             $scope.isUser = false;
             delete $window.sessionStorage.id_token;
-            $location.path("/view1");
+            window.location.href = "#/view1";
+            setup();
           };
 
           $rootScope.openErrorModal = function (text) {

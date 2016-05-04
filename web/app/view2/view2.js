@@ -10,6 +10,7 @@ angular.module('myApp.view2', ['ngRoute'])
           }])
 
         .controller('View2Ctrl', function ($http, $scope) {
+            
           $http({
             method: 'GET',
             url: 'api/demouser'
