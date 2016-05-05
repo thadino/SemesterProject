@@ -33,7 +33,7 @@ import javax.ws.rs.core.Response;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.metasearch.service.dao.AuditLogDAO;
+
 import com.metasearch.service.dao.Flight;
 import com.metasearch.service.dao.FlightsDAO;
 import com.metasearch.service.dao.User;

@@ -1032,6 +1032,8 @@ exists or setup the property manually. For example like this:
         <copyfiles files="${file.reference.json-smart-1.2.jar}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
         <copyfiles files="${libs.MySQLDriver.classpath}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
         <copyfiles files="${file.reference.nimbus-jose-jwt-4.9.jar}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.json-20140107.jar}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.jersey-core-1.19.jar}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
         <mkdir dir="${build.web.dir}/META-INF"/>
         <manifest file="${build.web.dir}/META-INF/MANIFEST.MF" mode="update"/>
     </target>
@@ -1043,6 +1045,8 @@ exists or setup the property manually. For example like this:
         <copyfiles files="${file.reference.json-smart-1.2.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${libs.MySQLDriver.classpath}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${file.reference.nimbus-jose-jwt-4.9.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copyfiles files="${file.reference.json-20140107.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copyfiles files="${file.reference.jersey-core-1.19.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
     </target>
     <target depends="init" if="dist.ear.dir" name="-clean-webinf-lib">
         <delete dir="${build.web.dir}/WEB-INF/lib"/>
@@ -2521,6 +2525,16 @@ exists or setup the property manually. For example like this:
         <copyfiles files="${file.reference.nimbus-jose-jwt-4.9.jar}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
         <copyfiles files="${file.reference.json-20140107.jar}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
         <copyfiles files="${file.reference.jersey-core-1.19.jar}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.apache-httpcomponents-httpclient.jar}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.apache-httpcomponents-httpcore.jar}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.commons-codec-1.9.jar-1}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.commons-logging-1.2.jar-1}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.httpasyncclient-4.1.1.jar}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.httpasyncclient-cache-4.1.1.jar}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.httpclient-4.5.1.jar-1}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.httpclient-cache-4.5.1.jar}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.httpcore-4.4.4.jar}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.httpcore-nio-4.4.4.jar}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
         <mkdir dir="${build.web.dir}/META-INF"/>
         <manifest file="${build.web.dir}/META-INF/MANIFEST.MF" mode="update"/>
     </target>
@@ -2534,6 +2548,16 @@ exists or setup the property manually. For example like this:
         <copyfiles files="${file.reference.nimbus-jose-jwt-4.9.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${file.reference.json-20140107.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${file.reference.jersey-core-1.19.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copyfiles files="${file.reference.apache-httpcomponents-httpclient.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copyfiles files="${file.reference.apache-httpcomponents-httpcore.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copyfiles files="${file.reference.commons-codec-1.9.jar-1}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copyfiles files="${file.reference.commons-logging-1.2.jar-1}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copyfiles files="${file.reference.httpasyncclient-4.1.1.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copyfiles files="${file.reference.httpasyncclient-cache-4.1.1.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copyfiles files="${file.reference.httpclient-4.5.1.jar-1}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copyfiles files="${file.reference.httpclient-cache-4.5.1.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copyfiles files="${file.reference.httpcore-4.4.4.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copyfiles files="${file.reference.httpcore-nio-4.4.4.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
     </target>
     <target depends="init" if="dist.ear.dir" name="-clean-webinf-lib">
         <delete dir="${build.web.dir}/WEB-INF/lib"/>
@@ -2976,4 +3000,4 @@ exists or setup the property manually. For example like this:
     <target depends="init,undeploy-clean,deps-clean,do-clean,check-clean,-post-clean" description="Clean build products." name="clean"/>
     <target depends="clean" description="Clean build products." name="clean-ear"/>
 </project>
->>>>>>> 6cbc1304899f9a2581dbf80c474ed3706bd4966b
+>>>>>>> 74f433b5ec7947bbfecdbf43cfd93ddb39cf23d3
