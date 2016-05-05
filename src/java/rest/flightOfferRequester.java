@@ -54,17 +54,21 @@ public class flightOfferRequester implements Callable<String>
         
         String a = "";
         StringBuilder sb = new StringBuilder();
+        JsonObject jo1 = new JsonObject();
         while ((line = rd.readLine()) != null)
         {
             sb.append(line);
             a += line;
-            JsonObject jo1 = new JsonObject();
-            jo1.add("flightOffer", gson.toJsonTree(line));
+            
+//            jo1.add("flightOffer", gson.toJsonTree(line));
             
 //            System.out.println("line---: " + line);
         }
 //        a = a + ",";
+        jo1.addProperty("url", ipToPing);
+        jo1.add("flightOffer", gson.toJsonTree(a, String.class));
         System.out.println(a);
-        return gson.toJson(a);
+        
+        return gson.toJson(jo1);
     }
 }
