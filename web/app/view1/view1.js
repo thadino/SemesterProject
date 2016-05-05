@@ -31,7 +31,7 @@ app.controller('View1Ctrl', function ($scope, $http)
 
                    if  (getFrom.length > 0 && getDate.length > 0) {
      
-                         var items = [];
+//                         var items = [];
                         if (getTo.length < 1) {
                          searchstring = "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flightinfo/" + 
                                  getFrom + "/" + getDate + time + "/" + tickets;
@@ -45,9 +45,11 @@ app.controller('View1Ctrl', function ($scope, $http)
         $http({method: 'GET', url: searchstring,
             skipAuthorization: true})
                 .then(function (response) {
-                    $scope.airLine = response;
+                    
+                    $scope.airLine = response.data.airline;
+                   
                     $scope.flights = response.data.flights;
-//                    $scope.heads = Object.keys($scope.flights[0]);
+              
 
 
 
