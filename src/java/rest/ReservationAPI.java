@@ -125,7 +125,7 @@ public class ReservationAPI
             
             if(response.getStatusLine().getStatusCode() == 200)
             {
-                Reservation r = new Reservation(jsonInput.getString("reserveeEmail"), jsonInput.getString("reserveeName"), jsonInput.getString("reserveePhone"), jsonInput.getInt("numberOfSeats"), jsonInput.getJSONArray("passengers").toString());
+                Reservation r = new Reservation(jsonInput.getString("reserveeEmail"), jsonInput.getString("reserveeName"), jsonInput.getString("reserveePhone"), jsonInput.getInt("numberOfSeats"), jsonInput.getJSONArray("passengers").toString(), jsonInput.getString("flightID"));
                 ReservationDAO.addEntry(r);
             }
 //            System.out.println("asdfasdfasdf " + response.getStatusLine().toString());
