@@ -106,7 +106,7 @@ public class FlightsAPI
             }
 
 //            System.out.println(ja.toString().replace("\\", "").replace("\"\"\"", ""));
-            return gson.toJson(ja).replace("\\", "").replace("\"\"\"", "").replace("\"\"", "");
+            return gson.toJson(ja).replace("\\", "").replace("\"\"\"", "").replace("\"\"", "").replace("n ", "").replace("\"{", "{").replace("\"n}\"", "}");//.replace("\"n}\"", "");
         }
         catch (ExecutionException e)
         {
@@ -205,7 +205,7 @@ public class FlightsAPI
             }
 
 //            System.out.println(ja.toString().replace("\\", "").replace("\"\"\"", ""));
-            return gson.toJson(ja).replace("\\", "").replace("\"\"\"", "").replace("\"\"", "");
+            return gson.toJson(ja).replace("\\", "").replace("\"\"\"", "").replace("\"\"", "").replace("n ", "").replace("\"{", "{").replace("\"n}\"", "}");
         }
         catch (ExecutionException e)
         { 
