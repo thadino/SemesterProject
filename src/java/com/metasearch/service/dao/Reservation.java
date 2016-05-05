@@ -10,12 +10,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author kaspe
  */
 @Entity
+@NamedQuery(name="reservation.findByName", query="SELECT r FROM Reservation r WHERE r.reserveeName = :name")
 public class Reservation implements Serializable
 {
 
