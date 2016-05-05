@@ -66,13 +66,16 @@
 
     
     
-<div  ng-repeat="p in airLine">
+<div>
     
-    <h4>{{p.airline}}</h4>
+    
 
-            <ul ng-repeat="flight in flights">
-                <h5>{{flight.flightID}} </h5>
+            <ul ng-repeat="flight in fl">
+                <h4>{{airLine}}</h4>
+                
+<!--                <h5 >{{flight.flightID}} </h5>-->
                 <ul ng-repeat="(x, z) in flight| myFilter">
+                    
                  <li> {{x}}: {{z}} </li>                       
                     
                 </ul>
