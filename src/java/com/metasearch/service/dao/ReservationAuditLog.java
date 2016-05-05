@@ -4,129 +4,177 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
 
-
 /**
  * The persistent class for the reservation_audit_log database table.
- * 
+ *
  */
 @Entity
-@Table(name="reservation_audit_log")
-@NamedQuery(name="ReservationAuditLog.findAll", query="SELECT r FROM ReservationAuditLog r")
-public class ReservationAuditLog implements Serializable {
-	private static final long serialVersionUID = 1L;
+@Table(name = "reservation_audit_log")
+@NamedQuery(name = "ReservationAuditLog.findAll", query = "SELECT r FROM ReservationAuditLog r")
+public class ReservationAuditLog implements Serializable
+{
 
-	@EmbeddedId
-	private ReservationAuditLogPK id;
+    private static final long serialVersionUID = 1L;
 
-	private int flightID;
+  
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-	private String passengers;
+    private String flightID;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date resDateTime;
+    private String passengers;
 
-	private String reserveeEmail;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date resDateTime;
 
-	private String reserveeName;
+    private String reserveeEmail;
 
-	private String reserveePhone;
+    private String reserveeName;
 
-	private int seatNumber;
-	
-	private int status; 
+    private String reserveePhone;
 
-	public ReservationAuditLog() {
-	}
+    private int seatNumber;
 
-	public ReservationAuditLogPK getId() {
-		return this.id;
-	}
+    private int status;
 
-	public void setId(ReservationAuditLogPK id) {
-		this.id = id;
-	}
+    public ReservationAuditLog()
+    {
+    }
 
-	public int getFlightID() {
-		return this.flightID;
-	}
+    public ReservationAuditLog(String flightID, String passengers, Date resDateTime, String reserveeEmail, String reserveeName, String reserveePhone, int seatNumber, int status)
+    {
+        this.flightID = flightID;
+        this.passengers = passengers;
+        this.resDateTime = resDateTime;
+        this.reserveeEmail = reserveeEmail;
+        this.reserveeName = reserveeName;
+        this.reserveePhone = reserveePhone;
+        this.seatNumber = seatNumber;
+        this.status = status;
+    }
 
-	public void setFlightID(int flightID) {
-		this.flightID = flightID;
-	}
 
-	public String getPassengers() {
-		return this.passengers;
-	}
+    
 
-	public void setPassengers(String passengers) {
-		this.passengers = passengers;
-	}
+    public String getFlightID()
+    {
+        return this.flightID;
+    }
 
-	public Date getResDateTime() {
-		return this.resDateTime;
-	}
+    public void setFlightID(String flightID)
+    {
+        this.flightID = flightID;
+    }
 
-	public void setResDateTime(Date resDateTime) {
-		this.resDateTime = resDateTime;
-	}
+    public String getPassengers()
+    {
+        return this.passengers;
+    }
 
-	public String getReserveeEmail() {
-		return this.reserveeEmail;
-	}
+    public void setPassengers(String passengers)
+    {
+        this.passengers = passengers;
+    }
 
-	public void setReserveeEmail(String reserveeEmail) {
-		this.reserveeEmail = reserveeEmail;
-	}
+    public Date getResDateTime()
+    {
+        return this.resDateTime;
+    }
 
-	public String getReserveeName() {
-		return this.reserveeName;
-	}
+    public void setResDateTime(Date resDateTime)
+    {
+        this.resDateTime = resDateTime;
+    }
 
-	public void setReserveeName(String reserveeName) {
-		this.reserveeName = reserveeName;
-	}
+    public String getReserveeEmail()
+    {
+        return this.reserveeEmail;
+    }
 
-	public String getReserveePhone() {
-		return this.reserveePhone;
-	}
+    public void setReserveeEmail(String reserveeEmail)
+    {
+        this.reserveeEmail = reserveeEmail;
+    }
 
-	public void setReserveePhone(String reserveePhone) {
-		this.reserveePhone = reserveePhone;
-	}
+    public String getReserveeName()
+    {
+        return this.reserveeName;
+    }
 
-	public int getSeatNumber() {
-		return this.seatNumber;
-	}
+    public void setReserveeName(String reserveeName)
+    {
+        this.reserveeName = reserveeName;
+    }
 
-	public void setSeatNumber(int seatNumber) {
-		this.seatNumber = seatNumber;
-	}
+    public String getReserveePhone()
+    {
+        return this.reserveePhone;
+    }
 
-	/**
-	 * @return the reqStatus
-	 */
-	public int getReqStatus() {
-		return status;
-	}
+    public void setReserveePhone(String reserveePhone)
+    {
+        this.reserveePhone = reserveePhone;
+    }
 
-	/**
-	 * @param reqStatus the reqStatus to set
-	 */
-	public void setReqStatus(int reqStatus) {
-		this.status = reqStatus;
-	} 
+    public int getSeatNumber()
+    {
+        return this.seatNumber;
+    }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "ReservationAuditLog [id=" + id + ", flightID=" + flightID
-				+ ", passengers=" + passengers + ", resDateTime=" + resDateTime
-				+ ", reserveeEmail=" + reserveeEmail + ", reserveeName="
-				+ reserveeName + ", reserveePhone=" + reserveePhone
-				+ ", seatNumber=" + seatNumber + ", reqStatus=" + status
-				+ "]";
-	}
+    public void setSeatNumber(int seatNumber)
+    {
+        this.seatNumber = seatNumber;
+    }
+
+    /**
+     * @return the reqStatus
+     */
+    public int getReqStatus()
+    {
+        return status;
+    }
+
+    /**
+     * @param reqStatus the reqStatus to set
+     */
+    public void setReqStatus(int reqStatus)
+    {
+        this.status = reqStatus;
+    }
+
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString()
+    {
+        return "ReservationAuditLog [id=" + id + ", flightID=" + flightID
+                + ", passengers=" + passengers + ", resDateTime=" + resDateTime
+                + ", reserveeEmail=" + reserveeEmail + ", reserveeName="
+                + reserveeName + ", reserveePhone=" + reserveePhone
+                + ", seatNumber=" + seatNumber + ", reqStatus=" + status
+                + "]";
+    }
+
+    public Integer getId()
+    {
+        return id;
+    }
+
+    public void setId(Integer id)
+    {
+        this.id = id;
+    }
+
+    public int getStatus()
+    {
+        return status;
+    }
+
+    public void setStatus(int status)
+    {
+        this.status = status;
+    }
 
 }
