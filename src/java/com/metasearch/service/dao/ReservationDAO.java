@@ -5,9 +5,11 @@
  */
 package com.metasearch.service.dao;
 
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 /**
  *
@@ -15,6 +17,22 @@ import javax.persistence.Persistence;
  */
 public class ReservationDAO
 {
+
+    public static synchronized List<Reservation> getAllReservationsByName(String reserveeName)
+    {
+        EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence.createEntityManagerFactory("FlightService");
+        EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
+        try
+        {
+            Query query = em.createNamedQuery("reservation.findByName", Reservation.class);
+            query.setParameter("name", reserveeName);
+            return query.getResultList();
+        }
+        finally
+        {
+            em.close();
+        }
+    }
 
     public static synchronized void addEntry(Reservation r)
     {
@@ -27,7 +45,7 @@ public class ReservationDAO
             em.getTransaction().begin();
             em.persist(r);
             em.getTransaction().commit();
-            
+
         }
         finally
         {

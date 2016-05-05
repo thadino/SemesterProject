@@ -49,6 +49,7 @@ import org.json.JSONArray;
 @Path("/api/reservation")
 public class ReservationAPI
 {
+    
 
     @GET
     @Produces("application/json")
@@ -59,6 +60,15 @@ public class ReservationAPI
 
         String result = jsonObject.toString();
         return Response.status(200).entity(result).build();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{reserveeName}")
+    public String getAllYourReservations(@PathParam("reserveeName") String reserveeName)
+    {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        return gson.toJson(ReservationDAO.getAllReservationsByName(reserveeName));
     }
 
     @Path("{flightId}")
@@ -122,8 +132,8 @@ public class ReservationAPI
             System.out.println("");
             post.setHeader("Content-type", "application/json");
             HttpResponse response = httpClient.execute(post);
-            
-            if(response.getStatusLine().getStatusCode() == 200)
+
+            if (response.getStatusLine().getStatusCode() == 200)
             {
                 Reservation r = new Reservation(jsonInput.getString("reserveeEmail"), jsonInput.getString("reserveeName"), jsonInput.getString("reserveePhone"), jsonInput.getInt("numberOfSeats"), jsonInput.getJSONArray("passengers").toString(), jsonInput.getString("flightID"));
                 ReservationDAO.addEntry(r);
