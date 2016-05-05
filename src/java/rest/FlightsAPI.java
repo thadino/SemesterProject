@@ -31,9 +31,10 @@ import javax.ws.rs.core.Response;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.metasearch.service.dao.AuditLogDAO;
+
 import com.metasearch.service.dao.Flight;
 import com.metasearch.service.dao.FlightsDAO;
+import com.metasearch.service.dao.SearchLogDAO;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -80,7 +81,8 @@ public class FlightsAPI
             @PathParam("date") String date, @PathParam("tickets") int tickets)
     {
         List<Future<String>> fList = new ArrayList();
-        AuditLogDAO.addEntry(from, null, date, tickets);
+        SearchLogDAO.addEntry(from, null, date, tickets);
+//        AuditLogDAO.addEntry(from, null, date, tickets);
         try
         {
             String b = "";
@@ -177,7 +179,8 @@ public class FlightsAPI
             @PathParam("tickets") int tickets) throws JSONException
     {
         List<Future<String>> fList = new ArrayList();
-        AuditLogDAO.addEntry(from, to, date, tickets);
+        SearchLogDAO.addEntry(from, to, date, tickets);
+//        AuditLogDAO.addEntry(from, to, date, tickets);
 
         try
         {
