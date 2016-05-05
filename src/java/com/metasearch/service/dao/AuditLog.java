@@ -32,6 +32,8 @@ public class AuditLog implements Serializable {
 
 	public AuditLog() {
 	}
+        
+     
 
 	public AuditLogPK getId() {
 		return this.id;
