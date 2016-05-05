@@ -54,11 +54,11 @@ public class FlightsAPI
     static String[] urls =
     {
         "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flightinfo/",
+        "http://dummyairline6v2-pagh.rhcloud.com/dummyAirline6/api/flightinfo/",
         "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flightinfo/",
+        "http://dummyairline6v2-pagh.rhcloud.com/dummyAirline6/api/flightinfo/",
         "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flightinfo/",
-        "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flightinfo/",
-        "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flightinfo/",
-        "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flightinfo/",
+        "http://dummyairline6v2-pagh.rhcloud.com/dummyAirline6/api/flightinfo/",
         "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flightinfo/"
     };
 
