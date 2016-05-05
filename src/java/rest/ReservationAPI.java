@@ -74,7 +74,7 @@ public class ReservationAPI
         return gson.toJson(ReservationDAO.getAllReservationsByName(reserveeName));
     }
 
-    @Path("{flightId}")
+    @Path("/{flightId}")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces("application/json")

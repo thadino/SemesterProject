@@ -49,6 +49,7 @@ app.controller('View1Ctrl', function ($scope, $http)
                         for (var i = 0; i < response.data.length; i++) {
                             $scope.airLine = response.data[i].flightOffer.airline;
                             $scope.fl.push(response.data[i].flightOffer.flights[0]);
+
                         }
                     });
         }
@@ -64,6 +65,28 @@ app.controller('View1Ctrl', function ($scope, $http)
         $scope.getfromapi();
     };
 
+    $scope.book = function (fID) {
+
+        $scope.makeBooking(fID);
+
+
+    };
+    
+    
+
+
+    $scope.makeBooking = function (fID) {
+
+        $http({method: 'POST', url: "/SemesterSeed/api/api/reservation/" + fID,
+            skipAuthorization: true})
+                .success(function (response) {
+                    alert("it works");
+                })
+                .error(function (data, status) {
+                    alert(status);
+
+                });
+    };
 });
 
 
@@ -81,6 +104,7 @@ app.filter('myFilter', function () {
 
     };
 });
+
 
 
 
