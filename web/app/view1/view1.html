@@ -68,23 +68,28 @@
 
 
 
-        <ul ng-repeat="flight in fl">
-            
-                <li><h4 style="background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%); opacity: 0.95;" >{{airLine}}</h4></li>
+        <ul ng-repeat="f in test">
 
-                <div style="background-color: #B6B6B4;">   
+            <li><h4 style="background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%); opacity: 0.95;" >{{f.flightOffer.airline}}</h4></li>
 
-                    <ul ng-repeat="(x, z) in flight| myFilter">
+            <div style="background-color: #B6B6B4;">   
 
-                        <li> {{x}}: {{z}} </li>                       
+                <ul ng-repeat="b in f.flightOffer.flights| myFilter">
+                    <ul ng-repeat="(x, z) in b">
+                        <li> {{x}}: {{z}} </li>    
 
                     </ul>
 
-                    <button ng-click="book(flight.flightID)" >Book</button> 
-                </div>
-                <br>
-                <br>
-            
+                    <button ng-click="book(b.flightID)" >Book</button> 
+                    <br>
+                    <br>
+                </ul>
+
+
+            </div>
+            <br>
+            <br>
+
         </ul>
 
     </div>
