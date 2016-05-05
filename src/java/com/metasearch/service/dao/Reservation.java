@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -23,6 +23,8 @@ public class Reservation implements Serializable
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    private String flightID;
 
     private String reserveeEmail;
 
@@ -34,18 +36,21 @@ public class Reservation implements Serializable
 
     private String passengers;
 
-    public Reservation(String reserveeEmail, String reserveeName, String reserveePhone, int seatNumber, String passengers)
+    public Reservation(String reserveeEmail, String reserveeName, String reserveePhone, int seatNumber, String passengers, String flightID)
     {
         this.reserveeEmail = reserveeEmail;
         this.reserveeName = reserveeName;
         this.reserveePhone = reserveePhone;
         this.seatNumber = seatNumber;
         this.passengers = passengers;
+        this.flightID = flightID;
     }
 
     public Reservation()
     {
     }
+    
+    
 
     public Long getId()
     {
@@ -105,6 +110,16 @@ public class Reservation implements Serializable
     public void setPassengers(String passengers)
     {
         this.passengers = passengers;
+    }
+
+    public String getFlightID()
+    {
+        return flightID;
+    }
+
+    public void setFlightID(String flightID)
+    {
+        this.flightID = flightID;
     }
 
 }
