@@ -103,7 +103,7 @@ public class FlightsAPI
                 ja.add(gson.toJsonTree(fList1.get()));
             }
 
-            System.out.println(ja.toString().replace("\\", "").replace("\"\"\"", ""));
+//            System.out.println(ja.toString().replace("\\", "").replace("\"\"\"", ""));
             return gson.toJson(ja).replace("\\", "").replace("\"\"\"", "").replace("\"\"", "");
         }
         catch (ExecutionException e)
@@ -201,7 +201,7 @@ public class FlightsAPI
                 ja.add(gson.toJsonTree(fList1.get()));
             }
 
-            System.out.println(ja.toString().replace("\\", "").replace("\"\"\"", ""));
+//            System.out.println(ja.toString().replace("\\", "").replace("\"\"\"", ""));
             return gson.toJson(ja).replace("\\", "").replace("\"\"\"", "").replace("\"\"", "");
         }
         catch (ExecutionException e)
