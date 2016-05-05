@@ -7,6 +7,7 @@
     <class>com.metasearch.service.dao.ReservationAuditLog</class>
     <class>com.metasearch.service.dao.Role</class>
     <class>com.metasearch.service.dao.User</class>
+    <class>com.metasearch.service.dao.SearchLog</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/ticketservice?zeroDateTimeBehavior=convertToNull"/>
