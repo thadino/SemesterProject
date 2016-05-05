@@ -50,22 +50,7 @@ app.controller('View1Ctrl', function ($scope, $http)
                         
                         $scope.test = response.data;    
                         
-                        
-                        
-                        
-                       
-                        
-                        
-//                        for (var i = 0; i < response.data.length; i++) {
-//                            $scope.ai = response.data[i].flightOffer.airline;
-//                            
-//                            for (var k = 0; k < response.data.flightOffer.flights.length; k++) {
-//                                
-//                                $scope.fl.push(response.data[k].flightOffer.flights);
-//                            }
-//                            
-//                            
-//                        }
+
                     });
         }
         else
@@ -119,6 +104,11 @@ app.filter('myFilter', function () {
 
     };
 });
+
+
+
+
+
 
 
 
