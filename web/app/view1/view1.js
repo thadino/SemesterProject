@@ -130,6 +130,22 @@ var JSONtoSend = "";
 //  '{"firstName":"'+FlightID+'","lastName":"'+FlightID+'"},' +
 // '{"firstName":"'+FlightID+'","lastName":"'+FlightID+'"},' +
 //  '{"firstName":"'+FlightID+'","lastName":"'+FlightID+'"}' +
+
+
+$http.post("/api/api/reservation/" + FlightID, JSONtoSend)
+   .then(
+       function(response){
+         // success callback
+         alert("Success!");
+       }, 
+       function(response){
+         // failure callback
+         alert("Failure!");
+       }
+    );
+    
+
+    
  console.log(JSONtoSend);
 
    
