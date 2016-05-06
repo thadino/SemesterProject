@@ -38,22 +38,14 @@ var reserveeEmail;
 $scope.switchPage = function(url, id) {
     AirlineURL = url;
     FlightID = id;
-    
-    
-    
-    
-    
-    
-    
-
-    
     $("#result").hide();
     $("#bookingPage").show();
+     document.getElementById("errormessage_view1").innerHTML = "";
 };
 
 $scope.bookvacation = function()
 {
-  
+ 
   //  alert("Airline URL: " + AirlineURL + " Flight ID: " + FlightID);
     
 
@@ -61,14 +53,51 @@ $scope.bookvacation = function()
     reserveeName = $("#name").val();
     reserveeEmail = $("#email").val();
     numberofseats = $("#member").val();
-    
+  
+  var alertstring = "";
+  
+  var nrofseats = numberofseats;
+  var phone = reserveePhone;   
+  nrofseats = nrofseats.replace(/[^0-9]/g, '');
+phone = phone.replace(/[^0-9]/g, '');
+if(phone.length !== 8) 
+   alertstring += "You're Phone number is suppoused to be within 8 digits.<br>";
+
+       if(!validateEmail(reserveeEmail))
+        alertstring += "You need to provide a valid email.<br>";
+        
+       if(nrofseats.length < 1)
+           alertstring += "You need some travel companions. <br>";
+       
+       
+       if(reserveeName.length < 1)
+           alertstring += "John you need a name, like llama";
+        
+   
+    var erroronnames = "";
     var times = -1;
  $('.myawesomefuckingclass').each(function(i, obj) {
      
+     if(obj.value === "")
+     {
+      erroronnames =  "Ooho ho there cowboy you need to provide a name and lastname for all your traveling companions.";   
+     
+     }
      times++;
      
     
-});  
+}); 
+
+  alertstring += erroronnames;
+  
+        if(alertstring.length !== 0)
+        {
+        document.getElementById("errormessage_view1").innerHTML = alertstring;
+        }
+        
+        else
+        {
+    document.getElementById("errormessage_view1").innerHTML = ""; 
 
 var myString = ""; 
 
@@ -83,10 +112,7 @@ var myString = "";
      if(i === times)
      {
       myString += '"lastName":"'+obj.value +'"}';  
-     }
- 
-    
-     
+     }  
     
 });
 
@@ -107,7 +133,7 @@ var JSONtoSend = "";
  console.log(JSONtoSend);
 
    
-
+        } // if validation failed will not do code encapsled.
 
 
 
@@ -165,6 +191,8 @@ var JSONtoSend = "";
     $scope.search = function ()
     {
         $scope.getfromapi();
+            $("#result").show();
+    $("#bookingPage").hide();
     };
 
     $scope.book = function (fID) {
@@ -210,6 +238,15 @@ app.filter('myFilter', function () {
 function addFields() {
     var number = document.getElementById("member").value;
 
+
+if(number > 10)
+{
+document.getElementById("errormessage_view1").innerHTML = "Dude... dont try to crash our server! (max 10 passengers)";
+}
+else
+{
+
+document.getElementById("errormessage_view1").innerHTML = "";
     var container = document.getElementById("passengers");
 
     while (container.hasChildNodes()) {
@@ -235,12 +272,16 @@ function addFields() {
         container.appendChild(document.createElement("br"));
         container.appendChild(document.createElement("br"));
     }
+    }
 }
 
 
 
 
-
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
 
 
 

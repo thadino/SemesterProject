@@ -98,22 +98,23 @@
 
         <div id="bookingPage" style="background-color: grey">
 
-            <form>
+            <form ng-submit="bookvacation()">
                 <h1>RESERVATION FORM</h1>
                 <br>
                 <br>
                 <br>
                 <br>
                 <p>NAME<input id="name" type="TEXT" size="20" maxlength="99" /></p>
-                <p>EMAIL<input id="email" type="TEXT" size="30" maxlength="99" /></p>
-                <p>TELEPHONE<input id="phone" type="TEXT" size="10" maxlength="99" /></p>
-                <input type="text" id="member" name="member" value="">Number of passengers<br>
+                <p>EMAIL<input id="email" type="email" size="30"  maxlength="99" /></p>
+                <p>TELEPHONE<input id="phone" type="number" ></p>
+                <input type="number" id="member" name="member" value="">Number of passengers<br>
                 <a href="" id="filldetails" onclick="addFields()">Add passenger info</a>
                 <div id="passengers"></div>
 
 
                 <br/><br/>
-                <button id="sendBooking" ng-click="bookvacation()">Book</button>
+                <h4 id="errormessage_view1" style="color: #b20000;"></h4>
+                <input type="submit" value="Book">
             </form>
 
 
