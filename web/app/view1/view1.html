@@ -59,42 +59,132 @@
             </div>
         </div>
 
-    </section>
 
 
 
 
-    <div>
+
+        <div id="result">
 
 
 
-        <ul ng-repeat="f in test">
+            <ul ng-repeat="f in test">
 
-            <li><h4 style="background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%); opacity: 0.95;" >{{f.flightOffer.airline}}</h4></li>
+                <li><h4 style="background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%); opacity: 0.95;" >{{f.flightOffer.airline}}</h4></li>
 
-            <div style="background-color: #B6B6B4;">   
+                <div style="background-color: #B6B6B4;">   
 
-                <ul ng-repeat="b in f.flightOffer.flights| myFilter">
-                    <ul ng-repeat="(x, z) in b">
-                        <li> {{x}}: {{z}} </li>    
+                    <ul ng-repeat="b in f.flightOffer.flights| myFilter">
+                        <ul ng-repeat="(x, z) in b">
+                            <li> {{x}}: {{z}} </li>    
 
+                        </ul>
+                        
+                        <button ng-click="switchPage()" >Choose</button> 
+
+
+                        <br>
+                        <br>
                     </ul>
 
-                    <button ng-click="book(b.flightID)" >Book</button> 
-                    <p>Name <input type="text" style="float: start"> Phone<input type="text" style="float: next"> Email <input type="text" style="float: next"></p>
-                    <p>Name <input type="text" style="float: start"> Phone<input type="text" style="float: next"> Email <input type="text" style="float: next"></p>
-                    <br>
-                    <br>
-                </ul>
+
+                </div>
+                <br>
+                <br>
+
+            </ul>
+
+        </div>
+
+        <div id="bookingPage" style="background-color: grey">
+
+            <form>
+                <h1>RESERVATION FORM</h1>
+                <br>
+                <br>
+                <br>
+                <br>
+                <p>NAME<input id="name" type="TEXT" size="20" maxlength="99" /></p>
+                <p>EMAIL<input type="TEXT" size="30" maxlength="99" /></p>
+                <p>TELEPHONE<input type="TEXT" size="10" maxlength="99" /></p>
+                <input type="text" id="member" name="member" value="">Number of passengers<br>
+                <a href="" id="filldetails" onclick="addFields()">Add passenger info</a>
+                <div id="passengers"></div>
 
 
-            </div>
-            <br>
-            <br>
+                <br/><br/>
+                <input type="submit" value="click here to submit" />
+                <input type="reset" value="clear this form" />
+                <button id="sendBooking">Book</button>
+            </form>
 
-        </ul>
 
-    </div>
 
-   
-</div>
+            <script>
+
+                        function sendTheBooking(){
+                        var url = document.getElementById("url");  
+                        var reserveeName = document.getElementById("name");
+                          
+                            
+                            
+                        };
+
+
+
+
+
+
+                                $("#bookingPage").hide();
+
+                                function addFields() {
+                                    var number = document.getElementById("member").value;
+                                    var container = document.getElementById("passengers");
+        
+                                    while (container.hasChildNodes()) {
+                                        container.removeChild(container.lastChild);
+                                    }
+                                    for (i = 0; i < number; i++) {
+                                        container.appendChild(document.createTextNode("Passenger " + (i + 1) + " "));
+                                        var input = document.createElement("input");
+                                        input.type = "text";
+                                        container.appendChild(input);
+                                        container.appendChild(document.createElement("br"));
+                                        container.appendChild(document.createElement("br"));
+                                    }
+                                }
+                                ;
+
+//                                Hides our search content and displays booking info
+                                function switchPage(urlFromSwitch, idFromSwitch) {
+                                   
+                                    $("#result").hide();
+                                    $("#bookingPage").show();
+                                    setUrlAndId(urlFromSwitch, idFromSwitch);
+                                };
+                                
+                                
+//                                start of our JSON to send to reservation
+                                var url = "";
+                                var id = "";
+                                
+                                function setUrlAndId(urlFromSwitch, idFromSwitch) {
+                                  url = urlFromSwitch;
+                                  id = idFromSwitch;
+                                    
+                                };
+                                
+                               
+                             
+            </script>
+
+
+        </div>
+
+
+
+
+    </section>
+</div> 
+
+

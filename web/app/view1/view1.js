@@ -47,9 +47,9 @@ app.controller('View1Ctrl', function ($scope, $http)
                     .then(function (response) {
                         $scope.fl = [];
                         
-                        
-                        $scope.test = response.data;    
-                        
+
+                        $scope.test = response.data;
+
 
                     });
         }
@@ -71,12 +71,28 @@ app.controller('View1Ctrl', function ($scope, $http)
 
 
     };
-    
-    
 
+//    $scope.start = function(){
+//        $scope.startBooking();
+//    };
+//    
+//    $scope.startBooking = function(){
+//            var number = document.getElementById("member").value;
+//            var container = document.getElementById("container");
+//            while (container.hasChildNodes()) {
+//                container.removeChild(container.lastChild);
+//            }
+//            for (i=0;i<number;i++){
+//                container.appendChild(document.createTextNode("Member " + (i+1)));
+//                var input = document.createElement("input");
+//                input.type = "text";
+//                container.appendChild(input);
+//                container.appendChild(document.createElement("br"));
+//            }
+//        };
 
     $scope.makeBooking = function (fID) {
-        
+
         $http({method: 'POST', url: "/SemesterSeed/api/api/reservation/" + fID,
             skipAuthorization: true})
                 .success(function (response) {
@@ -107,7 +123,33 @@ app.filter('myFilter', function () {
 
 
 
+function addFields() {
+    var number = document.getElementById("member").value;
+    var container = document.getElementById("passengers");
+    alert(document.getElementById("passengers"));
+    while (container.hasChildNodes()) {
+        container.removeChild(container.lastChild);
+    }
+    for (i = 0; i < number; i++) {
+        container.appendChild(document.createTextNode("Passenger " + (i + 1) + " "));
+        var input = document.createElement("input");
+        input.type = "text";
+        container.appendChild(input);
+        container.appendChild(document.createElement("br"));
+        container.appendChild(document.createElement("br"));
+    }
+}
+;
 
+
+
+
+function switchPage() {
+
+    $("#result").hide();
+    $("#bookingPage").show();
+}
+;
 
 
 
