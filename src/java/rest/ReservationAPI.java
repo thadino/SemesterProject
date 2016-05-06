@@ -75,7 +75,7 @@ public class ReservationAPI
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces("application/json")
-    public Response fromDateTickets(InputStream incomingData, @PathParam("flightId") String flightId) throws JSONException
+    public Response reserve(InputStream incomingData, @PathParam("flightId") String flightId) throws JSONException
     {
 
         System.out.println("Received request, flight id " + flightId);
