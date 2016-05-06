@@ -1,5 +1,7 @@
 /**
+
  *
+
  */
 package com.metasearch.service.dao;
 
@@ -16,6 +18,7 @@ import org.json.JSONObject;
  * @author Goran
  *
  */
+
 public class ReservationAuditLogDAO
 {
 
@@ -74,3 +77,4 @@ public class ReservationAuditLogDAO
     }
 
 }
+

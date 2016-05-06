@@ -9,7 +9,9 @@ package rest;
  *
  * @author Dino
  */
+
 import com.google.gson.*;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -29,6 +31,7 @@ import org.json.JSONObject;
 import com.metasearch.service.dao.Flight;
 import com.metasearch.service.dao.FlightsDAO;
 import com.metasearch.service.dao.JSONConstants;
+
 import com.metasearch.service.dao.Reservation;
 import com.metasearch.service.dao.ReservationAuditLog;
 import com.metasearch.service.dao.ReservationAuditLogDAO;
@@ -88,7 +91,7 @@ public class ReservationAPI
         }
     }
 
-    @Path("{flightId}")
+    @Path("/{flightId}")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces("application/json")
@@ -216,5 +219,6 @@ public class ReservationAPI
                 jsonObject.toString();
         return Response.status(200).entity(result).build();
     }
+
 
 }

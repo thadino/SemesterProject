@@ -75,7 +75,9 @@ public class FlightsDAO {
 	} 
 	
 	
+
 	public static synchronized Flight reserve(String flightID, int ticketNumber) throws FlightNotFoundException, InsufficientTicketsException { 
+
 		Query query = manager.createQuery("Select f FROM Flight f WHERE"
         		+ " f.id = :id "
         		, Flight.class);

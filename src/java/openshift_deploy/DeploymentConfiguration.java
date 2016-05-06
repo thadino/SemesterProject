@@ -1,7 +1,9 @@
+
 package openshift_deploy;
 
 
 import com.metasearch.service.dao.Reservation;
+
 
 import com.metasearch.service.dao.Role;
 import com.metasearch.service.dao.User;
@@ -22,6 +24,7 @@ import javax.ws.rs.core.Context;
 import security.PasswordStorage;
 
 @WebListener
+
 
 public class DeploymentConfiguration implements ServletContextListener
 {
@@ -110,4 +113,5 @@ public class DeploymentConfiguration implements ServletContextListener
     {
     }
 }
+
 

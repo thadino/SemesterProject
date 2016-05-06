@@ -73,17 +73,19 @@ angular.module('myApp.security', [])
           };
 
           $rootScope.openErrorModal = function (text) {
-            var modalInstance = $uibModal.open({
-              animation: true,
-              templateUrl: 'errorModal.html',
-              controller: function ($scope, $uibModalInstance) {
-                $scope.error = text;
-                $scope.ok = function () {
-                  $uibModalInstance.close();
-                };
-              },
-              size: 'sm'
-            });
+
+//            var modalInstance = $uibModal.open({
+//              animation: true,
+//              templateUrl: 'errorModal.html',
+//              controller: function ($scope, $uibModalInstance) {
+//                $scope.error = text;
+//                $scope.ok = function () {
+//           $uibModalInstance.close();
+//                };
+//              },
+//              size: 'sm'
+//            });
+
           };
 
           //This sets the login data from session store if user pressed F5 (You are still logged in)

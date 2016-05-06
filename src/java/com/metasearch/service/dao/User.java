@@ -1,3 +1,4 @@
+
 package com.metasearch.service.dao;
 
 import java.io.Serializable;
@@ -26,6 +27,7 @@ public class User implements Serializable, IUser {
   @JoinColumn(name = "userName", referencedColumnName = "userName")}, inverseJoinColumns = {
   @JoinColumn(name = "roleName")})
   private List<Role> roles = new ArrayList();
+
 
   
   private String email;
@@ -80,6 +82,7 @@ public class User implements Serializable, IUser {
   }
 
 
+
     public String getEmail()
     {
         return email;
@@ -89,5 +92,6 @@ public class User implements Serializable, IUser {
     {
         this.email = email;
     }
+
 
 }
