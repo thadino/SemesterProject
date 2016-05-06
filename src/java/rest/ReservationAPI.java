@@ -38,6 +38,10 @@ import com.metasearch.service.exception.InsufficientTicketsException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
@@ -49,7 +53,8 @@ import org.json.JSONArray;
 @Path("/api/reservation")
 public class ReservationAPI
 {
-    
+
+    Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     @GET
     @Produces("application/json")
@@ -64,11 +69,23 @@ public class ReservationAPI
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/{reserveeName}")
-    public String getAllYourReservations(@PathParam("reserveeName") String reserveeName)
+    @Path("/{reserveeEmail}")
+    public String getAllYourReservations(@PathParam("reserveeEmail") String email)
     {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        return gson.toJson(ReservationDAO.getAllReservationsByName(reserveeName));
+        EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence.createEntityManagerFactory("FlightService");
+        EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
+        try
+        {
+            Query q = em.createNamedQuery("reservation.findAllByEmail", Reservation.class);
+            q.setParameter("email", email);
+            System.out.println("her er res: " + q.getResultList().get(0));;
+            return (gson.toJson(q.getResultList())).replace("\\u0027", "");
+
+        }
+        finally
+        {
+            em.close();
+        }
     }
 
     @Path("{flightId}")
