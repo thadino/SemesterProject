@@ -1,4 +1,5 @@
 
+
 package facades;
 
 import security.IUserFacade;
@@ -60,4 +61,3 @@ public class UserFacade implements IUserFacade {
   }
 
 }
-

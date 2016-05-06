@@ -145,8 +145,10 @@ $http.post("/api/api/reservation/" + FlightID, JSONtoSend)
     );
     
 
+
     
  console.log(JSONtoSend);
+
 
    
         } // if validation failed will not do code encapsled.
