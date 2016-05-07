@@ -12,8 +12,15 @@ var app = angular.module('myApp.view1', ['ngRoute'])
 
 app.controller('View1Ctrl', function ($scope, $http)
 {
-
-
+    
+    
+    
+    var mywebsiteName = "SemesterSeed";
+    
+    
+    
+    
+    
   $("#bookingPage").hide();
 
 if(AirlineURL !== null) // so it does not reset the value of AirlineURL
@@ -41,6 +48,14 @@ $scope.switchPage = function(url, id) {
     $("#result").hide();
     $("#bookingPage").show();
      document.getElementById("errormessage_view1").innerHTML = "";
+     tokenSuccess();
+      function tokenSuccess(err, response) {
+    if(err){
+        throw err;
+    }
+    
+   alert($window.sessionStorage.accessToken = response.body.access_token);
+}
 };
 
 $scope.bookvacation = function()
@@ -48,7 +63,11 @@ $scope.bookvacation = function()
  
   //  alert("Airline URL: " + AirlineURL + " Flight ID: " + FlightID);
     
-
+    
+ 
+        
+       
+    
     reserveePhone = $("#phone").val();
     reserveeName = $("#name").val();
     reserveeEmail = $("#email").val();
@@ -117,7 +136,7 @@ var myString = "";
 });
 
 var JSONtoSend = "";
- JSONtoSend = '{ "url" : "'+ AirlineURL +'",'+
+ JSONtoSend = '{ "url" : "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/reservation/",'+
  '"flightID":"'+ FlightID + '",' +
  '"numberOfSeats":"'+numberofseats+'",' +
  '"reserveeName":"'+reserveeName+'",' +
@@ -127,25 +146,83 @@ var JSONtoSend = "";
  myString +
  ']}';
  
+// var JSONtoSend = "";
+// JSONtoSend = '{ "url" : "'+ AirlineURL +'/",'+
+// '"flightID":"'+ FlightID + '",' +
+// '"numberOfSeats":"'+numberofseats+'",' +
+// '"reserveeName":"'+reserveeName+'",' +
+// '"reserveePhone":"'+reserveePhone+'",' +
+// '"reserveeEmail":"'+reserveeEmail+'",' +
+// '"passengers" :[' +
+// myString +
+// ']}'; backup of this shit..
+ 
 //  '{"firstName":"'+FlightID+'","lastName":"'+FlightID+'"},' +
 // '{"firstName":"'+FlightID+'","lastName":"'+FlightID+'"},' +
 //  '{"firstName":"'+FlightID+'","lastName":"'+FlightID+'"}' +
 
+var send = {
+ "url" : "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/reservation/",
+ "flightID":"CPH-STN-020",
+ "numberOfSeats":3,
+ "reserveeName":"johny",
+ "reserveePhone":"12345678",
+ "reserveeEmail":"peter@peter.com",
+ "passengers":[
+ {
+ "firstName":"Petera",
+ "lastName":"Peterson"
+ },
+ {
+ "firstName":"Jane",
+ "lastName":"Peterson"
+ },
+  {
+ "firstName":"Peter",
+ "lastName":"Hansen"
+ }
+ ]
+};
 
-$http.post("/api/api/reservation/" + FlightID, JSONtoSend)
-   .then(
-       function(response){
-         // success callback
-         alert("Success!");
-       }, 
-       function(response){
-         // failure callback
-         alert("Failure!");
-       }
-    );
+//$.post("/"+ mywebsiteName +"/api/api/reservation/",
+//        send,
+//        function(data,status){
+//            alert("Data: " + data + "\nStatus: " + status);
+//        });
+
+
+
+var json = JSON.stringify(send);
+
+//        $.ajax({
+//      type: "POST",
+//      url: "/"+ mywebsiteName +"/api/api/reservation/",
+//      data: json,
+//      contentType: "application/json",
+//      success: function(data, status) {
+//        alert("Data: " + data + "\nStatus: " + status);
+//      }
+//    });
     
-
-
+                   $.ajax({
+                    url: "/"+ mywebsiteName +"/api/api/reservation/" + FlightID + "/",
+                    type: "POST",
+                    data: JSONtoSend,
+                    contentType: "application/json",
+                    dataType: "json",
+                    success: function (data, status) {
+                       //  success code
+                       
+                       window.location.replace("#view3");
+                       
+                    },
+                    error: function(data, status){
+                   //  error code
+                   
+                    }
+                });
+  
+  
     
  console.log(JSONtoSend);
 
@@ -213,27 +290,28 @@ $http.post("/api/api/reservation/" + FlightID, JSONtoSend)
     $("#bookingPage").hide();
     };
 
-    $scope.book = function (fID) {
-
-        $scope.makeBooking(fID);
-
-
-    };
-
-
-    $scope.makeBooking = function (fID) {
-
-        $http({method: 'POST', url: "/SemesterSeed/api/api/reservation/" + fID,
-            skipAuthorization: true})
-                .success(function (response) {
-                    alert("it works");
-                })
-                .error(function (data, status) {
-                    alert(status);
-
-                });
-    };
+//    $scope.book = function (fID) {
+//
+//        $scope.makeBooking(fID);
+//
+//
+//    };
+//
+//
+//    $scope.makeBooking = function (fID) {
+//
+//        $http({method: 'POST', url: "/SemesterSeed/api/api/reservation/" + fID,
+//            skipAuthorization: true})
+//                .success(function (response) {
+//                    alert("it works");
+//                })
+//                .error(function (data, status) {
+//                    alert(status);
+//
+//                });
+//    };
 });
+
 
 
 app.filter('myFilter', function () {

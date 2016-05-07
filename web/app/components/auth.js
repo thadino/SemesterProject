@@ -61,6 +61,8 @@ angular.module('myApp.security', [])
                       delete $window.sessionStorage.id_token;
                       clearUserDetails($scope);
                     });
+                  
+                  
           };
 
           $rootScope.logout = function () {
