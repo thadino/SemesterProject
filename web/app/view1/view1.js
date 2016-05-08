@@ -13,12 +13,16 @@ var app = angular.module('myApp.view1', ['ngRoute'])
 app.controller('View1Ctrl', function ($scope, $http)
 {
     
+
+    var ip = window.location.host;
     
-    
+    var websiteURL = "http://" + ip + "/SemesterSeed/api/api/flights/" 
+//  
+// "http://" + ip + "/SemesterSeed/api/api/flights/";
     var mywebsiteName = "SemesterSeed";
     
     
-    
+
     
     
   $("#bookingPage").hide();
@@ -48,14 +52,8 @@ $scope.switchPage = function(url, id) {
     $("#result").hide();
     $("#bookingPage").show();
      document.getElementById("errormessage_view1").innerHTML = "";
-     tokenSuccess();
-      function tokenSuccess(err, response) {
-    if(err){
-        throw err;
-    }
-    
-   alert($window.sessionStorage.accessToken = response.body.access_token);
-}
+
+
 };
 
 $scope.bookvacation = function()
@@ -213,7 +211,7 @@ var json = JSON.stringify(send);
                     success: function (data, status) {
                        //  success code
                        
-                       window.location.replace("#view3");
+                       window.location.href = "http://" + ip + "/" + mywebsiteName + "/#/view2";
                        
                     },
                     error: function(data, status){
@@ -256,22 +254,38 @@ var json = JSON.stringify(send);
 
             var items = [];
             if (getTo.length < 1) {
-                searchstring = "http://localhost:8080/SemesterSeed/api/api/flights/" +
+               
+               searchstring = websiteURL +
                         getFrom + "/" + getDate + time + "/" + tickets;
             }
             else
             {
-                searchstring = "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flightinfo/" +
+                searchstring = websiteURL +
                         getFrom + "/" + getTo + "/" + getDate + time + "/" + tickets;
             }
+            
+            console.log(searchstring);
 
             $http({method: 'GET', url: searchstring,
                 skipAuthorization: true})
                     .then(function (response) {
+                        
+             
+                if(Object.keys(response.data[0].flightOffer.flights).length === 0)
+                {
+                    $scope.test = [];
+                   document.getElementById("resulterrormessage").innerHTML = "No Flights found, try with other search values.";
+                   document.getElementById("result").hide();
+                }
+                else
+                {
+                    $("#resulterrormessage").innerHTML = "";
+                    $("#result").show();
                         $scope.fl = [];
                         
 
                         $scope.test = response.data;
+                    }
 
 
                     });

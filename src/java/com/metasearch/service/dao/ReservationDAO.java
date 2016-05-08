@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import openshift_deploy.DeploymentConfiguration;
 
 /**
  *
@@ -20,7 +21,7 @@ public class ReservationDAO
 
     public static synchronized List<Reservation> getAllReservationsByName(String reserveeName)
     {
-        EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence.createEntityManagerFactory("FlightService");
+        EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence.createEntityManagerFactory(DeploymentConfiguration.PU_NAME);
         EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
         try
         {
@@ -37,7 +38,7 @@ public class ReservationDAO
     public static synchronized void addEntry(Reservation r)
     {
 
-        EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence.createEntityManagerFactory("FlightService");
+        EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence.createEntityManagerFactory(DeploymentConfiguration.PU_NAME);
         EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
 
         try

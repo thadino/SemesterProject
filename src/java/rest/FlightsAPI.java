@@ -100,13 +100,14 @@ public class FlightsAPI
 
             }
             executor.shutdown();
-
             JsonArray ja = new JsonArray();
             for (Future<String> fList1 : fList)
             {
-
                 ja.add(gson.toJsonTree(fList1.get()));
             }
+            
+
+ 
 
 //            System.out.println(ja.toString().replace("\\", "").replace("\"\"\"", ""));
             return gson.toJson(ja).replace("\\", "").replace("\"\"\"", "").replace("\"\"", "").replace("n ", "").replace("\"{", "{").replace("\"n}\"", "}");//.replace("\"n}\"", "");
@@ -181,10 +182,13 @@ public class FlightsAPI
             @PathParam("to") String to, @PathParam("date") String date,
             @PathParam("tickets") int tickets) throws JSONException
     {
+
+        
+        
+            
         List<Future<String>> fList = new ArrayList();
         SearchLogDAO.addEntry(from, to, date, tickets);
-//        AuditLogDAO.addEntry(from, to, date, tickets);
-
+//        AuditLogDAO.addEntry(from, null, date, tickets);
         try
         {
             String b = "";
@@ -199,16 +203,19 @@ public class FlightsAPI
 
             }
             executor.shutdown();
-
             JsonArray ja = new JsonArray();
             for (Future<String> fList1 : fList)
             {
 
                 ja.add(gson.toJsonTree(fList1.get()));
             }
+            
+
+ 
 
 //            System.out.println(ja.toString().replace("\\", "").replace("\"\"\"", ""));
-            return gson.toJson(ja).replace("\\", "").replace("\"\"\"", "").replace("\"\"", "").replace("n ", "").replace("\"{", "{").replace("\"n}\"", "}");
+             return gson.toJson(ja).replace("\\", "").replace("\"\"\"", "").replace("\"\"", "").replace("n ", "").replace("\"{", "{").replace("\"n}\"", "}");
+           // return gson.toJson(ja).replace("\\", "").replace("\"\"\"", "").replace("\"\"", "").replace("n ", "").replace("\"{", "{").replace("\"n}\"", "}");//.replace("\"n}\"", "");
         }
         catch (ExecutionException e)
         { 

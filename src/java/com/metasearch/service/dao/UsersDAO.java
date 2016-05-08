@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import openshift_deploy.DeploymentConfiguration;
 
 import org.json.JSONObject;
 
@@ -21,7 +22,7 @@ import org.json.JSONObject;
 public class UsersDAO {
 	
 	private static final EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence
-            .createEntityManagerFactory("FlightService"); 
+            .createEntityManagerFactory(DeploymentConfiguration.PU_NAME); 
 	private static EntityManager manager = ENTITY_MANAGER_FACTORY.createEntityManager(); 
 	
 	

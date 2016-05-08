@@ -9,6 +9,7 @@ import java.util.Date;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import openshift_deploy.DeploymentConfiguration;
 
 /**
  * @author Goran
@@ -18,7 +19,7 @@ public class AuditLogDAO {
 
 	
 	private static final EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence
-            .createEntityManagerFactory("FlightService"); 
+            .createEntityManagerFactory(DeploymentConfiguration.PU_NAME); 
 	private static EntityManager manager = ENTITY_MANAGER_FACTORY.createEntityManager(); 
 	
 	

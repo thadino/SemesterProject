@@ -30,26 +30,7 @@ angular.module('myApp.view3', ['ngRoute'])
             $scope.error = res.status + ": "+ res.data.statusText;
           });
           
-          
-          $scope.searchmail = function()
-          {
-              
-              var mail = $("#searchmail").val();
-              
-                 $http({
-            method: 'GET',
-            url: "/SemesterSeed/api/api/reservation/" + mail
-          }).then(function successCallback(res) {
-    
-             $scope.mydata = res.data;
 
-          }, function errorCallback(res) {
-            
-          });
-          
-
-
-};
 
               
           });

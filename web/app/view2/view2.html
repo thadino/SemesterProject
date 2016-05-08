@@ -1,3 +1,25 @@
 	<section id="content">
-	Content...
+  enter mail! -  <input type="text" id="searchmail" name="mail" value="user@user.dk">
+    <button ng-click="searchmail()">Get from mail.</button>
+    
+    <ul  ng-repeat="f in mydata" >
+        
+
+
+                <li><h4 style="background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%); opacity: 0.95;" >FlightInfo for Flight  -  {{f.flightID}}</h4></li>
+
+                <div style="background-color: #B6B6B4;"> 
+
+       
+                        <ul ng-repeat="(x, z) in f">
+                            <li> {{x}}: {{z}} </li>    
+
+                        </ul>
+</div>  
+
+                        <br>
+                        <br>
+                    
+    
+</ul>
 			</section>

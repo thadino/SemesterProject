@@ -15,6 +15,7 @@ import javax.persistence.Query;
 
 import com.metasearch.service.exception.FlightNotFoundException;
 import com.metasearch.service.exception.InsufficientTicketsException;
+import openshift_deploy.DeploymentConfiguration;
 
 /**
  * @author Goran
@@ -23,7 +24,7 @@ import com.metasearch.service.exception.InsufficientTicketsException;
 public class FlightsDAO {
 
 	private static final EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence
-            .createEntityManagerFactory("FlightService"); 
+            .createEntityManagerFactory(DeploymentConfiguration.PU_NAME); 
 	private static EntityManager manager = ENTITY_MANAGER_FACTORY.createEntityManager();
 	
 	public static List<Flight> getFlights(String from, Date date, int requiredTickets) { 

@@ -10,6 +10,7 @@ import java.util.Date;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import openshift_deploy.DeploymentConfiguration;
 
 /**
  *
@@ -20,7 +21,7 @@ public class SearchLogDAO
 
     public static synchronized void addEntry(String from, String to, String searchedDate, int ticketNumber)
     {
-        EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence.createEntityManagerFactory("FlightService");
+        EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence.createEntityManagerFactory(DeploymentConfiguration.PU_NAME);
         EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
 
         try
