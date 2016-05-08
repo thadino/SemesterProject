@@ -63,8 +63,8 @@ public class DeploymentConfiguration implements ServletContextListener
             both.AddRole(userRole);
             both.AddRole(adminRole);
 
-            Reservation r1 = new Reservation("user@user.dk", "User", "12345678", 1, "[{'firstName':'Peter','lastName':'Peterson'}]", "CPH-STN-292");
-            Reservation r2 = new Reservation("user@user.dk", "User", "12345678", 2, "[{'firstName':'Peter','lastName':'Peterson'},{'firstName':'john','lastName':'john'}]", "CPH-STN-075");
+            Reservation r1 = new Reservation("user@user.dk", "user", "12345678", 1, "[{'firstName':'Peter','lastName':'Peterson'}]", "CPH-STN-292");
+            Reservation r2 = new Reservation("user@user.dk", "user", "12345678", 2, "[{'firstName':'Peter','lastName':'Peterson'},{'firstName':'john','lastName':'john'}]", "CPH-STN-075");
 
             Reservation r3 = new Reservation("admin@admin.dk", "admin", "12323445678", 1, "[{'firstName':'admin','lastName':'adminsen'}]", "CPH-STN-075");
             Reservation r4 = new Reservation("admin@admin.dk", "admin", "12345234678", 2, "[{'firstName':'admin','lastName':'adminsen'},{'firstName':'user','lastName':'userino'}]", "CPH-STN-020");

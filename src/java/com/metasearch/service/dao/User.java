@@ -13,79 +13,87 @@ import javax.persistence.Table;
 import security.IUser;
 
 @Entity
-@Table(name="SystemUser")
-public class User implements Serializable, IUser {
-  private static final long serialVersionUID = 1L;
-  private String password;  //Pleeeeease dont store me in plain text
-  
-  @Id
-  private String userName;
-  
-  @ManyToMany(cascade = CascadeType.ALL)
-  @JoinTable(name = "SystemUser_USERROLE", joinColumns = {
-  @JoinColumn(name = "userName", referencedColumnName = "userName")}, inverseJoinColumns = {
-  @JoinColumn(name = "roleName")})
-  private List<Role> roles = new ArrayList();
+@Table(name = "SystemUser")
+public class User implements Serializable, IUser
+{
 
+    private static final long serialVersionUID = 1L;
+    private String password;  //Pleeeeease dont store me in plain text
 
-  
-  private String email;
+    @Id
+    private String userName;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "SystemUser_USERROLE", joinColumns =
+    {
+        @JoinColumn(name = "userName", referencedColumnName = "userName")
+    }, inverseJoinColumns =
+    {
+        @JoinColumn(name = "roleName")
+    })
+    private List<Role> roles = new ArrayList();
 
-  public User() {
-  }
+    private String email;
 
+    public User()
+    {
+    }
 
-  public User(String userName, String password) {
-    this.userName = userName;
-    this.password = password;
-  }
+    public User(String userName, String password)
+    {
+        this.userName = userName;
+        this.password = password;
+    }
 
-    public User(String password, String userName, String email)
+    public User(String userName, String password, String email)
     {
         this.password = password;
         this.userName = userName;
         this.email = email;
     }
 
- 
-
-
-  @Override
-  public List<String> getRolesAsStrings(){
-    List<String> rolesAsStrings = new ArrayList();
-    for(Role role : roles){
-      rolesAsStrings.add(role.getRoleName());
+    @Override
+    public List<String> getRolesAsStrings()
+    {
+        List<String> rolesAsStrings = new ArrayList();
+        for (Role role : roles)
+        {
+            rolesAsStrings.add(role.getRoleName());
+        }
+        return rolesAsStrings;
     }
-    return rolesAsStrings;
-  }
-  
-  public void AddRole(Role role){
-    roles.add(role);
-    role.addUser(this);
-  }
-    
-  public List<Role> getRoles() {
-   return roles;
-  }
- 
-  public String getPassword() {
-    return password;
-  }
 
-  public void setPassword(String password) {
-    this.password = password;
-  }
+    public void AddRole(Role role)
+    {
+        roles.add(role);
+        role.addUser(this);
+    }
 
-  @Override
-  public String getUserName() {
-    return userName;
-  }
+    public List<Role> getRoles()
+    {
+        return roles;
+    }
 
-  public void setUserName(String userName) {
-    this.userName = userName;
-  }
+    public String getPassword()
+    {
+        return password;
+    }
 
+    public void setPassword(String password)
+    {
+        this.password = password;
+    }
+
+    @Override
+    public String getUserName()
+    {
+        return userName;
+    }
+
+    public void setUserName(String userName)
+    {
+        this.userName = userName;
+    }
 
     public String getEmail()
     {
@@ -97,5 +105,4 @@ public class User implements Serializable, IUser {
         this.email = email;
     }
 
-   
 }
