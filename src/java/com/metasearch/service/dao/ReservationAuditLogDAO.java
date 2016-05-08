@@ -1,5 +1,7 @@
 /**
+
  *
+
  */
 package com.metasearch.service.dao;
 
@@ -9,6 +11,7 @@ import java.util.Date;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import openshift_deploy.DeploymentConfiguration;
 
 import org.json.JSONObject;
 
@@ -16,17 +19,18 @@ import org.json.JSONObject;
  * @author Goran
  *
  */
+
 public class ReservationAuditLogDAO
 {
 
     private static final EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence
-            .createEntityManagerFactory("FlightService");
+            .createEntityManagerFactory(DeploymentConfiguration.PU_NAME);
     private static EntityManager manager = ENTITY_MANAGER_FACTORY.createEntityManager();
 
     public static synchronized ReservationAuditLog addEntry(JSONObject reservation, int status)
     {
 
-        EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence.createEntityManagerFactory("FlightService");
+        EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence.createEntityManagerFactory(DeploymentConfiguration.PU_NAME);
         EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
 
         try{
@@ -74,3 +78,4 @@ public class ReservationAuditLogDAO
     }
 
 }
+

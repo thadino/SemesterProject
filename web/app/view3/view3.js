@@ -29,5 +29,8 @@ angular.module('myApp.view3', ['ngRoute'])
           }, function errorCallback(res) {
             $scope.error = res.status + ": "+ res.data.statusText;
           });
- 
-});
+          
+
+
+              
+          });

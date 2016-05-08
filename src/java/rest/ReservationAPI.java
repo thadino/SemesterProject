@@ -9,7 +9,9 @@ package rest;
  *
  * @author Dino
  */
+
 import com.google.gson.*;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -29,6 +31,7 @@ import org.json.JSONObject;
 import com.metasearch.service.dao.Flight;
 import com.metasearch.service.dao.FlightsDAO;
 import com.metasearch.service.dao.JSONConstants;
+
 import com.metasearch.service.dao.Reservation;
 import com.metasearch.service.dao.ReservationAuditLog;
 import com.metasearch.service.dao.ReservationAuditLogDAO;
@@ -42,6 +45,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import openshift_deploy.DeploymentConfiguration;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
@@ -72,7 +76,7 @@ public class ReservationAPI
     @Path("/{reserveeEmail}")
     public String getAllYourReservations(@PathParam("reserveeEmail") String email)
     {
-        EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence.createEntityManagerFactory("FlightService");
+        EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence.createEntityManagerFactory(DeploymentConfiguration.PU_NAME);
         EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
         try
         {
@@ -88,7 +92,7 @@ public class ReservationAPI
         }
     }
 
-    @Path("{flightId}")
+    @Path("/{flightId}")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces("application/json")
@@ -216,5 +220,6 @@ public class ReservationAPI
                 jsonObject.toString();
         return Response.status(200).entity(result).build();
     }
+
 
 }

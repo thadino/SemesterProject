@@ -14,24 +14,24 @@ public class ApplicationConfig extends Application {
     return resources;
   }
 
-  /**
-   * Do not modify addRestResourceClasses() method.
-   * It is automatically populated with
-   * all resources defined in the project.
-   * If required, comment out calling this method in getClasses().
-   */
-  private void addRestResourceClasses(Set<Class<?>> resources) {
-    resources.add(httpErrors.GenericExceptionMapper.class);
-    resources.add(httpErrors.NotFoundExceptionMapper.class);
-    resources.add(rest.Admin.class);
-    resources.add(rest.FlightsAPI.class);
-    resources.add(rest.ReservationAPI.class);
-    resources.add(rest.User.class);
-    resources.add(rest.UsersAPI.class);
-    resources.add(security.JWTAuthenticationFilter.class);
+
+
+
+
+
+
+    private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(httpErrors.GenericExceptionMapper.class);
+        resources.add(httpErrors.NotFoundExceptionMapper.class);
+        resources.add(rest.Admin.class);
+        resources.add(rest.FlightsAPI.class);
+        resources.add(rest.ReservationAPI.class);
+        resources.add(rest.User.class);
+        resources.add(rest.UsersAPI.class);
+        resources.add(security.JWTAuthenticationFilter.class);
         resources.add(security.Login.class);
         resources.add(security.NotAuthorizedExceptionMapper.class);
         resources.add(security.RolesAllowedFilter.class);
-  }
-  
+    }
 }
+

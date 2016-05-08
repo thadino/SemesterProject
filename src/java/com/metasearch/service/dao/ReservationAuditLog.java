@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
 
+
 /**
  * The persistent class for the reservation_audit_log database table.
  *
@@ -178,3 +179,4 @@ public class ReservationAuditLog implements Serializable
     }
 
 }
+

@@ -9,11 +9,13 @@ package rest;
  *
  * @author Dino
  */
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -30,6 +32,7 @@ import javax.ws.rs.core.Response;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
 
 
 import com.metasearch.service.dao.Flight;
@@ -97,13 +100,14 @@ public class FlightsAPI
 
             }
             executor.shutdown();
-
             JsonArray ja = new JsonArray();
             for (Future<String> fList1 : fList)
             {
-
                 ja.add(gson.toJsonTree(fList1.get()));
             }
+            
+
+ 
 
 //            System.out.println(ja.toString().replace("\\", "").replace("\"\"\"", ""));
             return gson.toJson(ja).replace("\\", "").replace("\"\"\"", "").replace("\"\"", "").replace("n ", "").replace("\"{", "{").replace("\"n}\"", "}");//.replace("\"n}\"", "");
@@ -178,10 +182,13 @@ public class FlightsAPI
             @PathParam("to") String to, @PathParam("date") String date,
             @PathParam("tickets") int tickets) throws JSONException
     {
+
+        
+        
+            
         List<Future<String>> fList = new ArrayList();
         SearchLogDAO.addEntry(from, to, date, tickets);
-//        AuditLogDAO.addEntry(from, to, date, tickets);
-
+//        AuditLogDAO.addEntry(from, null, date, tickets);
         try
         {
             String b = "";
@@ -196,16 +203,19 @@ public class FlightsAPI
 
             }
             executor.shutdown();
-
             JsonArray ja = new JsonArray();
             for (Future<String> fList1 : fList)
             {
 
                 ja.add(gson.toJsonTree(fList1.get()));
             }
+            
+
+ 
 
 //            System.out.println(ja.toString().replace("\\", "").replace("\"\"\"", ""));
-            return gson.toJson(ja).replace("\\", "").replace("\"\"\"", "").replace("\"\"", "").replace("n ", "").replace("\"{", "{").replace("\"n}\"", "}");
+             return gson.toJson(ja).replace("\\", "").replace("\"\"\"", "").replace("\"\"", "").replace("n ", "").replace("\"{", "{").replace("\"n}\"", "}");
+           // return gson.toJson(ja).replace("\\", "").replace("\"\"\"", "").replace("\"\"", "").replace("n ", "").replace("\"{", "{").replace("\"n}\"", "}");//.replace("\"n}\"", "");
         }
         catch (ExecutionException e)
         { 
@@ -218,5 +228,6 @@ public class FlightsAPI
         }
 
     }
+
 
 }

@@ -1,3 +1,4 @@
+
 package com.metasearch.service.dao;
 
 import java.io.Serializable;

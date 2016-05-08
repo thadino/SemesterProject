@@ -10,6 +10,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import openshift_deploy.DeploymentConfiguration;
 
 
 /**
@@ -20,7 +21,7 @@ public class FlightsDAOTest {
 	
 	
 	private static final EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence
-            .createEntityManagerFactory("FlightService");
+            .createEntityManagerFactory(DeploymentConfiguration.PU_NAME);
 	
 	
 	public static void main(String[] args) { 
