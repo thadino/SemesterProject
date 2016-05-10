@@ -41,15 +41,17 @@ public class AirlineDAO
 
     }
     
-    public static synchronized void deleteAirline(String name) throws Exception
+    public static synchronized void deleteAirline(String id) throws Exception
     {
         EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
         try
         {
             em.getTransaction().begin();
-            Query q = em.createNamedQuery("airline.findByName");
-            q.setParameter("name", name);
-            Airline a = (Airline) q.getSingleResult();
+//            Query q = em.createNamedQuery("airline.findByURL");
+//            q.setParameter("url", url);
+            Airline a = (Airline) em.find(Airline.class, Long.parseLong(id));
+            
+//            Airline a = (Airline) q.getSingleResult();
             
             em.remove(a);
             em.getTransaction().commit();

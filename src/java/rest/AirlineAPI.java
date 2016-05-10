@@ -61,12 +61,12 @@ public class AirlineAPI
     }
 
     @DELETE
-    @Path("/{name}")
-    public Response deleteAirline(@PathParam("name") String name)
+    @Path("/{id}")
+    public Response deleteAirline(@PathParam("id") String id)
     {
         try
         {
-            AirlineDAO.deleteAirline(name);
+            AirlineDAO.deleteAirline(id);
         }
         catch (Exception e)
         {

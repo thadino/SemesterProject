@@ -22,7 +22,8 @@ import javax.persistence.NamedQuery;
 @NamedQueries
 ({
     @NamedQuery(name="airline.findAll", query="SELECT a FROM Airline a"),
-    @NamedQuery(name="airline.findByName",query="SELECT a FROM Airline a WHERE a.name = :name")
+    @NamedQuery(name="airline.findByName",query="SELECT a FROM Airline a WHERE a.name = :name"),
+    @NamedQuery(name="airline.findByURL",query="SELECT a FROM Airline a WHERE a.url = :url")
 })
 public class Airline implements Serializable
 {
