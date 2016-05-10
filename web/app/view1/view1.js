@@ -362,6 +362,7 @@ document.getElementById("errormessage_view1").innerHTML = "";
     while (container.hasChildNodes()) {
         container.removeChild(container.lastChild);
     }
+    
     for (var i = 0; i < number; i++) {
         container.appendChild(document.createTextNode("Passenger"));
         var input = document.createElement("input");
@@ -371,7 +372,7 @@ document.getElementById("errormessage_view1").innerHTML = "";
         input.style = "margin-left:15px;";
         input.className = "myawesomefuckingclass";
         
-                container.appendChild(input);
+        container.appendChild(input);
         
         input2.type = "text";
         input2.placeholder = "lastname";

@@ -1,5 +1,39 @@
 angular.module('myApp.security', [])
         .controller('AppLoginCtrl', function ($scope, $rootScope, $http, $window, $location, $uibModal, jwtHelper) {
+            
+         $("#register").show();   
+         $("#divemail").hide();
+         $("#Registerdiv").hide();
+         $("#loginbox").show(); 
+
+         
+          $scope.register = function()
+  {
+      $("#divemail").show();
+      $("#register").hide();
+      $("#Registerdiv").show();
+      $("#loginbox").hide(); 
+      // register logic              
+    // $scope.login(); back, register
+  };
+  
+  $scope.back = function()
+  {
+         $("#divemail").hide();
+         $("#Registerdiv").hide();
+         $("#register").show();
+         $("#loginbox").show(); 
+  };
+  
+  $scope.sendregistration = function()
+  {
+     var name = document.getElementById("username").value;
+     var mail = document.getElementById("mail").value;
+     var pass = document.getElementById("password").value;
+     
+      alert("Username: " + name + " Mail: " + mail + " Pass: " + pass);
+  };
+  
 
           $rootScope.$on('logOutEvent', function () {
             $scope.logout();
@@ -55,7 +89,7 @@ angular.module('myApp.security', [])
                     })
                     .error(function (data) {
                         
-                      document.getElementById('errormessage').innerHTML = "You have entered wrong password!";
+                      document.getElementById('errormessage').innerHTML = "You have entered wrong credentials!";
                       
                 
                       delete $window.sessionStorage.id_token;
