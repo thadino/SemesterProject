@@ -32,7 +32,7 @@ public class AirlineDAO
             em.persist(a);
             em.getTransaction().commit();
 
-            urls.add(a);
+            DeploymentConfiguration.urls.add(a);
         }
         finally
         {
@@ -55,7 +55,7 @@ public class AirlineDAO
             
             em.remove(a);
             em.getTransaction().commit();
-            urls.remove(a);
+            DeploymentConfiguration.urls.remove(a);
         }
         finally
         {

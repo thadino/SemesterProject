@@ -20,7 +20,7 @@ public class ApplicationConfig extends Application {
 
 
 
-    private void addRestResourceClasses(java.util.Set<java.lang.Class<?>> resources) {
+    private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(httpErrors.GenericExceptionMapper.class);
         resources.add(httpErrors.NotFoundExceptionMapper.class);
         resources.add(rest.Admin.class);
@@ -29,6 +29,7 @@ public class ApplicationConfig extends Application {
         resources.add(rest.FlightsAPI.class);
         resources.add(rest.ReservationAPI.class);
         resources.add(rest.User.class);
+        resources.add(rest.UsersAPI.class);
         resources.add(security.JWTAuthenticationFilter.class);
         resources.add(security.Login.class);
         resources.add(security.NotAuthorizedExceptionMapper.class);

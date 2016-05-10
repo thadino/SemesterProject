@@ -1,3 +1,4 @@
+
 'use strict';
 
 
@@ -324,3 +325,4 @@ if($scope.isAdmin === false)
 
     };
 });
+
