@@ -22,6 +22,8 @@ app.controller('View1Ctrl', function ($scope, $http)
     var mywebsiteName = "SemesterSeed";
     
     
+    $("#mylist").hide();
+
 
     
     
@@ -132,6 +134,12 @@ var myString = "";
      }  
     
 });
+
+
+
+
+
+
 
 var JSONtoSend = "";
  JSONtoSend = '{ "url" : "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/reservation/",'+
@@ -325,6 +333,8 @@ var json = JSON.stringify(send);
 //                });
 //    };
 });
+
+
 
 
 
