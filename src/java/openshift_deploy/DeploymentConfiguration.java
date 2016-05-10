@@ -7,6 +7,8 @@ import com.metasearch.service.dao.User;
 import facades.UserFacade;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,7 +30,11 @@ public class DeploymentConfiguration implements ServletContextListener
     public static Role userRole = new Role("User");
     public static Role adminRole = new Role("Admin");
     public static String PU_NAME = "FlightService";
-    public static String[] urls = new String[7];
+
+    /**
+     *
+     */
+    public static List<Airline> urls = new ArrayList();
 
     @Override
     public void contextInitialized(ServletContextEvent sce)
@@ -75,13 +81,13 @@ public class DeploymentConfiguration implements ServletContextListener
             Reservation r5 = new Reservation("user_admin@user_admin.dk", "User", "12345678", 1, "[{'firstName':'user_admin','lastName':'user_adminsen'}]", "CPH-STN-075");
             Reservation r6 = new Reservation("user_admin@user_admin.dk", "User", "12345678", 1, "[{'firstName':'user_admin','lastName':'user_adminsen'},{'firstName':'user','lastName':'bubber'}]", "CPH-STN-254");
 
-            Airline al1 = new Airline("Group 6 airlines", "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flightinfo/");
-            Airline al2 = new Airline("Group 6 airlines v2", "http://dummyairline6v2-pagh.rhcloud.com/dummyAirline6/api/flightinfo/");
-            Airline al3 = new Airline("Group 6 airlines", "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flightinfo/");
-            Airline al4 = new Airline("Group 6 airlines v2", "http://dummyairline6v2-pagh.rhcloud.com/dummyAirline6/api/flightinfo/");
-            Airline al5 = new Airline("Group 6 airlines", "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flightinfo/");
-            Airline al6 = new Airline("Group 6 airlines v2", "http://dummyairline6v2-pagh.rhcloud.com/dummyAirline6/api/flightinfo/");
-            Airline al7 = new Airline("Group 6 airlines", "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flightinfo/");
+            Airline al1 = new Airline("Group6airlines1", "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flightinfo/");
+            Airline al2 = new Airline("Group6airlines2", "http://dummyairline6v2-pagh.rhcloud.com/dummyAirline6/api/flightinfo/");
+            Airline al3 = new Airline("Group6airlines3", "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flightinfo/");
+            Airline al4 = new Airline("Group6airlines4", "http://dummyairline6v2-pagh.rhcloud.com/dummyAirline6/api/flightinfo/");
+            Airline al5 = new Airline("Group6airlines5", "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flightinfo/");
+            Airline al6 = new Airline("Group6airlines6", "http://dummyairline6v2-pagh.rhcloud.com/dummyAirline6/api/flightinfo/");
+            Airline al7 = new Airline("Group6airlines7", "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flightinfo/");
 
             try
             {
@@ -115,8 +121,8 @@ public class DeploymentConfiguration implements ServletContextListener
                 for (int a = 0; a < q.getResultList().size(); a++)
                 {
                     Airline bob = (Airline) q.getResultList().get(a);
-                    urls[a] = bob.getUrl();
-                    System.out.println("Available URL: " + urls[a]);
+                    urls.add(bob);
+                    System.out.println("Følgende URL lagt i liste: " + urls.get(a).getUrl());
                 }
             }
             finally
