@@ -60,6 +60,9 @@ if($scope.isAdmin === false)
      
    };
    
+   
+   
+   
       $scope.getairlines = function()
    {
    
@@ -145,32 +148,47 @@ if($scope.isAdmin === false)
      
    };
    
-            $scope.deleteairline = function()
+            $scope.deleteairline = function(id)
    {
        
-        var airlineURL = document.getElementById("").innerHTML;
         
-        var JsonToSend = "";
-
-                   $.ajax({
-                    url: ip + "/"+ mywebsiteName +"/api/api/airline/" + airlineURL + "/",
-                    type: "DELETE",
-                    data: JsonToSend,
-                    contentType: "application/json",
-                    dataType: "json",
-                    success: function (data, status) {
-                       //  success code
-                       
-                       document.getElementById("").innerHTML = "Successfully deleted a new airline.";
-                       
-                    },
-                    error: function(data, status){
+                   
+//                   $.ajax({
+//                    url: "/SemesterSeed/api/api/airline/" + id,
+//                    type: "DELETE",
+//                    contentType: "application/json",
+//                    dataType: "json",
+//                    data: "somedata",
+//                    success: function (data, status) {
+//                       //  success code
+//                       
+//                       document.getElementById("").innerHTML = "Successfully deleted a new airline.";
+//                       
+//                    },
+//                    error: function(data, status){
+//                   //  error code
+//                    document.getElementById(errorid).innerHTML = "Failed to deleted a new airline.";
+//                    console.log("Returned status code : " + status);
+//                   
+//                    }
+//                });
+                
+                $.ajax({
+    url: "/SemesterSeed/api/api/airline/" + id,
+    type: 'DELETE',
+    success: function(result) {
+        // Do something with the result
+        
+        alert("deleted");
+        $scope.getairlines();
+    },   
+    error: function(result, status){
                    //  error code
                     document.getElementById(errorid).innerHTML = "Failed to deleted a new airline.";
                     console.log("Returned status code : " + status);
                    
                     }
-                });
+});
      
      
    };
