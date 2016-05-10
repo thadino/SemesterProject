@@ -1,4 +1,3 @@
-
 package openshift_deploy;
 
 import com.metasearch.service.dao.Reservation;
@@ -24,6 +23,8 @@ import security.PasswordStorage;
 public class DeploymentConfiguration implements ServletContextListener
 {
 
+    public static Role userRole = new Role("User");
+    public static Role adminRole = new Role("Admin");
     public static String PU_NAME = "FlightService";
 
     @Override
@@ -53,8 +54,7 @@ public class DeploymentConfiguration implements ServletContextListener
             {
                 return;
             }
-            Role userRole = new Role("User");
-            Role adminRole = new Role("Admin");
+           
 
             User user = new User("user", PasswordStorage.createHash("test"), "user@user.dk");
             User admin = new User("admin", PasswordStorage.createHash("test"), "admin@admin.dk");
@@ -82,7 +82,7 @@ public class DeploymentConfiguration implements ServletContextListener
                 em.persist(user);
                 em.persist(admin);
                 em.persist(both);
-                
+
                 em.persist(r1);
                 em.persist(r2);
                 em.persist(r3);

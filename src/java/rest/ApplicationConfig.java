@@ -24,6 +24,7 @@ public class ApplicationConfig extends Application {
         resources.add(httpErrors.GenericExceptionMapper.class);
         resources.add(httpErrors.NotFoundExceptionMapper.class);
         resources.add(rest.Admin.class);
+        resources.add(rest.CORSFilter.class);
         resources.add(rest.FlightsAPI.class);
         resources.add(rest.ReservationAPI.class);
         resources.add(rest.User.class);
