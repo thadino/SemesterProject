@@ -70,11 +70,11 @@ public class FlightsAPI
         try
         {
             String b = "";
-            for (int i = 0; i < DeploymentConfiguration.urls.length; i++)
+            for (int i = 0; i < DeploymentConfiguration.urls.size(); i++)
             {
                 b = "";
-                b = DeploymentConfiguration.urls[i] + from + "/" + date + "/" + tickets;
-                System.out.println(b);
+                b = DeploymentConfiguration.urls.get(i).getUrl() + from + "/" + date + "/" + tickets;
+                System.out.println("Her er urlToPing: "+b);
                 Callable task = new flightOfferRequester(b);
 
                 fList.add(executor.submit(task));
@@ -87,7 +87,7 @@ public class FlightsAPI
                 ja.add(gson.toJsonTree(fList1.get()));
             }
 
-//            System.out.println(ja.toString().replace("\\", "").replace("\"\"\"", ""));
+
             return gson.toJson(ja).replace("\\", "").replace("\"\"\"", "").replace("\"\"", "").replace("n ", "").replace("\"{", "{").replace("\"n}\"", "}");//.replace("\"n}\"", "");
         }
         catch (ExecutionException e)
@@ -167,10 +167,10 @@ public class FlightsAPI
         try
         {
             String b = "";
-            for (int i = 0; i < DeploymentConfiguration.urls.length; i++)
+            for (int i = 0; i < DeploymentConfiguration.urls.size(); i++)
             {
                 b = "";
-                b = DeploymentConfiguration.urls[i] + from + "/" + to + "/" + date + "/" + tickets;
+                b = DeploymentConfiguration.urls.get(i).getUrl() + from + "/" + to + "/" + date + "/" + tickets;
                 System.out.println(b);
                 Callable task = new flightOfferRequester(b);
 
@@ -185,7 +185,7 @@ public class FlightsAPI
                 ja.add(gson.toJsonTree(fList1.get()));
             }
 
-//            System.out.println(ja.toString().replace("\\", "").replace("\"\"\"", ""));
+
             return gson.toJson(ja).replace("\\", "").replace("\"\"\"", "").replace("\"\"", "").replace("n ", "").replace("\"{", "{").replace("\"n}\"", "}");
             // return gson.toJson(ja).replace("\\", "").replace("\"\"\"", "").replace("\"\"", "").replace("n ", "").replace("\"{", "{").replace("\"n}\"", "}");//.replace("\"n}\"", "");
         }
