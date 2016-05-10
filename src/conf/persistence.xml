@@ -4,21 +4,18 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>com.metasearch.service.dao.AuditLog</class>
     <class>com.metasearch.service.dao.Flight</class>
-
     <class>com.metasearch.service.dao.ReservationAuditLog</class>
     <class>com.metasearch.service.dao.Role</class>
     <class>com.metasearch.service.dao.User</class>
     <class>com.metasearch.service.dao.SearchLog</class>
     <class>com.metasearch.service.dao.Reservation</class>
-
+    <class>com.metasearch.service.dao.Airline</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/ticketservice?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-
       <property name="javax.persistence.jdbc.password" value="1234"/>
-
     </properties>
   </persistence-unit>
   <persistence-unit name="PU_OPENSHIFT" transaction-type="RESOURCE_LOCAL">

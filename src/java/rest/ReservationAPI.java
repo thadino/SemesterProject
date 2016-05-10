@@ -64,7 +64,7 @@ public class ReservationAPI
     @GET
 
     @Produces(MediaType.APPLICATION_JSON)
-    @RolesAllowed("Admin")
+    //@RolesAllowed("Admin")
     @Path("/all")
     public String getAllReservations()
     {
@@ -82,7 +82,6 @@ public class ReservationAPI
     }
 
     @GET
-
     @Produces("application/json")
     public Response test() throws JSONException
     {

@@ -1,16 +1,16 @@
 'use strict';
 
 
-angular.module('myApp.view4', ['ngRoute'])
+var app = angular.module('myApp.view4', ['ngRoute']);
 
-.config(['$routeProvider', function($routeProvider) {
+app.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/view4', {
     templateUrl: 'app/view4/view4.html',
     controller: 'View4Ctrl'
   });
-}])
+}]);
 
-.controller('View4Ctrl', function($http,$scope) {
+app.controller('View4Ctrl', function($http,$scope) {
     
 
 
@@ -39,19 +39,45 @@ if($scope.isAdmin === false)
           
    $scope.getreservations = function()
    {
-//         $http.get(ip + "/" + mywebsiteName +"/api/api/reservation/all")
-//         
-//            .success(function (response, status, headers, config) {
-//                
-//           $scope.reservations = response.data;
-//   
-//            })
-//            .error(function (data, status, headers, config) {
-//                    document.getElementById(errorid).innerHTML = "Failed to retrieve all reservations.";
-//                    console.log("Returned status code : " + status);
-//             }); 
+   
+         
 
-alert("getres is run");
+             
+ $http({
+            method: 'GET',
+            url: "/SemesterSeed/api/api/reservation/all"
+          }).then(function successCallback(res) {
+    
+             $scope.reservations = res.data;
+             $scope.passengerlist = res.data.passengers;
+
+          }, function errorCallback(res, status) {
+                    document.getElementById(errorid).innerHTML = "Failed to retrieve all reservations.";
+                    console.log("Returned status code : " + status);
+          });
+
+     
+     
+   };
+   
+      $scope.getairlines = function()
+   {
+   
+         
+
+             
+ $http({
+            method: 'GET',
+            url: "/SemesterSeed/api/api/airline/all"
+          }).then(function successCallback(res) {
+    
+             $scope.airlines = res.data;
+
+          }, function errorCallback(res, status) {
+                    document.getElementById(errorid).innerHTML = "Failed to retrieve all reservations.";
+                    console.log("Returned status code : " + status);
+          });
+
      
      
    };
@@ -119,7 +145,7 @@ alert("getres is run");
      
    };
    
-            $scope.newairline = function()
+            $scope.deleteairline = function()
    {
        
         var airlineURL = document.getElementById("").innerHTML;
@@ -216,6 +242,26 @@ alert("getres is run");
    };
    
    
+   
+   $scope.getusers = function()
+   {
+       
+       $http({
+            method: 'GET',
+            url: "/SemesterSeed/api/api/reservation/all"
+          }).then(function successCallback(res) {
+    
+             $scope.reservations = res.data;
+             $scope.passengerlist = res.data.passengers;
+
+          }, function errorCallback(res, status) {
+                    document.getElementById(errorid).innerHTML = "Failed to retrieve all reservations.";
+                    console.log("Returned status code : " + status);
+          }); 
+          
+   }
+   
+   
 
    
    
@@ -263,3 +309,18 @@ alert("getres is run");
      $("#createairline").hide();
           };
           
+          
+          app.filter('myFilterView4', function () {
+
+    return function (obj) {
+        var a = {};
+        angular.forEach(obj, function (value, key) {
+            if (key !== "passengers") {
+                a[key] = value;
+            }
+        });
+        return a;
+
+
+    };
+});

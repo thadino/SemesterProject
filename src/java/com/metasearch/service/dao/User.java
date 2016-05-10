@@ -10,11 +10,17 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import security.IUser;
 
 @Entity
 @Table(name = "SystemUser")
+@NamedQueries
+({
+    @NamedQuery(name="user.findAll", query="SELECT r FROM User r")
+})
 public class User implements Serializable, IUser
 {
 

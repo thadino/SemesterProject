@@ -10,6 +10,8 @@ package rest;
  *
  * @author Dino
  */
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -29,8 +31,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.metasearch.service.dao.Flight;
+import com.metasearch.service.dao.Reservation;
 import com.metasearch.service.dao.User;
 import com.metasearch.service.dao.UsersDAO;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.ws.rs.PUT;
 import openshift_deploy.DeploymentConfiguration;
 import security.PasswordStorage;
@@ -79,17 +86,28 @@ public class UsersAPI
         }
         return Response.status(200).build();
     }
+    
+    
+    
+    Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     @GET
-    @Produces("application/json")
-    public Response flights() throws JSONException
+    @Produces(MediaType.APPLICATION_JSON)
+    //@RolesAllowed("Admin")
+    @Path("/all")
+    public String getAllUsers()
     {
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("Service name", "Metasearch flight API Flight search");
+        EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence.createEntityManagerFactory(DeploymentConfiguration.PU_NAME);
+        EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
+        try
+        {
+            Query q = em.createQuery("SELECT s from User s", User.class);
+            return gson.toJson(q.getResultList());
+        }
+        finally
+        {
 
-        String result = // "@Produces(\"application/json\")" +
-                jsonObject.toString();
-        return Response.status(200).entity(result).build();
+        }
     }
 
     @Path("{role}")
