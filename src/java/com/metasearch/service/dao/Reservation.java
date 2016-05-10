@@ -20,6 +20,7 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQueries
 ({
+    @NamedQuery(name="reservation.findAll", query="SELECT r FROM Reservation r"),
     @NamedQuery(name="reservation.findByName", query="SELECT r FROM Reservation r WHERE r.reserveeName = :name"),
     @NamedQuery(name = "reservation.findAllByEmail", query = "Select r from Reservation r where r.reserveeEmail = :email")
 })

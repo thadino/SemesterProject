@@ -1,3 +1,4 @@
+
 /**
  * 
  */
@@ -100,4 +101,6 @@ public class FlightsDAO {
         	throw new FlightNotFoundException("No flight with flight ID "+flightID+" found"); 
         }         
 	}
+
 }
+

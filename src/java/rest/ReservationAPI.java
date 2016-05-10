@@ -41,6 +41,7 @@ import com.metasearch.service.exception.InsufficientTicketsException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.security.RolesAllowed;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -61,6 +62,27 @@ public class ReservationAPI
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     @GET
+
+    @Produces(MediaType.APPLICATION_JSON)
+    @RolesAllowed("Admin")
+    @Path("/all")
+    public String getAllReservations()
+    {
+        EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence.createEntityManagerFactory(DeploymentConfiguration.PU_NAME);
+        EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
+        try
+        {
+            Query q = em.createNamedQuery("reservation.findAll", Reservation.class);
+            return gson.toJson(q.getResultList());
+        }
+        finally
+        {
+
+        }
+    }
+
+    @GET
+
     @Produces("application/json")
     public Response test() throws JSONException
     {
