@@ -5,6 +5,7 @@ package com.metasearch.service.dao;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -28,6 +29,24 @@ public class UsersDAO
     private static final EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence
             .createEntityManagerFactory(DeploymentConfiguration.PU_NAME);
 //    private static EntityManager manager = ENTITY_MANAGER_FACTORY.createEntityManager();
+
+    public static synchronized List<User> getAllUsers()
+    {
+
+        EntityManager manager = ENTITY_MANAGER_FACTORY.createEntityManager();
+        try
+        {
+            Query q = manager.createNamedQuery("user.findAll", User.class);
+            List<User> lol = new ArrayList(q.getResultList());
+            
+            return lol;
+        }
+        finally
+        {
+            manager.close();
+        }
+
+    }
 
     public static synchronized void addEntry(User user)
     {
@@ -60,8 +79,8 @@ public class UsersDAO
             System.out.println(" ----- " + email);
             String role = personJSON.getString("role");
             System.out.println(" ----- " + role);
-            
-            em.getTransaction().begin();            
+
+            em.getTransaction().begin();
             User u = em.find(User.class, userName);
             u.setEmail(email);
             u.setPassword(PasswordStorage.createHash(password));

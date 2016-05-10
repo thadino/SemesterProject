@@ -34,11 +34,12 @@ public class DeploymentConfiguration implements ServletContextListener
     /**
      *
      */
-    public static List<Airline> urls = new ArrayList();
+    public static List<Airline> urls;
 
     @Override
     public void contextInitialized(ServletContextEvent sce)
     {
+        urls = new ArrayList();
         //If we are testing, then this:
         if (sce.getServletContext().getInitParameter("testEnv") != null)
         {
