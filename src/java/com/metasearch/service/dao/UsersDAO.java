@@ -1,11 +1,16 @@
 /**
+
  *
  */
 package com.metasearch.service.dao;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+<<<<<<< HEAD
 import java.util.ArrayList;
+=======
+
+>>>>>>> develop
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -17,12 +22,15 @@ import javax.persistence.Query;
 import openshift_deploy.DeploymentConfiguration;
 
 import org.json.JSONObject;
+
 import security.PasswordStorage;
+
 
 /**
  * @author Goran
  *
  */
+
 public class UsersDAO
 {
 
@@ -133,3 +141,4 @@ public class UsersDAO
     }
 
 }
+

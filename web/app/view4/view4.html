@@ -1,4 +1,140 @@
 
 <section id="content">
-	
+    <br>
+    
+    <div id="adminmenu" >
+        
+        
+        <ul>
+            <li><a href="" onclick="activateuserview()">get, delete, edit & remove users.</a></li>
+            <li><a href="" ng-click="getreservations()" onclick="getallreservations()">get all reservations</a></li>
+            <li><a href="" ng-click="getairlines()" onclick="activateairlineview()">get, delete and remove airlines.</a></li>
+        </ul>
+        
+        
+        
+    </div>
+    
+    <div id="getallreservations">
+    
+    <ul  ng-repeat="f in reservations" >
+        
+
+
+                <li><h4 style="background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%); opacity: 0.95;" >Reserved by  -  {{f.reserveeName}}</h4></li>
+
+                <div style="background-color: #B6B6B4;"> 
+
+       
+                        <ul ng-repeat="(x, z) in f ">
+                            <li> {{x}}: {{z}} </li> 
+                            
+
+                        </ul>
+<!--                    <p>passengers:</p>
+                    <ul ng-repeat="(j,k) in reservations.passengers"> 
+                        <li>{{j}}  {{k}}</li>
+                    </ul> -->
+</div>  
+
+                        <br>
+                        <br>
+                    
+    
+</ul>
+    <br>
+    <a href="" onclick="resetviews()">Back</a>
+    
+    </div>
+    
+  
+
+    
+    <div id="getallusers">
+
+        
+        
+       
+
+      
+        
+            <div id="edituser">
+        
+        
+        
+    </div>
+        
+        <div id="createuser">
+            
+            
+        </div>
+       
+       <a href="" onclick="resetviews()">Back</a>
+       
+       
+       
+        
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    <div id="getallairlines">
+        
+        
+            <ul  ng-repeat="f in airlines" >
+
+
+
+       
+                        <ul ng-repeat="(x, z) in f ">
+                            <li> {{x}}: {{z}} </li> 
+                            
+                        
+                            
+
+                        </ul>
+
+                <li><input type="button" value="Delete" ng-click="deleteairline(f.id)" ></li>
+
+                <li><br>
+                    <br></li>
+                
+                
+               </ul>
+                
+ 
+                    
+        
+    <div id="createairline">
+        
+    </div> 
+        
+        
+        <a href="" onclick="resetviews()">Back</a>
+        
+    </div>
+    
+    
+    
+    <div id="error_view4"></div>
+    
+    <script>
+        
+        resetviews();
+        
+    </script>
+    
 			</section>
+
+
+
+
+    

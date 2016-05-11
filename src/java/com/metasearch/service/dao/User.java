@@ -10,13 +10,24 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+<<<<<<< HEAD
+=======
+import javax.persistence.NamedQueries;
+>>>>>>> develop
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import security.IUser;
 
 @Entity
 @Table(name = "SystemUser")
+<<<<<<< HEAD
 @NamedQuery(name="user.findAll", query="SELECT u FROM User u")
+=======
+@NamedQueries
+({
+    @NamedQuery(name="user.findAll", query="SELECT r FROM User r")
+})
+>>>>>>> develop
 public class User implements Serializable, IUser
 {
 

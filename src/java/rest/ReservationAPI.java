@@ -9,6 +9,7 @@ package rest;
  *
  * @author Dino
  */
+
 import com.google.gson.*;
 
 import java.io.BufferedReader;
@@ -61,8 +62,9 @@ public class ReservationAPI
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     @GET
+
     @Produces(MediaType.APPLICATION_JSON)
-    @RolesAllowed("Admin")
+    //@RolesAllowed("Admin")
     @Path("/all")
     public String getAllReservations()
     {
@@ -239,5 +241,6 @@ public class ReservationAPI
                 jsonObject.toString();
         return Response.status(200).entity(result).build();
     }
+
 
 }

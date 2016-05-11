@@ -9,14 +9,17 @@ package rest;
  *
  * @author Dino
  */
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
+
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+
 import java.util.Date;
 import java.util.List;
 
@@ -29,21 +32,34 @@ import javax.ws.rs.core.Response;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+
+
+
+import com.metasearch.service.dao.Flight;
+import com.metasearch.service.dao.FlightsDAO;
+
 import com.metasearch.service.dao.SearchLogDAO;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import openshift_deploy.DeploymentConfiguration;
+
 
 @Path("/api/flights")
 public class FlightsAPI
 {
 
+
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     ExecutorService executor = Executors.newFixedThreadPool(4);
+
 
 
     @GET
@@ -70,11 +86,13 @@ public class FlightsAPI
         try
         {
             String b = "";
+
             for (int i = 0; i < DeploymentConfiguration.urls.size(); i++)
             {
                 b = "";
                 b = DeploymentConfiguration.urls.get(i).getUrl() + from + "/" + date + "/" + tickets;
                 System.out.println("Her er urlToPing: "+b);
+
                 Callable task = new flightOfferRequester(b);
 
                 fList.add(executor.submit(task));
@@ -86,7 +104,6 @@ public class FlightsAPI
             {
                 ja.add(gson.toJsonTree(fList1.get()));
             }
-
 
             return gson.toJson(ja).replace("\\", "").replace("\"\"\"", "").replace("\"\"", "").replace("n ", "").replace("\"{", "{").replace("\"n}\"", "}");//.replace("\"n}\"", "");
         }
@@ -161,16 +178,19 @@ public class FlightsAPI
             @PathParam("tickets") int tickets) throws JSONException
     {
 
+
         List<Future<String>> fList = new ArrayList();
         SearchLogDAO.addEntry(from, to, date, tickets);
 //        AuditLogDAO.addEntry(from, null, date, tickets);
         try
         {
             String b = "";
+
             for (int i = 0; i < DeploymentConfiguration.urls.size(); i++)
             {
                 b = "";
                 b = DeploymentConfiguration.urls.get(i).getUrl() + from + "/" + to + "/" + date + "/" + tickets;
+
                 System.out.println(b);
                 Callable task = new flightOfferRequester(b);
 
@@ -186,12 +206,14 @@ public class FlightsAPI
             }
 
 
+
             return gson.toJson(ja).replace("\\", "").replace("\"\"\"", "").replace("\"\"", "").replace("n ", "").replace("\"{", "{").replace("\"n}\"", "}");
             // return gson.toJson(ja).replace("\\", "").replace("\"\"\"", "").replace("\"\"", "").replace("n ", "").replace("\"{", "{").replace("\"n}\"", "}");//.replace("\"n}\"", "");
         }
         catch (ExecutionException e)
         {
             throw new NullPointerException();
+
 
         }
         catch (InterruptedException ex)
@@ -200,5 +222,6 @@ public class FlightsAPI
         }
 
     }
+
 
 }
