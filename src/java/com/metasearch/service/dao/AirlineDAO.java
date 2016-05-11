@@ -34,10 +34,12 @@ public class AirlineDAO
 
             urls = new ArrayList();
             Query q = em.createNamedQuery("airline.findAll", Airline.class);
+            System.out.println("res size: " + q.getResultList().size());
             for (int y = 0; y < q.getResultList().size(); y++)
             {
                 Airline bob = (Airline) q.getResultList().get(y);
                 urls.add(bob);
+                
                 System.out.println("Følgende URL lagt i liste: " + urls.get(y).getUrl());
             }
             urls.add(a);

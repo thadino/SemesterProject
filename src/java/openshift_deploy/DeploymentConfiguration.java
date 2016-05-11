@@ -91,8 +91,8 @@ public class DeploymentConfiguration implements ServletContextListener
             Reservation r3 = new Reservation("admin@admin.dk", "admin", "12323445678", 1, "[{'firstName':'admin','lastName':'adminsen'}]", "CPH-STN-075");
             Reservation r4 = new Reservation("admin@admin.dk", "admin", "12345234678", 2, "[{'firstName':'admin','lastName':'adminsen'},{'firstName':'user','lastName':'userino'}]", "CPH-STN-020");
 
-            Reservation r5 = new Reservation("user_admin@user_admin.dk", "User", "12345678", 1, "[{'firstName':'user_admin','lastName':'user_adminsen'}]", "CPH-STN-075");
-            Reservation r6 = new Reservation("user_admin@user_admin.dk", "User", "12345678", 1, "[{'firstName':'user_admin','lastName':'user_adminsen'},{'firstName':'user','lastName':'bubber'}]", "CPH-STN-254");
+            Reservation r5 = new Reservation("user_admin@user_admin.dk", "user_admin", "12345678", 1, "[{'firstName':'user_admin','lastName':'user_adminsen'}]", "CPH-STN-075");
+            Reservation r6 = new Reservation("user_admin@user_admin.dk", "user_admin", "12345678", 1, "[{'firstName':'user_admin','lastName':'user_adminsen'},{'firstName':'user','lastName':'bubber'}]", "CPH-STN-254");
 
 
             Airline al1 = new Airline("Group6airlines1", "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flightinfo/");
