@@ -108,7 +108,7 @@ public class UsersAPI
         return Response.status(200).build();
     }
 
-    @Path("{role}")
+    @Path("/{role}")
     @GET
     @Produces("application/json")
     public Response getByRole(@PathParam("role") String role)
@@ -160,7 +160,7 @@ public class UsersAPI
         }
     }
 
-    @Path("{user}")
+    @Path("/{user}")
     @DELETE
     @Produces("application/json")
     public Response deleteUser(@PathParam("user") String user) throws JSONException
@@ -169,7 +169,7 @@ public class UsersAPI
         return Response.status(200).build();
     }
 
-    @Path("new")
+    @Path("/new")
     @POST
     @Produces("application/json")
     @Consumes(MediaType.APPLICATION_JSON)

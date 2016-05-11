@@ -87,14 +87,20 @@ if($scope.isAdmin === false)
       $scope.newuser = function()
    {
        
-        var fullname = document.getElementById("").innerHTML;
-        var email = document.getElementById("").innerHTML;
-        var password = document.getElementById("").innerHTML;
-        
-        var JsonToSend = "";
-
+        var fullname = document.getElementById("newusername").value;
+        var email = document.getElementById("newusermail").value;
+        var password = document.getElementById("newuserpassword").value;
+        var role = $('#roledropdown').val();
+            var JsonToSend = "{" +
+    '"userName" : "'+ fullname +'",' +
+    '"passWord" : "' + password + '",' +
+    '"email" : "' + email + '",' +
+    '"role" : "' + role + '"}';
+    
+    console.log(JsonToSend);
+ 
                    $.ajax({
-                    url: ip + "/"+ mywebsiteName +"/api/api/reservation/" + email + "/",
+                    url: "http://" + ip + "/"+ mywebsiteName +"/api/api/user/new/",
                     type: "POST",
                     data: JsonToSend,
                     contentType: "application/json",
@@ -102,7 +108,7 @@ if($scope.isAdmin === false)
                     success: function (data, status) {
                        //  success code
                        
-                       document.getElementById("").innerHTML = "Successfully created a new user.";
+                       document.getElementById(errorid).innerHTML = "Successfully created a new user.";
                        
                     },
                     error: function(data, status){
@@ -116,45 +122,54 @@ if($scope.isAdmin === false)
      
    };
    
-         $scope.newairline = function()
+   
+   
+            $scope.newairline = function()
    {
        
-        var airlineURL = document.getElementById("").innerHTML;
         
-        var JsonToSend = "";
+        
+        var NAME = document.getElementById("newairlinename").value;
+        var URLLINK = document.getElementById("newairlinelink").value;
+        
+        var JsonToSend = "{" +
+    '"name" : "'+ NAME +'",' +
+    '"url" : "' + URLLINK + '"}';
+    
+    console.log(JsonToSend);
 
-                   $.ajax({
-                    url: ip + "/"+ mywebsiteName +"/api/api/airline/" + airlineURL + "/",
-                    type: "POST",
-                    data: JsonToSend,
-                    contentType: "application/json",
-                    dataType: "json",
-                    success: function (data, status) {
-                       //  success code
-                       
-                       document.getElementById("").innerHTML = "Successfully created a new airline.";
-                       
-                    },
-                    error: function(data, status){
-                   //  error code
+                                 $.ajax({
+                                        url: "http://" + ip + "/"+ mywebsiteName +"/api/api/airline/",
+                                                type: "POST",
+                                                data: JsonToSend,
+                                                contentType: "application/json",
+                                                dataType: "json",
+                                                success: function (data, status) {
+                                                //  success code
+                       document.getElementById(errorid).innerHTML = "Successfully created a new airline.";
+                        $scope.getairlines();
+                                                },
+                                                error: function(data, status){
+                                                //  error code
                     document.getElementById(errorid).innerHTML = "Failed to created a new airline.";
                     console.log("Returned status code : " + status);
-                   
-                    }
-                });
+                                                }
+                                    });
+
+
      
      
    };
    
-            $scope.deleteairline = function()
+            $scope.deleteairline = function(airlineURL)
    {
        
-        var airlineURL = document.getElementById("").innerHTML;
-        
+
+    
         var JsonToSend = "";
 
                    $.ajax({
-                    url: ip + "/"+ mywebsiteName +"/api/api/airline/" + airlineURL + "/",
+                    url: "http://" + ip + "/"+ mywebsiteName +"/api/api/airline/" + airlineURL + "/",
                     type: "DELETE",
                     data: JsonToSend,
                     contentType: "application/json",
@@ -162,7 +177,8 @@ if($scope.isAdmin === false)
                     success: function (data, status) {
                        //  success code
                        
-                       document.getElementById("").innerHTML = "Successfully deleted a new airline.";
+                       document.getElementById(errorid).innerHTML = "Successfully deleted a new airline.";
+                       $scope.getairlines();
                        
                     },
                     error: function(data, status){
@@ -178,16 +194,15 @@ if($scope.isAdmin === false)
    
    
    
-         $scope.deleteuser = function()
+         $scope.deleteuser = function(id)
    {
        
-        var fullname = document.getElementById("").innerHTML;
-        var email = document.getElementById("").innerHTML;
-        var password = document.getElementById("").innerHTML;
 
-
+              var JsonToSend = "";
+ 
+ console.log("http://" + ip + "/"+ mywebsiteName +"/api/api/user/" + id + "/");
                    $.ajax({
-                    url: ip + "/"+ mywebsiteName +"/api/api/reservation/" + email + "/",
+                    url: "http://" + ip + "/"+ mywebsiteName +"/api/api/user/" + id + "/",
                     type: "DELETE",
                     data: JsonToSend,
                     contentType: "application/json",
@@ -195,7 +210,7 @@ if($scope.isAdmin === false)
                     success: function (data, status) {
                        //  success code
                        
-                       document.getElementById("").innerHTML = "Successfully edited this user.";
+                       document.getElementById(errorid).innerHTML = "Successfully deleted this user.";
                        
                     },
                     error: function(data, status){
@@ -209,18 +224,44 @@ if($scope.isAdmin === false)
      
    };
    
+   var usertoedit = "";
+   var usertoeditmail = "";
+   
+   $scope.edituserview = function(name, mail, role)
+   {
+       usertoedit = name; 
+       usertoeditmail = mail;
+        document.getElementById("editusername").value = name;
+        document.getElementById("editusermail").value = mail;
+        
+       $("#edituser").show();
+       $("#getallusers").hide();
+   };
+   
+   
+
+   
    
             $scope.edituser = function()
    {
        
-        var fullname = document.getElementById("").innerHTML;
-        var email = document.getElementById("").innerHTML;
-        var password = document.getElementById("").innerHTML;
+        var fullname = document.getElementById("editusername").value;
+        var email = document.getElementById("editusermail").value;
+        var password = document.getElementById("edituserpass").value;
+        var role = $('#edituserrole').val();
         
-        var JsonToSend = "";
+
+        
+        
+        
+                  var JsonToSend = "{" +
+    '"userName" : "'+ fullname +'",' +
+    '"passWord" : "' + password + '",' +
+    '"email" : "' + email + '",' +
+    '"role" : "' + role + '"}';
 
                    $.ajax({
-                    url: ip + "/"+ mywebsiteName +"/api/api/reservation/" + email + "/",
+                    url: "http://" + ip + "/"+ mywebsiteName +"/api/api/user/",
                     type: "PUT",
                     data: JsonToSend,
                     contentType: "application/json",
@@ -228,7 +269,7 @@ if($scope.isAdmin === false)
                     success: function (data, status) {
                        //  success code
                        
-                       document.getElementById("").innerHTML = "Successfully edited this user.";
+                       document.getElementById(errorid).innerHTML = "Successfully edited this user.";
                        
                     },
                     error: function(data, status){
@@ -238,6 +279,7 @@ if($scope.isAdmin === false)
                    
                     }
                 });
+
      
      
    };
@@ -246,21 +288,19 @@ if($scope.isAdmin === false)
    
    $scope.getusers = function()
    {
-       
        $http({
             method: 'GET',
-            url: "/SemesterSeed/api/api/reservation/all"
+            url: "/SemesterSeed/api/api/user/all"
           }).then(function successCallback(res) {
     
-             $scope.reservations = res.data;
-             $scope.passengerlist = res.data.passengers;
+             $scope.userscopedata = res.data;
 
           }, function errorCallback(res, status) {
                     document.getElementById(errorid).innerHTML = "Failed to retrieve all reservations.";
                     console.log("Returned status code : " + status);
           }); 
           
-   }
+   };
    
    
 
@@ -301,13 +341,16 @@ if($scope.isAdmin === false)
           
     function resetviews ()
           {
-     $("#error_view4").innerHTML = ""; // if you reset views there should be no error message shown.
+     document.getElementById("error_view4").innerHTML = "";
+     document.getElementById("errorid").innerHTML = "";
      $("#adminmenu").show();           
      $("#getallreservations").hide();
      $("#getallusers").hide();
      $("#createuser").hide();
      $("#getallairlines").hide();
      $("#createairline").hide();
+     $("#edituser").hide();
+     
           };
           
           

@@ -1,4 +1,6 @@
 
+
+
 <section id="content">
     <br>
     
@@ -6,9 +8,9 @@
         
         
         <ul>
-            <li><a href="" onclick="activateuserview()">get, delete, edit & remove users.</a></li>
+            <li><a href="" ng-click="getusers()" onclick="activateuserview()">get, delete, edit & remove users.</a></li>
             <li><a href="" ng-click="getreservations()" onclick="getallreservations()">get all reservations</a></li>
-            <li><a href="" ng-click="getairlines()" onclick="activateairlineview()">get, delete and remove airlines.</a></li>
+            <li><a href="" ng-click="getairlines()" onclick="activateairlineview()">get, delete and add new airlines.</a></li>
         </ul>
         
         
@@ -52,22 +54,54 @@
     
     <div id="getallusers">
 
+        <h3>Create new User</h3> 
         
+        
+        
+        User Name:  <input id="newusername" placeholder="NewAirLineNameHere" type="text" style="border: 1px solid; margin-left:9px; width: 200px;"><br>
+        User Mail:   <input id="newusermail" type="email" placeholder="mymail@gmail.no"  style="border: 1px solid; margin-left:19px; width: 200px;"><br>
+        User Pass:   <input id="newuserpassword" type="password" placeholder="password here"  style="border: 1px solid; margin-left:13px; width: 200px;"> <br>
+        User Role: <select id="roledropdown">
+  <option value="User">User</option>
+  <option value="Admin">Admin</option>
+</select>
+        <br>
+        
+        <input type="button" value="Create User" ng-click="newuser()">
+        
+        <div id="createuserid"></div>
+        
+        <br><br><br>
+        
+        
+        <h3>All Airlines</h3>
+            <ul  ng-repeat="y in userscopedata" >
+
+    
+       
+                        <ul ng-repeat="(x, z) in y ">
+                            <li> {{x}}: {{z}} </li> 
+                            
+                        
+                            
+
+                        </ul>
+
+                <li><input type="button" value="Delete" ng-click="deleteuser(y.userName)" ></li>
+                <li><input type="button" value="Edit" ng-click="edituserview(y.userName, y.email)" ></li>
+
+                <li><br>
+                    <br></li>
+                
+                
+               </ul>
         
        
 
       
         
-            <div id="edituser">
-        
-        
-        
-    </div>
-        
-        <div id="createuser">
-            
-            
-        </div>
+
+
        
        <a href="" onclick="resetviews()">Back</a>
        
@@ -76,7 +110,20 @@
         
     </div>
     
-    
+                <div id="edituser">
+        
+                    User Name:  <input id="editusername" placeholder="NewAirLineNameHere" type="text" disabled="" style="border: 1px solid; margin-left:9px; width: 200px;"> (You cannot rename yourself using our shitty database design)<br>
+        User Mail:   <input id="editusermail" type="email" placeholder="mymail@gmail.no"  style="border: 1px solid; margin-left:19px; width: 200px;"><br>
+        User Pass:   <input id="edituserpass" type="password" placeholder="password here"  style="border: 1px solid; margin-left:13px; width: 200px;"> <br>
+        User Role: <select id="edituserrole">
+  <option value="User">User</option>
+  <option value="Admin">Admin</option>
+</select>
+        
+        <input type="button" value="Edit" ng-click="edituser()"><br>
+        <a href="" onclick="resetviews()">Back</a>
+    </div>
+        
     
     
     
@@ -87,8 +134,22 @@
 
     
     <div id="getallairlines">
+        <h3>Create new airline</h3> 
         
         
+        
+        Airline Name:  <input id="newairlinename" placeholder="NewAirLineNameHere" type="text" style="border: 1px solid; margin-left:10px; width: 500px;"><br>
+        Airline URL:   <input id="newairlinelink" type="text" placeholder="http://dummyairline6v2-pagh.rhcloud.com/dummyAirline6/api/flightinfo/"  style="border: 1px solid; margin-left:19px; width: 500px;">
+        <br>
+        
+        <input type="button" value="Create Airline" ng-click="newairline()">
+        
+        <div id="createairlineerrorid"></div>
+        
+        <br><br><br>
+        
+        
+        <h3>All Airlines</h3>
             <ul  ng-repeat="f in airlines" >
 
 
@@ -125,6 +186,7 @@
     
     
     <div id="error_view4"></div>
+    <div id="errorid"></div>
     
     <script>
         
@@ -134,7 +196,3 @@
     
 			</section>
 
-
-
-
-    
