@@ -64,7 +64,7 @@ public class ReservationAPI
     @GET
 
     @Produces(MediaType.APPLICATION_JSON)
-    //@RolesAllowed("Admin")
+    @RolesAllowed("Admin")
     @Path("/all")
     public String getAllReservations()
     {

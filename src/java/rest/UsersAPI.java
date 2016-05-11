@@ -12,11 +12,10 @@ package rest;
  */
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-<<<<<<< HEAD
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-=======
->>>>>>> develop
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -107,29 +106,6 @@ public class UsersAPI
             return Response.status(400).entity(error.toString()).build();
         }
         return Response.status(200).build();
-    }
-    
-    
-    
-    Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    //@RolesAllowed("Admin")
-    @Path("/all")
-    public String getAllUsers()
-    {
-        EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence.createEntityManagerFactory(DeploymentConfiguration.PU_NAME);
-        EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
-        try
-        {
-            Query q = em.createQuery("SELECT s from User s", User.class);
-            return gson.toJson(q.getResultList());
-        }
-        finally
-        {
-
-        }
     }
 
     @Path("{role}")

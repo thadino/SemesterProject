@@ -31,7 +31,7 @@ public class AirlineDAO
             em.getTransaction().begin();
             em.persist(a);
             em.getTransaction().commit();
-<<<<<<< HEAD
+
             urls = new ArrayList();
             Query q = em.createNamedQuery("airline.findAll", Airline.class);
             for (int y = 0; y < q.getResultList().size(); y++)
@@ -41,10 +41,7 @@ public class AirlineDAO
                 System.out.println("Følgende URL lagt i liste: " + urls.get(y).getUrl());
             }
             urls.add(a);
-=======
 
-            DeploymentConfiguration.urls.add(a);
->>>>>>> develop
         }
         finally
         {
@@ -68,7 +65,7 @@ public class AirlineDAO
             DeploymentConfiguration.urls.remove(a);
             System.out.println("HER ER URLS::::::::::: " + urls.toString());
             em.getTransaction().commit();
-<<<<<<< HEAD
+
 
             urls = new ArrayList();
             Query q = em.createNamedQuery("airline.findAll", Airline.class);
@@ -80,9 +77,7 @@ public class AirlineDAO
                 System.out.println("Følgende URL lagt i liste: " + urls.get(y).getUrl());
             }
 
-=======
-            DeploymentConfiguration.urls.remove(a);
->>>>>>> develop
+
         }
         finally
         {

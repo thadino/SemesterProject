@@ -6,11 +6,11 @@ package com.metasearch.service.dao;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-<<<<<<< HEAD
-import java.util.ArrayList;
-=======
 
->>>>>>> develop
+import java.util.ArrayList;
+
+
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
