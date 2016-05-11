@@ -9,6 +9,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.metasearch.service.dao.Airline;
 import com.metasearch.service.dao.AirlineDAO;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -30,14 +34,18 @@ public class AirlineAPI
 {
 
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence.createEntityManagerFactory(DeploymentConfiguration.PU_NAME);
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/all")
     public String getAllAirlines()
     {
-
-        return gson.toJson(DeploymentConfiguration.urls);
+        EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
+        Query q = em.createNamedQuery("airline.findAll", Airline.class);
+        DeploymentConfiguration.urls = q.getResultList();
+        return gson.toJson(q.getResultList());
+        
     }
 
     @POST

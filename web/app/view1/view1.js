@@ -22,8 +22,11 @@ app.controller('View1Ctrl', function ($scope, $http)
     var mywebsiteName = "SemesterSeed";
     
     
+<<<<<<< HEAD
+=======
     $("#mylist").hide();
 
+>>>>>>> develop
 
     
     
@@ -135,12 +138,15 @@ var myString = "";
     
 });
 
+<<<<<<< HEAD
+=======
 
 
 
 
 
 
+>>>>>>> develop
 var JSONtoSend = "";
  JSONtoSend = '{ "url" : "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/reservation/",'+
  '"flightID":"'+ FlightID + '",' +
@@ -336,8 +342,11 @@ var json = JSON.stringify(send);
 
 
 
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> develop
 app.filter('myFilter', function () {
 
     return function (obj) {
@@ -372,7 +381,10 @@ document.getElementById("errormessage_view1").innerHTML = "";
     while (container.hasChildNodes()) {
         container.removeChild(container.lastChild);
     }
+<<<<<<< HEAD
+=======
     
+>>>>>>> develop
     for (var i = 0; i < number; i++) {
         container.appendChild(document.createTextNode("Passenger"));
         var input = document.createElement("input");
@@ -382,7 +394,11 @@ document.getElementById("errormessage_view1").innerHTML = "";
         input.style = "margin-left:15px;";
         input.className = "myawesomefuckingclass";
         
+<<<<<<< HEAD
+                container.appendChild(input);
+=======
         container.appendChild(input);
+>>>>>>> develop
         
         input2.type = "text";
         input2.placeholder = "lastname";

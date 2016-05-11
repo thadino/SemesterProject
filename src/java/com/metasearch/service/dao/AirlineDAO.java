@@ -31,8 +31,20 @@ public class AirlineDAO
             em.getTransaction().begin();
             em.persist(a);
             em.getTransaction().commit();
+<<<<<<< HEAD
+            urls = new ArrayList();
+            Query q = em.createNamedQuery("airline.findAll", Airline.class);
+            for (int y = 0; y < q.getResultList().size(); y++)
+            {
+                Airline bob = (Airline) q.getResultList().get(y);
+                urls.add(bob);
+                System.out.println("Følgende URL lagt i liste: " + urls.get(y).getUrl());
+            }
+            urls.add(a);
+=======
 
             DeploymentConfiguration.urls.add(a);
+>>>>>>> develop
         }
         finally
         {
@@ -40,7 +52,7 @@ public class AirlineDAO
         }
 
     }
-    
+
     public static synchronized void deleteAirline(String id) throws Exception
     {
         EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
@@ -50,12 +62,27 @@ public class AirlineDAO
 //            Query q = em.createNamedQuery("airline.findByURL");
 //            q.setParameter("url", url);
             Airline a = (Airline) em.find(Airline.class, Long.parseLong(id));
-            
+            urls = new ArrayList();
 //            Airline a = (Airline) q.getSingleResult();
-            
             em.remove(a);
-            em.getTransaction().commit();
             DeploymentConfiguration.urls.remove(a);
+            System.out.println("HER ER URLS::::::::::: " + urls.toString());
+            em.getTransaction().commit();
+<<<<<<< HEAD
+
+            urls = new ArrayList();
+            Query q = em.createNamedQuery("airline.findAll", Airline.class);
+            for (int y = 0; y < q.getResultList().size(); y++)
+            {
+
+                Airline bob = (Airline) q.getResultList().get(y);
+                urls.add(bob);
+                System.out.println("Følgende URL lagt i liste: " + urls.get(y).getUrl());
+            }
+
+=======
+            DeploymentConfiguration.urls.remove(a);
+>>>>>>> develop
         }
         finally
         {

@@ -12,6 +12,11 @@ package rest;
  */
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+<<<<<<< HEAD
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+=======
+>>>>>>> develop
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -45,6 +50,23 @@ import security.PasswordStorage;
 @Path("/api/user")
 public class UsersAPI
 {
+    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/all")
+    public String getAllUsers()
+    {
+        JsonArray ja = new JsonArray();
+        for(int i = 0; i < UsersDAO.getAllUsers().size(); i++)
+        {
+            JsonObject jo = new JsonObject();
+            jo.addProperty("userName", UsersDAO.getAllUsers().get(i).getUserName());
+            jo.addProperty("email", UsersDAO.getAllUsers().get(i).getEmail());
+            ja.add(jo);            
+        }
+        
+        return gson.toJson(ja);
+    }
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
@@ -113,7 +135,7 @@ public class UsersAPI
     @Path("{role}")
     @GET
     @Produces("application/json")
-    public Response fromDateTickets(@PathParam("role") String role)
+    public Response getByRole(@PathParam("role") String role)
     {
         try
         {
