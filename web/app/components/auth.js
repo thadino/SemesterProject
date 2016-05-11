@@ -171,6 +171,7 @@ function initializeFromToken($scope, token, jwtHelper) {
   $scope.isAuthenticated = true;
   var tokenPayload = jwtHelper.decodeToken(token);
   $scope.username = tokenPayload.username;
+  alert("HER ER USERNAME: " + $scope.username)
   $scope.isAdmin = false;
   $scope.isUser = false;
   tokenPayload.roles.forEach(function (role) {
