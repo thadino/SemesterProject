@@ -94,16 +94,16 @@ public class ReservationAPI
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/{reserveeEmail}")
-    public String getAllYourReservations(@PathParam("reserveeEmail") String email)
+    @Path("/{reserveeName}")
+    public String getAllYourReservations(@PathParam("reserveeName") String userName)
     {
         EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence.createEntityManagerFactory(DeploymentConfiguration.PU_NAME);
         EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
         try
         {
-            Query q = em.createNamedQuery("reservation.findAllByEmail", Reservation.class);
-            q.setParameter("email", email);
-            System.out.println("her er res: " + q.getResultList().get(0));;
+            Query q = em.createNamedQuery("reservation.findByName", Reservation.class);
+            q.setParameter("name", userName);
+            System.out.println("her er res: " + q.getResultList().get(0));
             return (gson.toJson(q.getResultList())).replace("\\u0027", "");
 
         }

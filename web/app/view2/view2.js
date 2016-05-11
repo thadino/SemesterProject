@@ -20,15 +20,11 @@ angular.module('myApp.view2', ['ngRoute'])
             $scope.error = res.status + ": "+ res.data.statusText;
           });
           
-                    
-          $scope.searchmail = function()
-          {
-              
-              var mail = $("#searchmail").val();
+    
               
                  $http({
             method: 'GET',
-            url: "/SemesterSeed/api/api/reservation/" + mail
+            url: "/SemesterSeed/api/api/reservation/" + $scope.username,
           }).then(function successCallback(res) {
     
              $scope.mydata = res.data;
@@ -38,8 +34,6 @@ angular.module('myApp.view2', ['ngRoute'])
           });
           
 
-
-};
 
 
         });

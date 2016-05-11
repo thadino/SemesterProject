@@ -107,61 +107,7 @@
                                         '"passengers" :[' +
                                         myString +
                                         ']}';
-// var JSONtoSend = "";
-// JSONtoSend = '{ "url" : "'+ AirlineURL +'/",'+
-// '"flightID":"'+ FlightID + '",' +
-// '"numberOfSeats":"'+numberofseats+'",' +
-// '"reserveeName":"'+reserveeName+'",' +
-// '"reserveePhone":"'+reserveePhone+'",' +
-// '"reserveeEmail":"'+reserveeEmail+'",' +
-// '"passengers" :[' +
-// myString +
-// ']}'; backup of this shit..
 
-//  '{"firstName":"'+FlightID+'","lastName":"'+FlightID+'"},' +
-// '{"firstName":"'+FlightID+'","lastName":"'+FlightID+'"},' +
-//  '{"firstName":"'+FlightID+'","lastName":"'+FlightID+'"}' +
-
-                                        var send = {
-                                        "url" : "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/reservation/",
-                                                "flightID":"CPH-STN-020",
-                                                "numberOfSeats":3,
-                                                "reserveeName":"johny",
-                                                "reserveePhone":"12345678",
-                                                "reserveeEmail":"peter@peter.com",
-                                                "passengers":[
-                                                {
-                                                "firstName":"Petera",
-                                                        "lastName":"Peterson"
-                                                },
-                                                {
-                                                "firstName":"Jane",
-                                                        "lastName":"Peterson"
-                                                },
-                                                {
-                                                "firstName":"Peter",
-                                                        "lastName":"Hansen"
-                                                }
-                                                ]
-                                                };
-//$.post("/"+ mywebsiteName +"/api/api/reservation/",
-//        send,
-//        function(data,status){
-//            alert("Data: " + data + "\nStatus: " + status);
-//        });
-
-
-
-                                        var json = JSON.stringify(send);
-//        $.ajax({
-//      type: "POST",
-//      url: "/"+ mywebsiteName +"/api/api/reservation/",
-//      data: json,
-//      contentType: "application/json",
-//      success: function(data, status) {
-//        alert("Data: " + data + "\nStatus: " + status);
-//      }
-//    });
 
                                         $.ajax({
                                         url: "/" + mywebsiteName + "/api/api/reservation/" + FlightID + "/",
@@ -234,15 +180,18 @@
                                 }
                                 else
                                 {
-                                alert("you need to give a start destination, depature date and number of tickets as a minimum");
+                                $("#resulterrormessage").innerHTML = "you need to give a start destination, depature date and number of tickets as a minimum";
                                 }
 
                                 };
                                 $scope.search = function ()
                                 {
+                                     $("#resulterrormessage").innerHTML = "";
                                 $scope.getfromapi();
+                               
                                         $("#result").show();
                                         $("#bookingPage").hide();
+                                        
                                 };
 //    $scope.book = function (fID) {
 //
