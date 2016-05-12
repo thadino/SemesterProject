@@ -80,12 +80,16 @@ public class FlightsAPI
     public String fromDateTickets(@PathParam("from") String from,
             @PathParam("date") String date, @PathParam("tickets") int tickets)
     {
+        System.out.println("i APIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII");
         List<Future<String>> fList = new ArrayList();
         SearchLogDAO.addEntry(from, null, date, tickets);
 //        AuditLogDAO.addEntry(from, null, date, tickets);
+        
+        UrlRefresher.refreshURLs();
         try
         {
             String b = "";
+            System.out.println("her er size!!!!!!!!!!!!!!!!!!!!!! " + DeploymentConfiguration.urls.size());
 
             for (int i = 0; i < DeploymentConfiguration.urls.size(); i++)
             {
@@ -182,6 +186,7 @@ public class FlightsAPI
         List<Future<String>> fList = new ArrayList();
         SearchLogDAO.addEntry(from, to, date, tickets);
 //        AuditLogDAO.addEntry(from, null, date, tickets);
+        UrlRefresher.refreshURLs();
         try
         {
             String b = "";
