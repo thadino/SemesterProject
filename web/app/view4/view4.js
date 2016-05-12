@@ -49,7 +49,7 @@ app.controller('View4Ctrl', function ($http, $scope) {
             url: "/SemesterSeed/api/api/reservation/all"
         }).then(function successCallback(res) {
 
-            $scope.reservations = res.data[0];
+            $scope.reservations = res.data;
             console.log($scope.reservations);
             $scope.passengerlist = res.data.passengers;
 

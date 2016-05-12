@@ -22,41 +22,7 @@
         <a href="" onclick="resetviews()">Back</a> <br><br>
         <div id="getallreservationsID"></div>
             
-        <ul ng-repeat="flight in reservations" >
-
-
-
-        <li>
-            <h4 style="background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%); opacity: 0.95;" >FlightInfo for Flight  -  {{flight.reserveeName}}</h4>
-        </li>
-
-        <div style="background-color: #9ed1ca;"> 
-            
-            <ul>
-                <li ng-repeat="(key, value) in flight| myFilter2"> 
-                    <span>{{key}}: {{value}}</span>
-                </li>
-                <br>
-                <p>Passengers: </p>
-                <li ng-repeat="g in flight.passengers"> 
-                    <span ng-repeat="(a, b) in g"><b>{{a}}:</b> {{b}} </span><br>
-                </li>
-                
-            </ul>
-
-        </div>  
-
-        <br>
-        <br>
-
-
-    </ul>
-        
-        
-        
-        
-        
-<!--        <ul  ng-repeat="f in reservations" >
+        <ul  ng-repeat="f in reservations" >
 
 
     
@@ -68,6 +34,7 @@
                 <ul ng-repeat="(x, z) in f | myFilterView4">
                     <li> {{x}}: {{z}} </li> 
                 </ul>
+                <br>
                 <p>Passengers: </p>
                 <li ng-repeat="g in f.passengers"> 
                     <span ng-repeat="(a, b) in g"><b>{{a}}:</b> {{b}} </span><br>
@@ -78,7 +45,7 @@
 
 
 <br>
-        </ul>-->
+        </ul>
             <br>
             <br>
         <a href="" onclick="resetviews()">Back</a>
