@@ -89,7 +89,6 @@ angular.module('myApp.security', [])
                         document.getElementById('errormessage').innerHTML = "";
                       $window.sessionStorage.id_token = data.token;
                       initializeFromToken($scope, $window.sessionStorage.id_token, jwtHelper);
-                      alert($scope.username);
                     })
                     .error(function (data) {
                         

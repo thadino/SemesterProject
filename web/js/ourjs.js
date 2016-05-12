@@ -5,6 +5,9 @@ function setactive(id)
     var x = document.getElementsByClassName("view")[id - 1];
 
         x.id = "menu_active"; 
+        
+        resetviews();
+        
 }
 
 function cleanlinks()

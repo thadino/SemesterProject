@@ -3,196 +3,208 @@
 
 <section id="content">
     <br>
-    
+
     <div id="adminmenu" >
-        
-        
+
+
         <ul>
             <li><a href="" ng-click="getusers()" onclick="activateuserview()">get, delete, edit & remove users.</a></li>
             <li><a href="" ng-click="getreservations()" onclick="getallreservations()">get all reservations</a></li>
             <li><a href="" ng-click="getairlines()" onclick="activateairlineview()">get, delete and add new airlines.</a></li>
         </ul>
-        
-        
-        
+
+
+
     </div>
-    
+
     <div id="getallreservations">
+       <h3>Showing all airlines</h3> 
+        <a href="" onclick="resetviews()">Back</a> <br><br>
+        <ul  ng-repeat="f in reservations" >
+
+
     
-    <ul  ng-repeat="f in reservations" >
-        
+            <li><h4 style="background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%); opacity: 0.95;" > Reserved by  -  {{f.reserveeName}}</h4></li>
+
+            <div style="background-color: #B6B6B4;"> 
 
 
-                <li><h4 style="background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%); opacity: 0.95;" >Reserved by  -  {{f.reserveeName}}</h4></li>
+                <ul ng-repeat="(x, z) in f ">
+                    <li> {{x}}: {{z}} </li> 
 
-                <div style="background-color: #B6B6B4;"> 
+                
+                </ul>
+                
 
-       
-                        <ul ng-repeat="(x, z) in f ">
-                            <li> {{x}}: {{z}} </li> 
-                            
+            </div>  
 
-                        </ul>
-<!--                    <p>passengers:</p>
-                    <ul ng-repeat="(j,k) in reservations.passengers"> 
-                        <li>{{j}}  {{k}}</li>
-                    </ul> -->
-</div>  
 
-                        <br>
-                        <br>
-                    
-    
-</ul>
-    <br>
-    <a href="" onclick="resetviews()">Back</a>
-    
+<br>
+        </ul>
+            <br>
+            <br>
+        <a href="" onclick="resetviews()">Back</a>
+
     </div>
-    
-  
 
-    
+
+
+
     <div id="getallusers">
 
         <h3>Create new User</h3> 
-        
-        
-        
-        User Name:  <input id="newusername" placeholder="NewAirLineNameHere" type="text" style="border: 1px solid; margin-left:9px; width: 200px;"><br>
-        User Mail:   <input id="newusermail" type="email" placeholder="mymail@gmail.no"  style="border: 1px solid; margin-left:19px; width: 200px;"><br>
-        User Pass:   <input id="newuserpassword" type="password" placeholder="password here"  style="border: 1px solid; margin-left:13px; width: 200px;"> <br>
-        User Role: <select id="roledropdown">
-  <option value="User">User</option>
-  <option value="Admin">Admin</option>
-</select>
+
+
+        <table class="pure-table" >
+            <tr  style="border: 1px solid"> <td> User Name: </td> <td><input id="newusername" placeholder="NewAirLineNameHere" type="text"  style="border: 1px solid"  ></td></tr>
+            <tr   style="border: 1px solid"> <td> User Mail: </td> <td><input id="newusermail" type="email" placeholder="mymail@gmail.no"  style="border: 1px solid"  ></td></tr>
+            <tr  style="border: 1px solid"> <td> User Pass: </td> <td><input id="newuserpassword" type="password" placeholder="password here"  style="border: 1px solid"  ></td></tr>
+            <tr  style="border: 1px solid"> <td> User Role: </td> <td><select id="roledropdown"  style="border: 1px solid" >
+            <option value="User">User</option>
+            <option value="Admin">Admin</option>
+        </select></td></tr>
+        </table>
+          
+          
+           
+
         <br>
-        
-        <input type="button" value="Create User" ng-click="newuser()">
-        
+        <input type="button" value="Create User"  ng-click="newuser()"><br><br>
+        <a href="" onclick="resetviews()">Back</a><br><br>
         <div id="createuserid"></div>
-        
+
         <br><br><br>
-        
-        
-        <h3>All Airlines</h3>
-            <ul  ng-repeat="y in userscopedata" >
-
-    
-       
-                        <ul ng-repeat="(x, z) in y ">
-                            <li> {{x}}: {{z}} </li> 
-                            
-                        
-                            
-
-                        </ul>
-
-                <li><input type="button" value="Delete" ng-click="deleteuser(y.userName)" ></li>
-                <li><input type="button" value="Edit" ng-click="edituserview(y.userName, y.email)" ></li>
-
-                <li><br>
-                    <br></li>
-                
-                
-               </ul>
-        
-       
-
-      
-        
 
 
-       
-       <a href="" onclick="resetviews()">Back</a>
-       
-       
-       
-        
+        <h3>All Users</h3>
+        <ul  ng-repeat="y in userscopedata" >
+
+ <li><h4 style="background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%); opacity: 0.95;">User - {{f.userName}}</h4></li>
+
+            <ul ng-repeat="(x, z) in y ">
+                                <div style="background-color: #B6B6B4;"> 
+                <li> {{x}}: {{z}} </li> 
+                                </div>
+
+
+
+
+            </ul>
+
+            <li><input type="button" value="Delete" ng-click="deleteuser(y.userName)" ></li>
+            <li><input type="button" value="Edit" ng-click="edituserview(y.userName, y.email)" ></li>
+
+            <li><br>
+                <br></li>
+
+
+        </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
-    
-                <div id="edituser">
-        
-                    User Name:  <input id="editusername" placeholder="NewAirLineNameHere" type="text" disabled="" style="border: 1px solid; margin-left:9px; width: 200px;"> (You cannot rename yourself using our shitty database design)<br>
-        User Mail:   <input id="editusermail" type="email" placeholder="mymail@gmail.no"  style="border: 1px solid; margin-left:19px; width: 200px;"><br>
-        User Pass:   <input id="edituserpass" type="password" placeholder="password here"  style="border: 1px solid; margin-left:13px; width: 200px;"> <br>
-        User Role: <select id="edituserrole">
-  <option value="User">User</option>
-  <option value="Admin">Admin</option>
-</select>
-        
-        <input type="button" value="Edit" ng-click="edituser()"><br>
-        <a href="" onclick="resetviews()">Back</a>
-    </div>
-        
-    
-    
-    
-    
-    
-    
-    
 
-    
+    <div id="edituser">
+
+        
+                <table class="pure-table" >
+                    <tr  style="border: 1px solid"> <td> User Name: </td> <td><input id="editusername" disabled="" placeholder="NewAirLineNameHere" type="text"  style="border: 1px solid"  ></td> (You cannot rename yourself using our shitty database design)</tr> 
+            <tr   style="border: 1px solid"> <td> User Mail: </td> <td><input id="editusermail" type="email" placeholder="mymail@gmail.no"  style="border: 1px solid"  ></td></tr>
+            <tr  style="border: 1px solid"> <td> User Pass: </td> <td><input id="edituserpass" type="password" placeholder="password here"  style="border: 1px solid"  ></td></tr>
+            <tr  style="border: 1px solid"> <td> User Role: </td> <td><select id="edituserrole"  style="border: 1px solid" >
+            <option value="User">User</option>
+            <option value="Admin">Admin</option>
+        </select></td></tr>
+        </table>
+        
+        <div id="edituserid"></div>
+
+        <input type="button" value="Edit" ng-click="edituser()"><br><br>
+        <a href="" onclick="backtousersfromedit()">Back</a>
+    </div>
+
+
+
+
+
+
+
+
+
+
     <div id="getallairlines">
         <h3>Create new airline</h3> 
-        
-        
-        
+
+
+
         Airline Name:  <input id="newairlinename" placeholder="NewAirLineNameHere" type="text" style="border: 1px solid; margin-left:10px; width: 500px;"><br>
         Airline URL:   <input id="newairlinelink" type="text" placeholder="http://dummyairline6v2-pagh.rhcloud.com/dummyAirline6/api/flightinfo/"  style="border: 1px solid; margin-left:19px; width: 500px;">
-        <br>
-        
+        <br><br>
+
         <input type="button" value="Create Airline" ng-click="newairline()">
-        
-        <div id="createairlineerrorid"></div>
-        
+<br>
+        <div id="createairlineerrorid"></div><br>
+        <a href="" onclick="resetviews()">Back</a>
         <br><br><br>
-        
+
         
         <h3>All Airlines</h3>
-            <ul  ng-repeat="f in airlines" >
+<!--        <ul  ng-repeat="f in airlines | limitTo:getairlinelimitfrom-getairlinelimitto" >-->
+<ul  ng-repeat="f in airlines" >
+            <li><h4 style="background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%); opacity: 0.95;">{{f.name}}</h4></li>
+
+    
+            <ul ng-repeat="(x, z) in f ">
+                <div style="background-color: #B6B6B4;"> 
+                <li> {{x}}: {{z}} </li> 
+                </div>
 
 
 
-       
-                        <ul ng-repeat="(x, z) in f ">
-                            <li> {{x}}: {{z}} </li> 
-                            
-                        
-                            
+            </ul>
+   
+            <li><input type="button" value="Delete" ng-click="deleteairline(f.id)" style="float: left;" ></li>
 
-                        </ul>
+            <li><br>
+                <br></li>
 
-                <li><input type="button" value="Delete" ng-click="deleteairline(f.id)" ></li>
 
-                <li><br>
-                    <br></li>
-                
-                
-               </ul>
-                
- 
-                    
+        </ul>
         
-    <div id="createairline">
-        
-    </div> 
-        
-        
-        <a href="" onclick="resetviews()">Back</a>
-        
+<!--        <a href="" ng-click="setairlinelimit(5, 3)">yolo try</a>-->
+
+
+<a href="" onclick="resetviews()">Back</a><br><br>
+
+        <div id="createairline">
+
+        </div> 
+
+
+
+
     </div>
-    
-    
-    
+
+
+
     <div id="error_view4"></div>
     <div id="errorid"></div>
-    
+
     <script>
-        
-        resetviews();
-        
+
+                resetviews();
+
     </script>
-    
-			</section>
+
+</section>
 
