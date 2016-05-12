@@ -15,9 +15,10 @@
                 <li ng-repeat="(key, value) in flight| myFilter2"> 
                     <span>{{key}}: {{value}}</span>
                 </li>
+                <br>
                 <p>Passengers: </p>
-                <li ng-repeat="a in flight.passengers"> 
-                    <span>{{a}}</span>
+                <li ng-repeat="g in flight.passengers"> 
+                    <span ng-repeat="(a, b) in g"><b>{{a}}:</b> {{b}} </span><br>
                 </li>
                 
             </ul>

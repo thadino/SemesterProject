@@ -48,16 +48,9 @@ angular.module('myApp.view2', ['ngRoute'])
             }).then(function successCallback(res) {
 
                 $scope.mydata = res.data;
-                $scope.pas = res.data.passengers;
-                console.log(res.data);
-                console.log(res.data.passengers);
                 
-                var data = [];
-                data.push({
-                   passengers: [{firstName: "Peter", lastName: "Petersen"}]
-                    
-                });
-
+                
+                
                 
 
 
