@@ -96,11 +96,11 @@ public class DeploymentConfiguration implements ServletContextListener
 
 
             Airline al1 = new Airline("Group6airlines1", "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flightinfo/");
-            Airline al2 = new Airline("Group6airlines2", "http://dummyairline6v2-pagh.rhcloud.com/dummyAirline6/api/flightinfo/");
+            Airline al2 = new Airline("angularairline", "http://angularairline-plaul.rhcloud.com/api/flightinfo/");
             Airline al3 = new Airline("Group6airlines3", "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flightinfo/");
-            Airline al4 = new Airline("Group6airlines4", "http://dummyairline6v2-pagh.rhcloud.com/dummyAirline6/api/flightinfo/");
+            Airline al4 = new Airline("angularairline", "http://angularairline-plaul.rhcloud.com/api/flightinfo/");
             Airline al5 = new Airline("Group6airlines5", "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flightinfo/");
-            Airline al6 = new Airline("Group6airlines6", "http://dummyairline6v2-pagh.rhcloud.com/dummyAirline6/api/flightinfo/");
+            Airline al6 = new Airline("angularairline", "http://angularairline-plaul.rhcloud.com/api/flightinfo/");
             Airline al7 = new Airline("Group6airlines7", "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flightinfo/");
 
             try

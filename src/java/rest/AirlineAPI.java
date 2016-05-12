@@ -44,8 +44,7 @@ public class AirlineAPI
         EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
         Query q = em.createNamedQuery("airline.findAll", Airline.class);
         DeploymentConfiguration.urls = q.getResultList();
-        return gson.toJson(q.getResultList());
-        
+        return gson.toJson(q.getResultList());        
     }
 
     @POST
@@ -56,6 +55,7 @@ public class AirlineAPI
         {
             Airline b = (Airline) gson.fromJson(airJSON, Airline.class);
             AirlineDAO.addEntry(b.getName(), b.getUrl());
+            UrlRefresher.refreshURLs();
         }
         catch (Exception e)
         {
@@ -75,6 +75,7 @@ public class AirlineAPI
         try
         {
             AirlineDAO.deleteAirline(id);
+            UrlRefresher.refreshURLs();
         }
         catch (Exception e)
         {
