@@ -172,13 +172,13 @@ public class ReservationAPI
 
             if (response.getStatusLine().getStatusCode() == 200)
             {
-                System.out.println("");
+                System.out.println("Reservation lykkedes");
                 Reservation r = new Reservation(jsonInput.getString("reserveeEmail"), jsonInput.getString("reserveeName"), jsonInput.getString("reserveePhone"), jsonInput.getInt("numberOfSeats"), jsonInput.getJSONArray("passengers").toString(), jsonInput.getString("flightID"));
                 ReservationDAO.addEntry(r);
             }
             else
             {
-                
+                System.out.println("HER ER STATUS FRA AIRLINE: " + response.getStatusLine());
                 return Response.status(Response.Status.BAD_REQUEST).entity(gson.toJsonTree(new ErrorMessage(400, "The reservation was declined by the airline", 4))).build();
             }
 //            System.out.println("asdfasdfasdf " + response.getStatusLine().toString());
