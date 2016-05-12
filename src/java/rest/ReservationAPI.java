@@ -28,19 +28,12 @@ import javax.ws.rs.core.Response;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.metasearch.service.dao.Flight;
-import com.metasearch.service.dao.FlightsDAO;
 import com.metasearch.service.dao.JSONConstants;
 
 import com.metasearch.service.dao.Reservation;
-import com.metasearch.service.dao.ReservationAuditLog;
 import com.metasearch.service.dao.ReservationAuditLogDAO;
 import com.metasearch.service.dao.ReservationDAO;
-import com.metasearch.service.exception.FlightNotFoundException;
-import com.metasearch.service.exception.InsufficientTicketsException;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.security.RolesAllowed;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -52,8 +45,6 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.json.JSONArray;
 
 @Path("/api/reservation")
 public class ReservationAPI
@@ -64,7 +55,7 @@ public class ReservationAPI
     @GET
 
     @Produces(MediaType.APPLICATION_JSON)
-    @RolesAllowed("Admin")
+//    @RolesAllowed("Admin")
     @Path("/all")
     public String getAllReservations()
     {
@@ -73,7 +64,9 @@ public class ReservationAPI
         try
         {
             Query q = em.createNamedQuery("reservation.findAll", Reservation.class);
-            return gson.toJson(q.getResultList());
+            String bob = gson.toJson(q.getResultList()).replace("\"[{", "[{").replace("\\\"", "\"").replace("}]\"", "}]");
+            System.out.println("HER ER BOB: " + bob);
+            return bob;
         }
         finally
         {
