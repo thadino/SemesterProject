@@ -15,6 +15,8 @@ angular.module('myApp.security', [])
                 $("#register").hide();
                 $("#Registerdiv").show();
                 $("#loginbox").hide();
+                $("#sendregistration").show();
+                document.getElementById("errorid").innerHTML = "";
                 // register logic              
                 // $scope.login(); back, register
             };
@@ -57,6 +59,9 @@ angular.module('myApp.security', [])
                         //  success code
 
                         document.getElementById("errorid").innerHTML = "Successfully created a new user.";
+                        $scope.back();  
+                        $scope.login();
+                        
 
                     },
                     error: function (data, status) {

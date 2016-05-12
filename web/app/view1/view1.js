@@ -37,7 +37,7 @@
                                var myurl = url.substring(0, url.lastIndexOf("flights/"));
                                http://localhost:8080/SemesterSeed/api/api/flights/CPH/2016-05-16T0
                                
-                            alert(myurl);
+                            
                             
                                 AirlineURL = myurl;
                                 FlightID = id;
@@ -168,23 +168,23 @@
                                 console.log(searchstring);
                                         $http({method: 'GET', url: searchstring,
                                                 skipAuthorization: true})
-                                        .then(function (response) {
+                                        .then(function (response, status) {
+                                            
+                                            
 
 
-                                        if (Object.keys(response.data[0].flightOffer.flights).length === 0)
-                                        {
-                                        $scope.test = [];
-                                                document.getElementById("resulterrormessage").innerHTML = "No Flights found, try with other search values.";
-                                                document.getElementById("result").hide();
-                                        }
-                                        else
-                                        {
+                              
+//                                        $scope.test = [];
+//                                                document.getElementById("resulterrormessage").innerHTML = "No Flights found, try with other search values.";
+//                                                document.getElementById("result").hide();
+//                                                alert(status);
+                                     
                                         $("#resulterrormessage").innerHTML = "";
                                                 $("#result").show();
                                                 $scope.fl = [];
                                                 $scope.test = response.data;
                                                 
-                                        }
+                                        
 
 
                                         });
