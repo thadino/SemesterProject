@@ -35,13 +35,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.metasearch.service.dao.Flight;
-import com.metasearch.service.dao.Reservation;
 import com.metasearch.service.dao.User;
 import com.metasearch.service.dao.UsersDAO;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
 import javax.ws.rs.PUT;
 import openshift_deploy.DeploymentConfiguration;
 import security.PasswordStorage;
@@ -171,7 +166,7 @@ public class UsersAPI
 
     @Path("/new")
     @POST
-    @Produces("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addUser(InputStream incomingData)
     {
@@ -207,9 +202,7 @@ public class UsersAPI
             JSONObject error = new JSONObject();
             error.put("httpError", 400);
             error.put("errorCode", 3);
-            error.put(
-                    "message",
-                    "Illegal input, the role needs to be \"admin\" or \"user\". ");
+            error.put("message", "Illegal input, the role needs to be \"admin\" or \"user\". ");
             return Response.status(400).entity(error.toString()).build();
         }
 
@@ -223,22 +216,20 @@ public class UsersAPI
             JSONObject error = new JSONObject();
             error.put("httpError", 400);
             error.put("errorCode", 3);
-            error.put(
-                    "message",
-                    "Illegal input, choose a new password");
+            error.put("message","Illegal input, choose a new password");
             return Response.status(400).entity(error.toString()).build();
         }
-        if (role.equalsIgnoreCase("user"))
-        {
-            usr.AddRole(DeploymentConfiguration.userRole);
-        }
-        if (role.equalsIgnoreCase("admin"))
-        {
-            usr.AddRole(DeploymentConfiguration.adminRole);
-        }
+//        if (role.equalsIgnoreCase("user"))
+//        {
+//            usr.AddRole(DeploymentConfiguration.userRole);
+//        }
+//        if (role.equalsIgnoreCase("admin"))
+//        {
+//            usr.AddRole(DeploymentConfiguration.adminRole);
+//        }
 
         System.out.println(usr.toString());
-        UsersDAO.addEntry(usr);
+        UsersDAO.addEntry(usr, role);
         return Response.status(200).build();
     }
 

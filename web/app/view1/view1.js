@@ -37,6 +37,7 @@
                                 $("#result").hide();
                                 $("#bookingPage").show();
                                 document.getElementById("errormessage_view1").innerHTML = "";
+                                addFields();
                                 };
                         $scope.bookvacation = function()
                                 {
@@ -47,11 +48,12 @@
 
 
 
-
+                                
                                 reserveePhone = $("#phone").val();
                                         reserveeName = $("#name").val();
                                         reserveeEmail = $("#email").val();
-                                        numberofseats = $("#member").val();
+                                        numberofseats = document.getElementById("tickets").value;
+                                        alert(numberofseats);
                                         var alertstring = "";
                                         var nrofseats = numberofseats;
                                         var phone = reserveePhone;
@@ -126,6 +128,7 @@
                                                 }
                                     });
                                         console.log(JSONtoSend);
+                                        
                                 } // if validation failed will not do code encapsled.
 
 
@@ -139,7 +142,7 @@
                                         var getFrom = document.getElementById("searchFrom").value;
                                         var getDate = document.getElementById("departureDate").value;
                                         var tickets = document.getElementById("tickets").value;
-                                        var time = "T00:00:00Z";
+                                        var time = "T00:00:00.000Z";
                                         var searchstring = "";
                                         if (getFrom.length > 0 && getDate.length > 0) {
 
@@ -173,6 +176,7 @@
                                                 $("#result").show();
                                                 $scope.fl = [];
                                                 $scope.test = response.data;
+                                                
                                         }
 
 
@@ -228,8 +232,11 @@
                                 return a;
                         };
                                 });
+                                
                         function addFields() {
-                        var number = document.getElementById("member").value;
+                        var ticketsToBook = document.getElementById("tickets").value;
+                        var number = ticketsToBook;
+                        
                                 if (number > 10)
                                 {
                                 document.getElementById("errormessage_view1").innerHTML = "Dude... dont try to crash our server! (max 10 passengers)";

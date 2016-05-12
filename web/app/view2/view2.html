@@ -1,24 +1,34 @@
-	<section id="content">
+<section id="content">
 
-    
-    <ul  ng-repeat="f in mydata" >
-        
+<!--    <div ng-app="myApp" ng-controller="View2Ctrl">-->
+    <ul ng-repeat="flight in mydata" >
 
 
-                <li><h4 style="background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%); opacity: 0.95;" >FlightInfo for Flight  -  {{f.flightID}}</h4></li>
 
-                <div style="background-color: #B6B6B4;"> 
+        <li>
+            <h4 style="background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%); opacity: 0.95;" >FlightInfo for Flight  -  {{flight.flightID}}</h4>
+        </li>
 
-       
-                        <ul ng-repeat="(x, z) in f">
-                            <li> {{x}}: {{z}} </li>    
+        <div style="background-color: #9ed1ca;"> 
 
-                        </ul>
-</div>  
+            <ul>
+                <li ng-repeat="(key, value) in flight| myFilter2"> 
+                    <span>{{key}}: {{value}}</span>
+                </li>
+                <br>
+                <p>Passengers: </p>
+                <li ng-repeat="g in flight.passengers"> 
+                    <span ng-repeat="(a, b) in g"><b>{{a}}:</b> {{b}} </span><br>
+                </li>
+                
+            </ul>
 
-                        <br>
-                        <br>
-                    
-    
-</ul>
-			</section>
+        </div>  
+
+        <br>
+        <br>
+
+
+    </ul>
+<!--    </div>-->
+</section>

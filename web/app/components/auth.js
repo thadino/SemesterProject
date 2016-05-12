@@ -115,6 +115,7 @@ angular.module('myApp.security', [])
 
           $rootScope.openErrorModal = function (text) {
 
+
 //            var modalInstance = $uibModal.open({
 //              animation: true,
 //              templateUrl: 'errorModal.html',
@@ -127,46 +128,47 @@ angular.module('myApp.security', [])
 //              size: 'sm'
 //            });
 
-          };
+            };
 
-          //This sets the login data from session store if user pressed F5 (You are still logged in)
-          var init = function () {
-            var token = $window.sessionStorage.id_token;
-            if (token) {
-              initializeFromToken($scope, $window.sessionStorage.id_token, jwtHelper);
-            }
-          };
-          init();// and fire it after definition
+            //This sets the login data from session store if user pressed F5 (You are still logged in)
+            var init = function () {
+                var token = $window.sessionStorage.id_token;
+                if (token) {
+                    initializeFromToken($scope, $window.sessionStorage.id_token, jwtHelper);
+                }
+            };
+            init();// and fire it after definition
         })
         .factory('AuthInterceptor', function ($rootScope, $q) {
-          return {
-            responseError: function (response) {
-              var name = "";
-              switch (response.status) {
-                case 401:
-                  name = "NotAuthenticatedEvent";
-                  break;
-                case 403:
-                  name = "NotAuthorizedEvent";
-                  break;
-                default :
-                  name = "HttpErrorEvent";
-              }
-              $rootScope.$broadcast(name, response);
-              return $q.reject(response);
-            }
-          };
+            return {
+                responseError: function (response) {
+                    var name = "";
+                    switch (response.status) {
+                        case 401:
+                            name = "NotAuthenticatedEvent";
+                            break;
+                        case 403:
+                            name = "NotAuthorizedEvent";
+                            break;
+                        default :
+                            name = "HttpErrorEvent";
+                    }
+                    $rootScope.$broadcast(name, response);
+                    return $q.reject(response);
+                }
+            };
         })
         .config(function Config($httpProvider, jwtInterceptorProvider) {
-          jwtInterceptorProvider.tokenGetter = function () {
-            return sessionStorage.getItem('id_token');
-          };
-          $httpProvider.interceptors.push('jwtInterceptor');
+            jwtInterceptorProvider.tokenGetter = function () {
+                return sessionStorage.getItem('id_token');
+            };
+            $httpProvider.interceptors.push('jwtInterceptor');
         });
 
 
 
 function initializeFromToken($scope, token, jwtHelper) {
+
   $scope.isAuthenticated = true;
   var tokenPayload = jwtHelper.decodeToken(token);
   $scope.username = tokenPayload.username;
@@ -180,13 +182,14 @@ function initializeFromToken($scope, token, jwtHelper) {
       $scope.isUser = true;
     }
   });
+
 }
 
 function clearUserDetails($scope) {
-  $scope.username = "";
-  $scope.isAuthenticated = false;
-  $scope.isAdmin = false;
-  $scope.isUser = false;
+    $scope.username = "";
+    $scope.isAuthenticated = false;
+    $scope.isAdmin = false;
+    $scope.isUser = false;
 }
 
 

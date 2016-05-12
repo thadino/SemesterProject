@@ -87,7 +87,7 @@
 
                 <li><h4 style="background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%); opacity: 0.95;" >{{f.flightOffer.airline}}</h4></li>
 
-                <div style="background-color: #B6B6B4;">   
+                <div style="background-color: #9ed1ca;">   
 
                     <ul ng-repeat="b in f.flightOffer.flights| myFilter">
                         <ul ng-repeat="(x, z) in b">
@@ -125,11 +125,10 @@
                 <br>
                 <br>
                 <br>
-                <p>NAME<input id="name" type="TEXT" size="20" maxlength="99" /></p>
-                <p>EMAIL<input id="email" type="email" size="30"  maxlength="99" /></p>
-                <p>TELEPHONE<input id="phone" type="number" ></p>
-                <input type="number" id="member" name="member" value="">Number of passengers<br>
-                <a href="" id="filldetails" onclick="addFields()">Add passenger info</a>
+                <p>NAME <input id="name" type="TEXT" size="20" maxlength="99" value="{{username}}"/></p>                
+                <p>EMAIL <input id="email" type="email" size="30"  maxlength="99"/></p>
+                <p>TELEPHONE <input id="phone" type="number" ></p><br>
+                <p>Passenger info </p>
                 <div id="passengers"></div>
 
 
