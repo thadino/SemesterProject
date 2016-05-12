@@ -31,6 +31,7 @@ angular.module('myApp.security', [])
 
             $scope.sendregistration = function ()
             {
+                
                 var ip = window.location.host;
                 var mywebsiteName = "SemesterSeed";
                 var fullname = document.getElementById("username").value;
@@ -55,12 +56,12 @@ angular.module('myApp.security', [])
                     success: function (data, status) {
                         //  success code
 
-                        document.getElementById(errorid).innerHTML = "Successfully created a new user.";
+                        document.getElementById("errorid").innerHTML = "Successfully created a new user.";
 
                     },
                     error: function (data, status) {
                         //  error code
-                        document.getElementById(errorid).innerHTML = "Failed to created a new user.";
+                        document.getElementById("errorid").innerHTML = "Failed to created a new user.";
                         console.log("Returned status code : " + status);
 
                     }

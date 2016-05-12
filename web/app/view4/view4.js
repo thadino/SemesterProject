@@ -49,11 +49,12 @@ app.controller('View4Ctrl', function ($http, $scope) {
             url: "/SemesterSeed/api/api/reservation/all"
         }).then(function successCallback(res) {
 
-            $scope.reservations = res.data;
+            $scope.reservations = res.data[0];
+            console.log($scope.reservations);
             $scope.passengerlist = res.data.passengers;
 
         }, function errorCallback(res, status) {
-            document.getElementById(errorid).innerHTML = "Failed to retrieve all reservations.";
+            document.getElementById("getallreservationsID").innerHTML = "Failed to retrieve all reservations.";
             console.log("Returned status code : " + status);
         });
 
@@ -428,9 +429,8 @@ function activateairlineview()
 
 function resetviews()
 {
-    document.getElementById("error_view4").innerHTML = "";
+
     document.getElementById("errorid").innerHTML = "";
-    document.getElementById("createairlineerrorid").innerHTML = "";
     document.getElementById("edituserid").innerHTML = "";
     $("#adminmenu").show();
     $("#getallreservations").hide();
@@ -463,4 +463,5 @@ app.filter('myFilterView4', function () {
 
     };
 });
+
 

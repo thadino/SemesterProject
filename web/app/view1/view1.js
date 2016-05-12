@@ -53,7 +53,7 @@
                                         reserveeName = $("#name").val();
                                         reserveeEmail = $("#email").val();
                                         numberofseats = document.getElementById("tickets").value;
-                                        alert(numberofseats);
+
                                         var alertstring = "";
                                         var nrofseats = numberofseats;
                                         var phone = reserveePhone;
