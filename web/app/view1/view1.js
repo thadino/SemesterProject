@@ -37,6 +37,7 @@
                                 $("#result").hide();
                                 $("#bookingPage").show();
                                 document.getElementById("errormessage_view1").innerHTML = "";
+                                addFields();
                                 };
                         $scope.bookvacation = function()
                                 {
@@ -47,11 +48,12 @@
 
 
 
-
+                                
                                 reserveePhone = $("#phone").val();
                                         reserveeName = $("#name").val();
                                         reserveeEmail = $("#email").val();
-                                        numberofseats = $("#member").val();
+                                        numberofseats = document.getElementById("tickets").value;
+                                        alert(numberofseats);
                                         var alertstring = "";
                                         var nrofseats = numberofseats;
                                         var phone = reserveePhone;
@@ -126,6 +128,7 @@
                                                 }
                                     });
                                         console.log(JSONtoSend);
+                                        
                                 } // if validation failed will not do code encapsled.
 
 
@@ -173,6 +176,7 @@
                                                 $("#result").show();
                                                 $scope.fl = [];
                                                 $scope.test = response.data;
+                                                
                                         }
 
 
@@ -228,8 +232,11 @@
                                 return a;
                         };
                                 });
+                                
                         function addFields() {
-                        var number = document.getElementById("member").value;
+                        var ticketsToBook = document.getElementById("tickets").value;
+                        var number = ticketsToBook;
+                        
                                 if (number > 10)
                                 {
                                 document.getElementById("errormessage_view1").innerHTML = "Dude... dont try to crash our server! (max 10 passengers)";
