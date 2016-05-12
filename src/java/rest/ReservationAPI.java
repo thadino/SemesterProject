@@ -143,7 +143,8 @@ public class ReservationAPI
             int tickets = jsonInput.getInt("numberOfSeats");
 //            reserved = FlightsDAO.reserve(inputID, tickets);
 
-            String postUrl = jsonInput.getString("url") + inputID;
+            String postUrl = jsonInput.getString("url") + "reservation/" + inputID;
+            System.out.println("her er postbudet: " + postUrl);
             jsonInput.remove("url");
 //            System.out.println("HER ER JSON INPUT: " + jsonInput.toString());
 //            System.out.println("HER ER POSTURL: " + postUrl);

@@ -32,7 +32,14 @@
                         if (reserveeEmail !== null) // so it does not reset the value of flightID
                         var reserveeEmail;
                         $scope.switchPage = function(url, id) {
-                        AirlineURL = url;
+                                
+                                
+                               var myurl = url.substring(0, url.lastIndexOf("flights/"));
+                               http://localhost:8080/SemesterSeed/api/api/flights/CPH/2016-05-16T0
+                               
+                            alert(myurl);
+                            
+                                AirlineURL = myurl;
                                 FlightID = id;
                                 $("#result").hide();
                                 $("#bookingPage").show();
@@ -41,15 +48,15 @@
                                 };
                         $scope.bookvacation = function()
                                 {
-
+                                   
                                 //  alert("Airline URL: " + AirlineURL + " Flight ID: " + FlightID);
 
 
 
 
 
-                                
-                                reserveePhone = $("#phone").val();
+                                        
+                                        reserveePhone = $("#phone").val();
                                         reserveeName = $("#name").val();
                                         reserveeEmail = $("#email").val();
                                         numberofseats = document.getElementById("tickets").value;
@@ -64,16 +71,16 @@
                                         if (!validateEmail(reserveeEmail))
                                         alertstring += "You need to provide a valid email.<br>";
                                         if (nrofseats.length < 1)
-                                        alertstring += "You need some travel companions. <br>";
+                                        alertstring += "You forgot to add your travel companions. <br>";
                                         if (reserveeName.length < 1)
-                                        alertstring += "John you need a name, like llama";
+                                        alertstring += "Please enter a valid name";
                                         var erroronnames = "";
                                         var times = - 1;
                                         $('.myawesomefuckingclass').each(function(i, obj) {
 
                                 if (obj.value === "")
                                 {
-                                erroronnames = "Ooho ho there cowboy you need to provide a name and lastname for all your traveling companions.";
+                                erroronnames = "Please provide a name and lastname for all your traveling companions.";
                                 }
                                 times++;
                                         });
@@ -100,7 +107,7 @@
 
                                 });
                                         var JSONtoSend = "";
-                                        JSONtoSend = '{ "url" : "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/reservation/",' +
+                                        JSONtoSend = '{ "url" :"' + AirlineURL + '",' +
                                         '"flightID":"' + FlightID + '",' +
                                         '"numberOfSeats":"' + numberofseats + '",' +
                                         '"reserveeName":"' + reserveeName + '",' +
