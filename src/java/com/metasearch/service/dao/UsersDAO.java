@@ -56,13 +56,16 @@ public class UsersDAO
 
     }
 
-    public static synchronized void addEntry(User user)
+    public static synchronized void addEntry(User user, String role)
     {
         System.out.println("Persisting user " + user);
         EntityManager manager = ENTITY_MANAGER_FACTORY.createEntityManager();
         try
         {
+           
             manager.getTransaction().begin();
+            Role r = (Role) manager.find(Role.class, role);
+            user.AddRole(r);
             manager.persist(user);
             manager.getTransaction().commit();
         }

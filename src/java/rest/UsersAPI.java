@@ -219,17 +219,17 @@ public class UsersAPI
             error.put("message","Illegal input, choose a new password");
             return Response.status(400).entity(error.toString()).build();
         }
-        if (role.equalsIgnoreCase("user"))
-        {
-            usr.AddRole(DeploymentConfiguration.userRole);
-        }
-        if (role.equalsIgnoreCase("admin"))
-        {
-            usr.AddRole(DeploymentConfiguration.adminRole);
-        }
+//        if (role.equalsIgnoreCase("user"))
+//        {
+//            usr.AddRole(DeploymentConfiguration.userRole);
+//        }
+//        if (role.equalsIgnoreCase("admin"))
+//        {
+//            usr.AddRole(DeploymentConfiguration.adminRole);
+//        }
 
         System.out.println(usr.toString());
-        UsersDAO.addEntry(usr);
+        UsersDAO.addEntry(usr, role);
         return Response.status(200).build();
     }
 
