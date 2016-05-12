@@ -104,6 +104,7 @@ public class ReservationAPI
             Query q = em.createNamedQuery("reservation.findByName", Reservation.class);
             q.setParameter("name", userName);
             System.out.println("her er res: " + q.getResultList().get(0));
+
             return (gson.toJson(q.getResultList())).replace("\\u0027", "").replace("\\", "").replace("\"[", "[").replace("\"]", "]").replace("]\"", "]");
 
         }
