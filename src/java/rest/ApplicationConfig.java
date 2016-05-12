@@ -28,7 +28,6 @@ public class ApplicationConfig extends Application {
         resources.add(rest.CORSFilter.class);
         resources.add(rest.FlightsAPI.class);
         resources.add(rest.ReservationAPI.class);
-        resources.add(rest.User.class);
         resources.add(rest.UsersAPI.class);
         resources.add(security.JWTAuthenticationFilter.class);
         resources.add(security.Login.class);
