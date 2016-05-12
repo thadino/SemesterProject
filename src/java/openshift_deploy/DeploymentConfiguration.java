@@ -97,13 +97,13 @@ public class DeploymentConfiguration implements ServletContextListener
             Reservation r6 = new Reservation("user_admin@user_admin.dk", "user_admin", "12345678", 1, "[{\"firstName\":\"user_admin\",\"lastName\":\"user_adminsen\"},{\"firstName\":\"user\",\"lastName\":\"bubber\"}]", "CPH-STN-254");
 
 
-            Airline al1 = new Airline("Group6airlines1", "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flightinfo/");
+            Airline al1 = new Airline("Group6airlines1", "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flights/");
             Airline al2 = new Airline("angularairline", "http://angularairline-plaul.rhcloud.com/api/flightinfo/");
-            Airline al3 = new Airline("Group6airlines3", "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flightinfo/");
+            Airline al3 = new Airline("Group6airlines3", "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flights/");
             Airline al4 = new Airline("angularairline", "http://angularairline-plaul.rhcloud.com/api/flightinfo/");
-            Airline al5 = new Airline("Group6airlines5", "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flightinfo/");
+            Airline al5 = new Airline("Group6airlines5", "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flights/");
             Airline al6 = new Airline("angularairline", "http://angularairline-plaul.rhcloud.com/api/flightinfo/");
-            Airline al7 = new Airline("Group6airlines7", "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flightinfo/");
+            Airline al7 = new Airline("Group6airlines7", "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flights/");
 
             try
             {
