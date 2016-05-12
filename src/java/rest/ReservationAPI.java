@@ -9,7 +9,6 @@ package rest;
  *
  * @author Dino
  */
-
 import com.google.gson.*;
 
 import java.io.BufferedReader;
@@ -33,6 +32,7 @@ import com.metasearch.service.dao.JSONConstants;
 import com.metasearch.service.dao.Reservation;
 import com.metasearch.service.dao.ReservationAuditLogDAO;
 import com.metasearch.service.dao.ReservationDAO;
+import httpErrors.ErrorMessage;
 import java.io.IOException;
 import javax.annotation.security.RolesAllowed;
 import javax.persistence.EntityManager;
@@ -164,6 +164,7 @@ public class ReservationAPI
 //            System.out.println("HER ER POSTINGSTRING " + gson.toJson(jo).replace("\\\\\\", "").replace("\"\\\"", "").replace("\\\"\"", ""));
             StringEntity postingString = new StringEntity(gson.toJson(jo).replace("\\\\\\", "").replace("\"\\\"", "").replace("\\\"\"", ""));
 //            System.out.println("HER ER POSTINGSTRING: " + c);
+            System.out.println("HER ER POSTINGSTRING: " + gson.toJson(jo).replace("\\\\\\", "").replace("\"\\\"", "").replace("\\\"\"", ""));
             post.setEntity(postingString);
             System.out.println("");
             post.setHeader("Content-type", "application/json");
@@ -171,8 +172,14 @@ public class ReservationAPI
 
             if (response.getStatusLine().getStatusCode() == 200)
             {
+                System.out.println("");
                 Reservation r = new Reservation(jsonInput.getString("reserveeEmail"), jsonInput.getString("reserveeName"), jsonInput.getString("reserveePhone"), jsonInput.getInt("numberOfSeats"), jsonInput.getJSONArray("passengers").toString(), jsonInput.getString("flightID"));
                 ReservationDAO.addEntry(r);
+            }
+            else
+            {
+                
+                return Response.status(Response.Status.BAD_REQUEST).entity(gson.toJsonTree(new ErrorMessage(400, "The reservation was declined by the airline", 4))).build();
             }
 //            System.out.println("asdfasdfasdf " + response.getStatusLine().toString());
 //            System.out.println("HER ER RESPONSE FRA AIRLINE: " + response.toString());
@@ -235,6 +242,5 @@ public class ReservationAPI
                 jsonObject.toString();
         return Response.status(200).entity(result).build();
     }
-
 
 }
