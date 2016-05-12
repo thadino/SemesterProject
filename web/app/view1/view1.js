@@ -142,7 +142,7 @@
                                         var getFrom = document.getElementById("searchFrom").value;
                                         var getDate = document.getElementById("departureDate").value;
                                         var tickets = document.getElementById("tickets").value;
-                                        var time = "T00:00:00Z";
+                                        var time = "T00:00:00.000Z";
                                         var searchstring = "";
                                         if (getFrom.length > 0 && getDate.length > 0) {
 
