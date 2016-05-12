@@ -98,9 +98,9 @@ public class DeploymentConfiguration implements ServletContextListener
 
 
             Airline al1 = new Airline("Group6airlines1", "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flights/");
-            Airline al2 = new Airline("angularairline", "http://angularairline-plaul.rhcloud.com/api/flightinfo/");
+            Airline al2 = new Airline("angularairline", "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flights/");
             Airline al3 = new Airline("Group6airlines3", "http://magnustest.cloudapp.net/api/api/flights/");
-            Airline al4 = new Airline("angularairline", "http://angularairline-plaul.rhcloud.com/api/flightinfo/");
+            Airline al4 = new Airline("angularairline", "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flights/");
             Airline al5 = new Airline("Group6airlines5", "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flights/");
             Airline al6 = new Airline("angularairline", "http://magnustest.cloudapp.net/api/api/flights/");
             Airline al7 = new Airline("Group6airlines7", "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flights/");
