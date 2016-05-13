@@ -156,7 +156,16 @@ public class ReservationAPI
             jo.addProperty("flightID", jsonInput.getString("flightID"));
             jo.addProperty("numberOfSeats", jsonInput.getInt("numberOfSeats"));
             jo.addProperty("reserveeName", jsonInput.getString("reserveeName"));
-            jo.addProperty("reserveePhone", jsonInput.getString("reserveePhone"));
+            ////
+            if (jsonInput.getString("reserveePhone") != null)
+            {
+                jo.addProperty("reservePhone", jsonInput.getString("reserveePhone"));
+            }
+            else
+            {
+                jo.addProperty("reservePhone", jsonInput.getString("reservePhone"));
+            }
+            ////
             jo.addProperty("reserveeEmail", jsonInput.getString("reserveeEmail"));
 
             jo.addProperty("passengers", gson.toJson(jsonInput.getJSONArray("passengers").toString()));

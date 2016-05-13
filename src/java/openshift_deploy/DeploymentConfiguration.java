@@ -1,4 +1,3 @@
-
 package openshift_deploy;
 
 import com.metasearch.service.dao.Airline;
@@ -6,9 +5,6 @@ import com.metasearch.service.dao.Reservation;
 
 import com.metasearch.service.dao.Role;
 import com.metasearch.service.dao.User;
-import facades.UserFacade;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +22,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
-import javax.ws.rs.core.Context;
 import security.PasswordStorage;
 
 @WebListener
@@ -42,7 +37,6 @@ public class DeploymentConfiguration implements ServletContextListener
      *
      */
     public static List<Airline> urls;
-
 
     @Override
     public void contextInitialized(ServletContextEvent sce)
@@ -73,8 +67,6 @@ public class DeploymentConfiguration implements ServletContextListener
                 return;
             }
 
-
-
             User user = new User("user", PasswordStorage.createHash("test"), "user@user.dk");
             User admin = new User("admin", PasswordStorage.createHash("test"), "admin@admin.dk");
             User both = new User("user_admin", PasswordStorage.createHash("test"), "user_admin@user_admin.dk");
@@ -83,19 +75,14 @@ public class DeploymentConfiguration implements ServletContextListener
             both.AddRole(userRole);
             both.AddRole(adminRole);
 
-
-
             Reservation r1 = new Reservation("user@user.dk", "user", "12345678", 1, "[{\"firstName\":\"Peter\",\"lastName\":\"Peterson\"}]", "CPH-STN-292");
             Reservation r2 = new Reservation("user@user.dk", "user", "12345678", 2, "[{\"firstName\":\"Peter\",\"lastName\":\"Peterson\"},{\"firstName\":\"john\",\"lastName\":\"john\"}]", "CPH-STN-075");
-
-
 
             Reservation r3 = new Reservation("admin@admin.dk", "admin", "12323445678", 1, "[{\"firstName\":\"admin\",\"lastName\":\"adminsen\"}]", "CPH-STN-075");
             Reservation r4 = new Reservation("admin@admin.dk", "admin", "12345234678", 2, "[{\"firstName\":\"admin\",\"lastName\":\"adminsen\"},{\"firstName\":\"user\",\"lastName\":\"userino\"}]", "CPH-STN-020");
 
             Reservation r5 = new Reservation("user_admin@user_admin.dk", "user_admin", "12345678", 1, "[{\"firstName\":\"user_admin\",\"lastName\":\"user_adminsen\"}]", "CPH-STN-075");
             Reservation r6 = new Reservation("user_admin@user_admin.dk", "user_admin", "12345678", 1, "[{\"firstName\":\"user_admin\",\"lastName\":\"user_adminsen\"},{\"firstName\":\"user\",\"lastName\":\"bubber\"}]", "CPH-STN-254");
-
 
             Airline al1 = new Airline("Group6airlines1", "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flights/");
             Airline al2 = new Airline("angularairline", "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flights/");
@@ -106,8 +93,6 @@ public class DeploymentConfiguration implements ServletContextListener
             Airline al7 = new Airline("Group6airlines7", "http://dummyairline6-pagh.rhcloud.com/dummyAirline6/api/flights/");
             try
             {
-
-
                 em.getTransaction().begin();
                 em.persist(userRole);
                 em.persist(adminRole);
@@ -122,7 +107,6 @@ public class DeploymentConfiguration implements ServletContextListener
                 em.persist(r4);
                 em.persist(r5);
                 em.persist(r6);
-
 
                 em.persist(al1);
                 em.persist(al2);
@@ -160,4 +144,3 @@ public class DeploymentConfiguration implements ServletContextListener
     {
     }
 }
-
